@@ -1,1 +1,472 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suho Song — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f4f0;
+    --bg-alt: #ebe9e3;
+    --ink: #1a1a1a;
+    --ink-soft: #5a5856;
+    --ink-mute: #8a8884;
+    --line: #d8d4ca;
+    --accent: #c54a1d;
+    --gutter: clamp(20px, 4vw, 56px);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400; font-size: 16px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .mono { font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em; text-transform: uppercase; font-size: 11px; }
 
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 24px var(--gutter);
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(245, 244, 240, 0.85);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  nav.scrolled { border-bottom-color: var(--line); }
+  .logo { font-size: 18px; font-weight: 500; letter-spacing: -0.01em; cursor: pointer; font-style: italic; }
+  .nav-links { display: flex; gap: 36px; align-items: center; }
+  .nav-link {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-soft); cursor: pointer;
+    background: none; border: none; padding: 6px 0;
+    transition: color 0.2s ease; position: relative;
+  }
+  .nav-link::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 1px; background: var(--ink);
+    transition: width 0.3s ease;
+  }
+  .nav-link.active::after, .nav-link:hover::after { width: 100%; }
+  .nav-link.active, .nav-link:hover { color: var(--ink); }
+
+  /* PAGES */
+  .page { display: none; padding-top: 88px; min-height: 100vh; }
+  .page.active { display: block; animation: fadeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* WORK LIST */
+  .work-header {
+    padding: 60px var(--gutter) 80px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: end;
+    border-bottom: 1px solid var(--line);
+  }
+  .work-header h1 {
+    font-size: clamp(56px, 9vw, 128px);
+    font-weight: 300; line-height: 0.92;
+    letter-spacing: -0.04em; font-style: italic;
+  }
+  .work-header h1 em { font-style: normal; font-weight: 400; }
+  .work-header .meta { text-align: right; color: var(--ink-soft); }
+  .work-header .meta .count { display: block; font-size: 13px; margin-bottom: 4px; }
+  .work-grid {
+    padding: 60px var(--gutter) 120px;
+    display: grid; grid-template-columns: repeat(12, 1fr);
+    gap: 32px 24px;
+  }
+  .work-item { cursor: pointer; position: relative; overflow: hidden; }
+  .work-item:nth-child(1)  { grid-column: span 7; }
+  .work-item:nth-child(2)  { grid-column: span 5; }
+  .work-item:nth-child(3)  { grid-column: span 4; }
+  .work-item:nth-child(4)  { grid-column: span 4; }
+  .work-item:nth-child(5)  { grid-column: span 4; }
+  .work-item:nth-child(6)  { grid-column: span 5; }
+  .work-item:nth-child(7)  { grid-column: span 7; }
+  .work-item:nth-child(8)  { grid-column: span 6; }
+  .work-item:nth-child(9)  { grid-column: span 6; }
+  .work-item:nth-child(10) { grid-column: span 8; grid-column-start: 3; }
+  .work-thumb {
+    width: 100%; aspect-ratio: 4/3;
+    background: var(--bg-alt); overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .work-item:nth-child(2) .work-thumb,
+  .work-item:nth-child(5) .work-thumb,
+  .work-item:nth-child(8) .work-thumb { aspect-ratio: 3/4; }
+  .work-item:nth-child(1) .work-thumb,
+  .work-item:nth-child(7) .work-thumb { aspect-ratio: 16/10; }
+  .work-thumb-placeholder {
+    color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .work-item:hover .work-thumb { transform: scale(0.98); }
+  .work-info { margin-top: 16px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .work-title { font-size: 17px; font-weight: 400; line-height: 1.3; }
+  .work-title em { font-style: italic; color: var(--ink-soft); margin-left: 4px; }
+  .work-meta {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-mute); white-space: nowrap;
+  }
+
+  /* DETAIL */
+  .detail-back {
+    padding: 30px var(--gutter) 0;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-soft); background: none; border: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .detail-back:hover { color: var(--ink); }
+  .detail-banner {
+    margin: 32px var(--gutter) 0; aspect-ratio: 21/9;
+    background: var(--bg-alt);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .detail-intro {
+    padding: 80px var(--gutter);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    border-bottom: 1px solid var(--line);
+  }
+  .detail-intro-meta { display: flex; flex-direction: column; gap: 24px; }
+  .meta-row {
+    display: grid; grid-template-columns: 80px 1fr; gap: 16px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--line);
+  }
+  .meta-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-mute); padding-top: 4px;
+  }
+  .meta-value { font-size: 16px; color: var(--ink); }
+  .detail-title {
+    font-size: clamp(40px, 5vw, 72px); font-weight: 300;
+    line-height: 1; letter-spacing: -0.03em;
+    font-style: italic; margin-bottom: 32px;
+  }
+  .detail-title em { font-style: normal; }
+  .detail-intro p { font-size: 18px; line-height: 1.6; color: var(--ink-soft); max-width: 540px; }
+  .detail-section { padding: 80px var(--gutter); }
+  .detail-section.dark { background: var(--ink); color: var(--bg); }
+  .section-images-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 60px; }
+  .img-block {
+    aspect-ratio: 4/3; background: var(--bg-alt);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .dark .img-block { background: #2a2a2a; color: #6a6a6a; }
+  .img-block.full { aspect-ratio: 16/9; grid-column: span 2; }
+  .img-block.tall { aspect-ratio: 3/4; }
+  .section-text { max-width: 720px; margin: 0 auto; text-align: center; padding: 40px 0; }
+  .section-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-mute); margin-bottom: 16px;
+  }
+  .section-heading {
+    font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;
+    line-height: 1.15; letter-spacing: -0.02em;
+    margin-bottom: 24px; font-style: italic;
+  }
+  .section-heading em { font-style: normal; }
+  .section-body { font-size: 17px; line-height: 1.65; color: var(--ink-soft); }
+  .dark .section-body { color: #a0a0a0; }
+  .quote-block { padding: 120px var(--gutter); background: var(--bg-alt); text-align: center; }
+  .quote-block blockquote {
+    font-size: clamp(28px, 3.8vw, 48px); font-weight: 300;
+    line-height: 1.25; letter-spacing: -0.02em;
+    max-width: 900px; margin: 0 auto 32px; font-style: italic;
+  }
+  .quote-block cite {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-mute); font-style: normal;
+  }
+  .related { padding: 100px var(--gutter); border-top: 1px solid var(--line); }
+  .related h3 {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-mute); margin-bottom: 40px;
+  }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .related-item { cursor: pointer; }
+  .related-thumb {
+    aspect-ratio: 4/3; background: var(--bg-alt); margin-bottom: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .related-item:hover .related-thumb { transform: scale(0.98); }
+
+  /* ABOUT */
+  .about-hero { padding: 80px var(--gutter) 100px; border-bottom: 1px solid var(--line); }
+  .about-heading {
+    font-size: clamp(48px, 8vw, 120px); font-weight: 300;
+    line-height: 0.95; letter-spacing: -0.04em;
+    margin-top: 32px; font-style: italic; max-width: 1200px;
+  }
+  .about-heading em { font-style: normal; }
+  .about-bio, .about-clients, .about-recognition, .about-contact {
+    padding: 80px var(--gutter);
+    display: grid; grid-template-columns: 200px 1fr; gap: 80px;
+    border-bottom: 1px solid var(--line);
+  }
+  .about-contact { border-bottom: none; padding-bottom: 120px; }
+  .bio-label { color: var(--ink-mute); padding-top: 8px; }
+  .bio-text { max-width: 720px; }
+  .bio-text p {
+    font-size: clamp(20px, 2vw, 26px); line-height: 1.5;
+    color: var(--ink); margin-bottom: 24px; font-weight: 300;
+  }
+  .bio-text p:last-child { margin-bottom: 0; }
+  .clients-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line); max-width: 900px;
+  }
+  .client-cell {
+    background: var(--bg); aspect-ratio: 2/1;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .recognition-list { max-width: 720px; }
+  .recognition-row {
+    display: grid; grid-template-columns: 80px 1fr; gap: 32px;
+    padding: 20px 0; border-bottom: 1px solid var(--line); align-items: baseline;
+  }
+  .recognition-row:first-child { border-top: 1px solid var(--line); }
+  .recognition-year { color: var(--ink-mute); }
+  .recognition-detail { font-size: 16px; color: var(--ink); }
+  .contact-heading-inline {
+    font-size: clamp(40px, 5.5vw, 80px); font-weight: 300;
+    line-height: 0.95; letter-spacing: -0.03em;
+    margin-bottom: 60px; font-style: italic;
+  }
+  .contact-heading-inline em { font-style: normal; }
+  .contact-heading-inline a {
+    color: var(--accent); text-decoration: none;
+    border-bottom: 1px solid var(--accent); font-style: normal;
+    transition: opacity 0.2s ease;
+  }
+  .contact-heading-inline a:hover { opacity: 0.7; }
+  .contact-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;
+    padding-top: 32px; border-top: 1px solid var(--line); max-width: 900px;
+  }
+  .contact-col h4 {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-mute); margin-bottom: 16px; font-weight: 400;
+  }
+  .contact-col p, .contact-col a {
+    font-size: 16px; color: var(--ink); text-decoration: none;
+    line-height: 1.6; display: block;
+  }
+  .contact-col a:hover { color: var(--accent); }
+  .contact-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute);
+  }
+
+  /* HOME */
+  .home-page {
+    padding: 80px var(--gutter); min-height: calc(100vh - 88px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .home-placeholder { text-align: center; max-width: 600px; }
+  .home-placeholder h2 {
+    font-size: clamp(40px, 5vw, 64px); font-weight: 300;
+    line-height: 1; letter-spacing: -0.03em;
+    margin-bottom: 24px; font-style: italic;
+  }
+  .home-placeholder p { font-size: 17px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 32px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .work-header, .detail-intro { grid-template-columns: 1fr; gap: 40px; }
+    .work-header .meta { text-align: left; }
+    .work-grid { grid-template-columns: repeat(6, 1fr); gap: 24px 16px; }
+    .work-item:nth-child(n) { grid-column: span 6; }
+    .section-images-grid { grid-template-columns: 1fr; }
+    .img-block.full { grid-column: span 1; }
+    .related-grid, .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+    .about-bio, .about-clients, .about-recognition, .about-contact {
+      grid-template-columns: 1fr; gap: 24px; padding: 60px var(--gutter);
+    }
+    .clients-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-links { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="logo" onclick="showPage('home')">Suho Song</div>
+  <div class="nav-links">
+    <button class="nav-link active" data-page="home" onclick="showPage('home')">Home</button>
+    <button class="nav-link" data-page="work" onclick="showPage('work')">Work</button>
+    <button class="nav-link" data-page="about" onclick="showPage('about')">About</button>
+  </div>
+</nav>
+
+<section class="page home-page active" id="page-home">
+  <div class="home-placeholder">
+    <div class="mono" style="color: var(--ink-mute); margin-bottom: 24px;">Landing — TBD</div>
+    <h2>Home page<br>will live <em>here</em>.</h2>
+    <p>The home / landing composition we'll figure out later. For now, head over to <strong>Work</strong> to see the layout direction, and <strong>About</strong> for the closing page.</p>
+    <div style="display: flex; gap: 16px; justify-content: center;">
+      <button class="nav-link" onclick="showPage('work')" style="color: var(--ink); border-bottom: 1px solid var(--ink);">→ View Work</button>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page-work">
+  <header class="work-header">
+    <h1>Selected <em>Work</em></h1>
+    <div class="meta">
+      <span class="count mono">10 Projects</span>
+      <span class="mono">2019 — 2025</span>
+    </div>
+  </header>
+  <div class="work-grid">
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">01 — Image</span></div><div class="work-info"><div class="work-title">Brand identity<em>for a museum</em></div><div class="work-meta">Branding · 2024</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">02 — Image</span></div><div class="work-info"><div class="work-title">Type system<em>study</em></div><div class="work-meta">Typography · 2024</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">03 — Image</span></div><div class="work-info"><div class="work-title">Mobile app<em>redesign</em></div><div class="work-meta">UI / UX · 2024</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">04 — Image</span></div><div class="work-info"><div class="work-title">Editorial design</div><div class="work-meta">Print · 2023</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">05 — Image</span></div><div class="work-info"><div class="work-title">Poster series</div><div class="work-meta">Graphic · 2023</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">06 — Image</span></div><div class="work-info"><div class="work-title">Campaign<em>for a startup</em></div><div class="work-meta">Advertising · 2023</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">07 — Image</span></div><div class="work-info"><div class="work-title">Web platform</div><div class="work-meta">UI / UX · 2022</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">08 — Image</span></div><div class="work-info"><div class="work-title">Exhibition<em>design</em></div><div class="work-meta">Spatial · 2022</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">09 — Image</span></div><div class="work-info"><div class="work-title">Packaging</div><div class="work-meta">Branding · 2021</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">10 — Image</span></div><div class="work-info"><div class="work-title">Personal project</div><div class="work-meta">Experiment · 2021</div></div></div>
+  </div>
+</section>
+
+<section class="page" id="page-detail">
+  <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
+  <div class="detail-banner">Banner image — 21:9</div>
+  <div class="detail-intro">
+    <div><h1 class="detail-title">Creating<br>the new <em>premium.</em></h1></div>
+    <div class="detail-intro-meta">
+      <div class="meta-row"><div class="meta-label">Year</div><div class="meta-value">2024</div></div>
+      <div class="meta-row"><div class="meta-label">Client</div><div class="meta-value">Studio name here</div></div>
+      <div class="meta-row"><div class="meta-label">Role</div><div class="meta-value">Visual identity, art direction</div></div>
+      <div class="meta-row"><div class="meta-label">Tags</div><div class="meta-value">Branding · UI/UX · Print</div></div>
+      <p style="margin-top: 16px;">Short intro paragraph describing the project's opportunity and goal. This is where the story begins — the problem, the brief, the spark.</p>
+    </div>
+  </div>
+  <div class="detail-section">
+    <div class="img-block full" style="margin-bottom: 24px;">Full-width image</div>
+    <div class="section-images-grid"><div class="img-block">Image</div><div class="img-block">Image</div></div>
+    <div class="section-text">
+      <div class="section-tag">01 — Research</div>
+      <h2 class="section-heading">Understanding <em>the context.</em></h2>
+      <p class="section-body">A short paragraph that describes the research, exploration, or thinking behind this phase.</p>
+    </div>
+  </div>
+  <div class="quote-block">
+    <blockquote>"The most considered designs feel like they couldn't have existed any other way."</blockquote>
+    <cite>— A meaningful voice from the project</cite>
+  </div>
+  <div class="detail-section dark">
+    <div class="section-images-grid"><div class="img-block tall">Image</div><div class="img-block tall">Image</div></div>
+    <div class="section-text">
+      <div class="section-tag">02 — Design</div>
+      <h2 class="section-heading">Translating <em>into form.</em></h2>
+      <p class="section-body">Another short paragraph. The dark section gives the page rhythm.</p>
+    </div>
+  </div>
+  <div class="detail-section">
+    <div class="section-images-grid">
+      <div class="img-block">Image</div><div class="img-block">Image</div>
+      <div class="img-block full">Image — full width</div>
+      <div class="img-block">Image</div><div class="img-block">Image</div>
+    </div>
+    <div class="section-text">
+      <div class="section-tag">03 — Outcome</div>
+      <h2 class="section-heading">The <em>result.</em></h2>
+      <p class="section-body">A closing paragraph summarizing the impact, reception, or lessons.</p>
+    </div>
+  </div>
+  <div class="related">
+    <h3>Related Projects</h3>
+    <div class="related-grid">
+      <div class="related-item" onclick="showPage('detail')"><div class="related-thumb">Related 01</div><div class="work-info"><div class="work-title">Type system</div><div class="work-meta">2024</div></div></div>
+      <div class="related-item" onclick="showPage('detail')"><div class="related-thumb">Related 02</div><div class="work-info"><div class="work-title">Mobile app</div><div class="work-meta">2024</div></div></div>
+      <div class="related-item" onclick="showPage('detail')"><div class="related-thumb">Related 03</div><div class="work-info"><div class="work-title">Editorial</div><div class="work-meta">2023</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page-about">
+  <div class="about-hero">
+    <div class="contact-eyebrow">— About</div>
+    <h1 class="about-heading">Hello, I'm <em>Suho</em> —<br>a visual<br>communication <em>artist.</em></h1>
+  </div>
+  <div class="about-bio">
+    <div class="bio-label mono">Bio</div>
+    <div class="bio-text">
+      <p>Suho is a visual communication artist working across diverse practices including branding, UI/UX, digital design, and advertising. His practice focuses on creating meaningful visual experiences that connect design and people through storytelling.</p>
+      <p>He works with various clients including tech startups, design studios, and museums and art events, exploring how design can shape perception and bring clarity to complex ideas — often blending commercial and cultural expressions through a minimalist yet human-centered approach.</p>
+    </div>
+  </div>
+  <div class="about-clients">
+    <div class="bio-label mono">Selected Clients</div>
+    <div class="clients-grid">
+      <div class="client-cell">Client 01</div><div class="client-cell">Client 02</div>
+      <div class="client-cell">Client 03</div><div class="client-cell">Client 04</div>
+      <div class="client-cell">Client 05</div><div class="client-cell">Client 06</div>
+      <div class="client-cell">Client 07</div><div class="client-cell">Client 08</div>
+    </div>
+  </div>
+  <div class="about-recognition">
+    <div class="bio-label mono">Recognition</div>
+    <div class="recognition-list">
+      <div class="recognition-row"><div class="recognition-year mono">2024</div><div class="recognition-detail">Award or feature name — Publication / Org</div></div>
+      <div class="recognition-row"><div class="recognition-year mono">2023</div><div class="recognition-detail">Award or feature name — Publication / Org</div></div>
+      <div class="recognition-row"><div class="recognition-year mono">2023</div><div class="recognition-detail">Award or feature name — Publication / Org</div></div>
+      <div class="recognition-row"><div class="recognition-year mono">2022</div><div class="recognition-detail">Award or feature name — Publication / Org</div></div>
+    </div>
+  </div>
+  <div class="about-contact">
+    <div class="bio-label mono">Get in touch</div>
+    <div>
+      <h2 class="contact-heading-inline">Have a project<br>in mind? <em>Let's</em> <a href="mailto:suhosong.design@gmail.com">talk.</a></h2>
+      <div class="contact-grid">
+        <div class="contact-col"><h4>Email</h4><a href="mailto:suhosong.design@gmail.com">suhosong.design@gmail.com</a></div>
+        <div class="contact-col"><h4>Elsewhere</h4><a href="#">Instagram</a><a href="#">Behance</a><a href="#">LinkedIn</a></div>
+        <div class="contact-col"><h4>Based in</h4><p>Seoul, Korea<br>Available worldwide</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    const navLink = document.querySelector(`.nav-link[data-page="${name}"]`);
+    if (navLink) navLink.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+  });
+</script>
+
+</body>
+</html>
