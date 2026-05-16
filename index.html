@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -111,6 +111,7 @@
   .work-thumb-placeholder {
     color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    text-align: center; padding: 0 16px;
   }
   .work-item:hover .work-thumb { transform: scale(0.98); }
   .work-info { margin-top: 16px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
@@ -137,6 +138,7 @@
     display: flex; align-items: center; justify-content: center;
     color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    text-align: center; padding: 0 24px;
   }
   .detail-intro {
     padding: 80px var(--gutter);
@@ -169,6 +171,7 @@
     display: flex; align-items: center; justify-content: center;
     color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    text-align: center; padding: 0 16px;
   }
   .dark .img-block { background: #2a2a2a; color: #6a6a6a; }
   .img-block.full { aspect-ratio: 16/9; grid-column: span 2; }
@@ -198,6 +201,30 @@
     text-transform: uppercase; letter-spacing: 0.08em;
     color: var(--ink-mute); font-style: normal;
   }
+
+  /* IMPACT STATS — emphasizes key numbers in a project */
+  .impact-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--line); border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line); margin: 60px 0 0;
+  }
+  .stat-cell {
+    background: var(--bg); padding: 48px 32px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .dark .stat-cell { background: var(--ink); }
+  .stat-number {
+    font-size: clamp(36px, 5vw, 64px); font-weight: 300;
+    line-height: 1; letter-spacing: -0.03em;
+    font-style: italic;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-mute);
+  }
+  .dark .stat-label { color: #8a8884; }
+
   .related { padding: 100px var(--gutter); border-top: 1px solid var(--line); }
   .related h3 {
     font-family: 'JetBrains Mono', monospace; font-size: 11px;
@@ -212,6 +239,7 @@
     color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    text-align: center; padding: 0 16px;
   }
   .related-item:hover .related-thumb { transform: scale(0.98); }
 
@@ -296,6 +324,7 @@
     .section-images-grid { grid-template-columns: 1fr; }
     .img-block.full { grid-column: span 1; }
     .related-grid, .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+    .impact-stats { grid-template-columns: 1fr; }
     .about-bio, .about-clients, .about-recognition, .about-contact {
       grid-template-columns: 1fr; gap: 24px; padding: 60px var(--gutter);
     }
@@ -327,71 +356,324 @@
     </div>
   </header>
   <div class="work-grid">
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">01 — 4:5</span></div><div class="work-info"><div class="work-title">Brand identity<em>for a museum</em></div><div class="work-meta">Branding · 2024</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">02 — 1:1</span></div><div class="work-info"><div class="work-title">Type system<em>study</em></div><div class="work-meta">Typography · 2024</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">03 — 4:3</span></div><div class="work-info"><div class="work-title">Mobile app<em>redesign</em></div><div class="work-meta">UI / UX · 2024</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">04 — 3:4</span></div><div class="work-info"><div class="work-title">Editorial design</div><div class="work-meta">Print · 2023</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">05 — 4:3</span></div><div class="work-info"><div class="work-title">Poster series</div><div class="work-meta">Graphic · 2023</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">06 — 1:1</span></div><div class="work-info"><div class="work-title">Campaign<em>for a startup</em></div><div class="work-meta">Advertising · 2023</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">07 — 16:10</span></div><div class="work-info"><div class="work-title">Web platform</div><div class="work-meta">UI / UX · 2022</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">08 — 3:4</span></div><div class="work-info"><div class="work-title">Exhibition<em>design</em></div><div class="work-meta">Spatial · 2022</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">09 — 4:3</span></div><div class="work-info"><div class="work-title">Packaging</div><div class="work-meta">Branding · 2021</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">10 — 4:5</span></div><div class="work-info"><div class="work-title">Personal project</div><div class="work-meta">Experiment · 2021</div></div></div>
+    <!-- THIMBLE PROJECT 01 — Founding designer story -->
+    <div class="work-item" onclick="showPage('thimble-app')">
+      <div class="work-thumb"><span class="work-thumb-placeholder">Thimble app hero<br>4:5</span></div>
+      <div class="work-info">
+        <div class="work-title">Building Thimble<em>from 0→1</em></div>
+        <div class="work-meta">UI / UX · 2019—23</div>
+      </div>
+    </div>
+
+    <!-- THIMBLE PROJECT 02 — Broker platform -->
+    <div class="work-item" onclick="showPage('thimble-broker')">
+      <div class="work-thumb"><span class="work-thumb-placeholder">Broker platform hero<br>1:1</span></div>
+      <div class="work-info">
+        <div class="work-title">Thimble for Brokers<em>D2B2C platform</em></div>
+        <div class="work-meta">UI / UX · 2021—23</div>
+      </div>
+    </div>
+
+    <!-- REMAINING PLACEHOLDERS — replace with your other work -->
+    <div class="work-item" onclick="showPage('thimble-app')"><div class="work-thumb"><span class="work-thumb-placeholder">03 — 4:3</span></div><div class="work-info"><div class="work-title">Mobile app<em>redesign</em></div><div class="work-meta">UI / UX · 2024</div></div></div>
+    <div class="work-item" onclick="showPage('thimble-app')"><div class="work-thumb"><span class="work-thumb-placeholder">04 — 3:4</span></div><div class="work-info"><div class="work-title">Editorial design</div><div class="work-meta">Print · 2023</div></div></div>
+    <div class="work-item" onclick="showPage('thimble-app')"><div class="work-thumb"><span class="work-thumb-placeholder">05 — 4:3</span></div><div class="work-info"><div class="work-title">Poster series</div><div class="work-meta">Graphic · 2023</div></div></div>
+    <div class="work-item" onclick="showPage('thimble-app')"><div class="work-thumb"><span class="work-thumb-placeholder">06 — 1:1</span></div><div class="work-info"><div class="work-title">Campaign<em>for a startup</em></div><div class="work-meta">Advertising · 2023</div></div></div>
+    <div class="work-item" onclick="showPage('thimble-app')"><div class="work-thumb"><span class="work-thumb-placeholder">07 — 16:10</span></div><div class="work-info"><div class="work-title">Web platform</div><div class="work-meta">UI / UX · 2022</div></div></div>
+    <div class="work-item" onclick="showPage('thimble-app')"><div class="work-thumb"><span class="work-thumb-placeholder">08 — 3:4</span></div><div class="work-info"><div class="work-title">Exhibition<em>design</em></div><div class="work-meta">Spatial · 2022</div></div></div>
+    <div class="work-item" onclick="showPage('thimble-app')"><div class="work-thumb"><span class="work-thumb-placeholder">09 — 4:3</span></div><div class="work-info"><div class="work-title">Packaging</div><div class="work-meta">Branding · 2021</div></div></div>
+    <div class="work-item" onclick="showPage('thimble-app')"><div class="work-thumb"><span class="work-thumb-placeholder">10 — 4:5</span></div><div class="work-info"><div class="work-title">Personal project</div><div class="work-meta">Experiment · 2021</div></div></div>
   </div>
 </section>
 
-<section class="page" id="page-detail">
+<!-- =========================================================
+     THIMBLE PROJECT 01 — Building Thimble from 0→1
+     Story: Founding designer launches Thimble, then scales it
+     through retention work + design system.
+     ========================================================= -->
+<section class="page" id="page-thimble-app">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
-  <div class="detail-banner">Banner image — 21:9</div>
+
+  <div class="detail-banner">Banner image — Hero shot of Thimble app on phone, ideally on warm/contextual background (small business owner using it). 21:9</div>
+
   <div class="detail-intro">
-    <div><h1 class="detail-title">Creating<br>the new <em>premium.</em></h1></div>
+    <div>
+      <h1 class="detail-title">Making insurance<br><em>feel like</em> something<br>you'd actually <em>use.</em></h1>
+    </div>
     <div class="detail-intro-meta">
-      <div class="meta-row"><div class="meta-label">Year</div><div class="meta-value">2024</div></div>
-      <div class="meta-row"><div class="meta-label">Client</div><div class="meta-value">Studio name here</div></div>
-      <div class="meta-row"><div class="meta-label">Role</div><div class="meta-value">Visual identity, art direction</div></div>
-      <div class="meta-row"><div class="meta-label">Tags</div><div class="meta-value">Branding · UI/UX · Print</div></div>
-      <p style="margin-top: 16px;">Short intro paragraph describing the project's opportunity and goal. This is where the story begins — the problem, the brief, the spark.</p>
+      <div class="meta-row"><div class="meta-label">Year</div><div class="meta-value">2019 — 2023</div></div>
+      <div class="meta-row"><div class="meta-label">Company</div><div class="meta-value">Thimble (formerly Verifly)</div></div>
+      <div class="meta-row"><div class="meta-label">Role</div><div class="meta-value">Founding Product Designer · Lead</div></div>
+      <div class="meta-row"><div class="meta-label">Scope</div><div class="meta-value">iOS · Android · Web · Design System</div></div>
+      <p style="margin-top: 16px;">As the founding product designer at Thimble, I shaped the entire customer-facing experience from a blank canvas — turning small business insurance, an industry famous for fine print and friction, into something a contractor could buy from their phone in under five minutes. Six years, two platforms, one acquisition.</p>
     </div>
   </div>
+
+  <!-- ============ 01 RESEARCH: THE PROBLEM ============ -->
   <div class="detail-section">
-    <div class="img-block full" style="margin-bottom: 24px;">Full-width image</div>
-    <div class="section-images-grid"><div class="img-block">Image</div><div class="img-block">Image</div></div>
+    <div class="img-block full" style="margin-bottom: 24px;">
+      The "before" landscape — screenshot or illustration showing the traditional insurance buying experience (long forms, call-broker, PDF certificates). 16:9
+    </div>
+    <div class="section-images-grid">
+      <div class="img-block">User research photos / interview snapshots with small business owners</div>
+      <div class="img-block">Sticky notes, journey maps, or early problem-framing artifacts</div>
+    </div>
     <div class="section-text">
-      <div class="section-tag">01 — Research</div>
-      <h2 class="section-heading">Understanding <em>the context.</em></h2>
-      <p class="section-body">A short paragraph that describes the research, exploration, or thinking behind this phase.</p>
+      <div class="section-tag">01 — The Problem</div>
+      <h2 class="section-heading">Insurance was built for <em>insurers,</em><br>not for the people <em>buying it.</em></h2>
+      <p class="section-body">Photographers, contractors, dog walkers, food truck owners — millions of small operators needed liability coverage to get hired, and the existing options were the same as they'd been for decades: phone calls, brokers, paperwork, week-long waits. Our challenge was to compress all of that into a self-serve flow that someone could complete between gigs, without ever speaking to a person.</p>
     </div>
   </div>
+
+  <!-- ============ QUOTE ============ -->
   <div class="quote-block">
-    <blockquote>"The most considered designs feel like they couldn't have existed any other way."</blockquote>
-    <cite>— A meaningful voice from the project</cite>
+    <blockquote>"I just need to show this venue I'm covered by Saturday."</blockquote>
+    <cite>— Small business owner, user interview · 2019</cite>
   </div>
+
+  <!-- ============ 02 DESIGN: THE FRAMEWORK ============ -->
   <div class="detail-section dark">
-    <div class="section-images-grid"><div class="img-block tall">Image</div><div class="img-block tall">Image</div></div>
+    <div class="section-images-grid">
+      <div class="img-block tall">Mobile app — quote flow, key screens stacked vertically</div>
+      <div class="img-block tall">Mobile app — purchase confirmation, certificate, dashboard</div>
+    </div>
     <div class="section-text">
-      <div class="section-tag">02 — Design</div>
-      <h2 class="section-heading">Translating <em>into form.</em></h2>
-      <p class="section-body">Another short paragraph. The dark section gives the page rhythm.</p>
+      <div class="section-tag">02 — Design Framework</div>
+      <h2 class="section-heading">A foundation built<br><em>once,</em> used <em>everywhere.</em></h2>
+      <p class="section-body">As founding designer on a team of seven, I owned the full design framework: the transactional mobile app, the marketing site, the visual identity, even the deck that closed our Series A. Working directly with the CEO and early stakeholders, I helped translate a new SaaS model for episodic liability coverage into something users could actually grasp. Every surface had to feel like the same product. I built the early system around three principles — plain language over jargon, momentum over completeness, and one decision per screen — and applied them consistently across mobile, web, and email.</p>
+    </div>
+
+    <div style="margin-top: 80px;">
+      <div class="section-images-grid">
+        <div class="img-block">Web app — quote and checkout flow</div>
+        <div class="img-block">Brand system — logo, typography, color application</div>
+      </div>
+      <div class="img-block full" style="margin-top: 24px;">Marketing site — homepage and product landing pages, full width</div>
     </div>
   </div>
+
+  <!-- ============ 03 SCALING: RETENTION ============ -->
   <div class="detail-section">
     <div class="section-images-grid">
-      <div class="img-block">Image</div><div class="img-block">Image</div>
-      <div class="img-block full">Image — full width</div>
-      <div class="img-block">Image</div><div class="img-block">Image</div>
+      <div class="img-block">Post-purchase dashboard — personalized home view</div>
+      <div class="img-block">Cancellation flow — alternative options (pause, downgrade, rewards)</div>
+      <div class="img-block full">Mobile screens — pause coverage, manage policy, help center, notifications</div>
     </div>
     <div class="section-text">
-      <div class="section-tag">03 — Outcome</div>
-      <h2 class="section-heading">The <em>result.</em></h2>
-      <p class="section-body">A closing paragraph summarizing the impact, reception, or lessons.</p>
+      <div class="section-tag">03 — Scaling the Story</div>
+      <h2 class="section-heading">When growth shifted,<br>the <em>design</em> had to <em>follow.</em></h2>
+      <p class="section-body">In the first two years we obsessed over acquisition. As subscriptions matured, the question changed: how do we keep customers between gigs, between seasons, between policies? Cancellation surveys and traffic analysis revealed two patterns — users who left because the product felt rigid, and involuntary churn from failed payments. I led an end-to-end revamp: a personalized dashboard with "what's next" prompts, a pause option instead of a hard cancel, a rewards program for referrals, backup payment methods, and an in-app help center. A one-time transaction became an ongoing relationship — and Fast Company named it a finalist for Best UX Design of 2021.</p>
     </div>
   </div>
+
+  <!-- ============ 04 SYSTEM (supporting) ============ -->
+  <div class="detail-section dark">
+    <div class="section-images-grid">
+      <div class="img-block tall">Design system — atomic components, color tokens, type scale</div>
+      <div class="img-block tall">Figma library — component variants, documentation pages</div>
+    </div>
+    <div class="section-text">
+      <div class="section-tag">04 — Behind the scenes</div>
+      <h2 class="section-heading">A design system, rebuilt<br>for a <em>remote</em> team.</h2>
+      <p class="section-body">When the team went fully remote during the pandemic, I led the migration from Sketch to Figma and rebuilt the design system from atomic principles. Tokens, components, and patterns were all versioned and shared — letting a small team ship product faster, with more consistency, across more surfaces than its headcount should have allowed.</p>
+    </div>
+  </div>
+
+  <!-- ============ IMPACT STATS ============ -->
+  <div class="detail-section" style="padding-top: 40px;">
+    <div class="section-text">
+      <div class="section-tag">— Impact</div>
+      <h2 class="section-heading">From a blank canvas<br>to a category <em>disruptor.</em></h2>
+    </div>
+    <div class="impact-stats">
+      <div class="stat-cell">
+        <div class="stat-number">100K+</div>
+        <div class="stat-label">Policies sold in Year 1</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">$22M</div>
+        <div class="stat-label">Series A · IAC-led, 2019</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">NPS 78</div>
+        <div class="stat-label">vs. industry average of 35</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">70K</div>
+        <div class="stat-label">Monthly active users · −28% churn</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">+800%</div>
+        <div class="stat-label">LTV growth · $52 → $470 (2020—22)</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">2021</div>
+        <div class="stat-label">Fast Company · Best UX Design finalist</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ RELATED ============ -->
   <div class="related">
     <h3>Related Projects</h3>
     <div class="related-grid">
-      <div class="related-item" onclick="showPage('detail')"><div class="related-thumb">Related 01</div><div class="work-info"><div class="work-title">Type system</div><div class="work-meta">2024</div></div></div>
-      <div class="related-item" onclick="showPage('detail')"><div class="related-thumb">Related 02</div><div class="work-info"><div class="work-title">Mobile app</div><div class="work-meta">2024</div></div></div>
-      <div class="related-item" onclick="showPage('detail')"><div class="related-thumb">Related 03</div><div class="work-info"><div class="work-title">Editorial</div><div class="work-meta">2023</div></div></div>
+      <div class="related-item" onclick="showPage('thimble-broker')">
+        <div class="related-thumb">Broker platform thumb</div>
+        <div class="work-info">
+          <div class="work-title">Thimble for Brokers</div>
+          <div class="work-meta">2021—23</div>
+        </div>
+      </div>
+      <div class="related-item" onclick="showPage('work')">
+        <div class="related-thumb">All work thumb</div>
+        <div class="work-info">
+          <div class="work-title">See all work</div>
+          <div class="work-meta">2019—25</div>
+        </div>
+      </div>
+      <div class="related-item" onclick="showPage('about')">
+        <div class="related-thumb">About thumb</div>
+        <div class="work-info">
+          <div class="work-title">About Suho</div>
+          <div class="work-meta">Bio · Contact</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     THIMBLE PROJECT 02 — Broker platform (D2B2C)
+     Story: When growth shifted, we opened a new channel.
+     ========================================================= -->
+<section class="page" id="page-thimble-broker">
+  <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
+
+  <div class="detail-banner">Banner image — Broker portal hero (dashboard / desktop view). 21:9</div>
+
+  <div class="detail-intro">
+    <div>
+      <h1 class="detail-title">Designing for the people<br>who <em>sell</em> insurance to<br>everyone <em>else.</em></h1>
+    </div>
+    <div class="detail-intro-meta">
+      <div class="meta-row"><div class="meta-label">Year</div><div class="meta-value">2021 — 2023</div></div>
+      <div class="meta-row"><div class="meta-label">Company</div><div class="meta-value">Thimble</div></div>
+      <div class="meta-row"><div class="meta-label">Role</div><div class="meta-value">Lead Designer · End-to-end</div></div>
+      <div class="meta-row"><div class="meta-label">Scope</div><div class="meta-value">Broker portal · Onboarding · Enterprise</div></div>
+      <p style="margin-top: 16px;">A new question for Thimble: how do you design a product not for the end customer, but for the agent placing coverage on their behalf? I led the end-to-end UX of the broker platform — onboarding, purchase, and portal — opening a D2B2C channel that grew Gross Written Premium by 900% in two years and helped lead Thimble to its acquisition by Arch Insurance in April 2023.</p>
+    </div>
+  </div>
+
+  <!-- ============ 01 OPPORTUNITY ============ -->
+  <div class="detail-section">
+    <div class="img-block full" style="margin-bottom: 24px;">
+      Context image — broker workflow before Thimble (spreadsheets, emails, multi-carrier comparison). 16:9
+    </div>
+    <div class="section-images-grid">
+      <div class="img-block">Market data visualization — D2C vs broker channel sizing</div>
+      <div class="img-block">Broker interview photos / workflow audit</div>
+    </div>
+    <div class="section-text">
+      <div class="section-tag">01 — The Opportunity</div>
+      <h2 class="section-heading">A new <em>channel,</em><br>a new kind of <em>user.</em></h2>
+      <p class="section-body">During the pandemic, Thimble's flexible, on-demand coverage gained traction in places we hadn't designed for — brokers placing policies for clients who couldn't get covered fast enough through traditional carriers. Together with PMs, customer support, insurance, and BD, I ran broker interviews and webinars to understand how they actually work: dozens of clients in motion, multi-carrier comparison spreadsheets, fifteen-minute phone calls that needed a quote on the screen by minute three. The opportunity was clear — a D2B2C channel that could meaningfully expand revenue without diluting the consumer product. But brokers don't behave like consumers, and pretending otherwise would have killed the channel before it started.</p>
+    </div>
+  </div>
+
+  <!-- ============ QUOTE ============ -->
+  <div class="quote-block">
+    <blockquote>"Brokers don't want to be charmed.<br>They want to be fast."</blockquote>
+    <cite>— Insight from broker discovery interviews</cite>
+  </div>
+
+  <!-- ============ 02 APPROACH ============ -->
+  <div class="detail-section dark">
+    <div class="section-images-grid">
+      <div class="img-block tall">Broker onboarding — signup, license verification, agency setup</div>
+      <div class="img-block tall">Broker dashboard — clients, policies, renewals at a glance</div>
+    </div>
+    <div class="section-text">
+      <div class="section-tag">02 — A Different User</div>
+      <h2 class="section-heading">Built for <em>volume,</em><br>not for a <em>single sale.</em></h2>
+      <p class="section-body">A consumer buys insurance once or twice a year. A broker writes dozens of policies a week, across multiple clients, often inside a fifteen-minute phone call. The design language had to shift: dense information over generous whitespace, keyboard shortcuts over decorative buttons, repeatable flows over discovery moments. I rebuilt the system to support both audiences from the same foundation — same brand, two very different paces.</p>
+    </div>
+  </div>
+
+  <!-- ============ 03 PRODUCT ============ -->
+  <div class="detail-section">
+    <div class="section-images-grid">
+      <div class="img-block">Quote and bind flow — broker view (multi-client)</div>
+      <div class="img-block">Policy management — endorse, renew, cancel in bulk</div>
+      <div class="img-block full">Enterprise tier — agency-level admin, team permissions, reporting. Full width screenshot.</div>
+      <div class="img-block">Certificate of insurance generator — instant download / email</div>
+      <div class="img-block">Mobile companion — on-the-go quote and bind for field brokers</div>
+    </div>
+    <div class="section-text">
+      <div class="section-tag">03 — The Product</div>
+      <h2 class="section-heading">One platform.<br>From a <em>solo agent</em> to an <em>agency of 200.</em></h2>
+      <p class="section-body">The platform scaled from a single broker placing one policy to enterprise agencies running entire teams — with role-based permissions, agency-level reporting, and white-glove onboarding for the largest accounts. An "appetite checker" tool up front — four inputs: location, business type, coverage, duration — let brokers know in seconds whether Thimble could write the risk, eliminating the dead-end quotes that erode trust with broker users. Every flow was designed to disappear: a broker shouldn't have to think about the tool, only about the client on the other end of the line.</p>
+    </div>
+  </div>
+
+  <!-- ============ IMPACT STATS ============ -->
+  <div class="detail-section dark" style="padding-top: 40px;">
+    <div class="section-text">
+      <div class="section-tag">— Impact</div>
+      <h2 class="section-heading">A side channel<br>that became <em>the</em> channel.</h2>
+    </div>
+    <div class="impact-stats">
+      <div class="stat-cell">
+        <div class="stat-number">18K</div>
+        <div class="stat-label">New broker signups</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">+91%</div>
+        <div class="stat-label">YoY active brokers · 1,320 monthly</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">+125%</div>
+        <div class="stat-label">AOV · $144 → $324 (2021—22)</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">+900%</div>
+        <div class="stat-label">GWP in 2 years · $1.4M → $14M</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">Apr 2023</div>
+        <div class="stat-label">Acquired by Arch Insurance</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">Core</div>
+        <div class="stat-label">Channel cited in acquisition thesis</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ RELATED ============ -->
+  <div class="related">
+    <h3>Related Projects</h3>
+    <div class="related-grid">
+      <div class="related-item" onclick="showPage('thimble-app')">
+        <div class="related-thumb">Thimble app thumb</div>
+        <div class="work-info">
+          <div class="work-title">Building Thimble 0→1</div>
+          <div class="work-meta">2019—23</div>
+        </div>
+      </div>
+      <div class="related-item" onclick="showPage('work')">
+        <div class="related-thumb">All work thumb</div>
+        <div class="work-info">
+          <div class="work-title">See all work</div>
+          <div class="work-meta">2019—25</div>
+        </div>
+      </div>
+      <div class="related-item" onclick="showPage('about')">
+        <div class="related-thumb">About thumb</div>
+        <div class="work-info">
+          <div class="work-title">About Suho</div>
+          <div class="work-meta">Bio · Contact</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -446,6 +728,10 @@
     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
     const navLink = document.querySelector(`.nav-link[data-page="${name}"]`);
     if (navLink) navLink.classList.add('active');
+    // Project detail pages should highlight "Work" in nav
+    if (name === 'thimble-app' || name === 'thimble-broker') {
+      document.querySelector('.nav-link[data-page="work"]').classList.add('active');
+    }
     window.scrollTo({ top: 0, behavior: 'instant' });
   }
   window.addEventListener('scroll', () => {
