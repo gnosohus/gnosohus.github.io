@@ -314,15 +314,14 @@
 <body>
 
 <nav id="nav">
-  <div class="logo" onclick="showPage('home')">Suho Song</div>
+  <div class="logo" onclick="showPage('work')">Suho Song</div>
   <div class="nav-links">
-    <button class="nav-link active" data-page="home" onclick="showPage('home')">Home</button>
-    <button class="nav-link" data-page="work" onclick="showPage('work')">Work</button>
+    <button class="nav-link active" data-page="work" onclick="showPage('work')">Work</button>
     <button class="nav-link" data-page="about" onclick="showPage('about')">About</button>
   </div>
 </nav>
 
-<section class="page home-page active" id="page-home">
+<section class="page home-page" id="page-home">
   <div class="home-placeholder">
     <div class="mono" style="color: var(--ink-mute); margin-bottom: 24px;">Landing — TBD</div>
     <h2>Home page<br>will live <em>here</em>.</h2>
@@ -333,7 +332,7 @@
   </div>
 </section>
 
-<section class="page" id="page-work">
+<section class="page active" id="page-work">
   <header class="work-header">
     <h1>Selected <em>Work</em></h1>
     <div class="meta">
