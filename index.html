@@ -62,7 +62,7 @@
   .page.active { display: block; animation: fadeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* WORK LIST */
+  /* WORK HEADER */
   .work-header {
     padding: 60px var(--gutter) 80px;
     display: grid; grid-template-columns: 1fr 1fr;
@@ -77,33 +77,37 @@
   .work-header h1 em { font-style: normal; font-weight: 400; }
   .work-header .meta { text-align: right; color: var(--ink-soft); }
   .work-header .meta .count { display: block; font-size: 13px; margin-bottom: 4px; }
+
+  /* MASONRY WORK GRID */
   .work-grid {
     padding: 60px var(--gutter) 120px;
-    display: grid; grid-template-columns: repeat(12, 1fr);
-    gap: 32px 24px;
+    column-count: 3;
+    column-gap: 32px;
   }
-  .work-item { cursor: pointer; position: relative; overflow: hidden; }
-  .work-item:nth-child(1)  { grid-column: span 7; }
-  .work-item:nth-child(2)  { grid-column: span 5; }
-  .work-item:nth-child(3)  { grid-column: span 4; }
-  .work-item:nth-child(4)  { grid-column: span 4; }
-  .work-item:nth-child(5)  { grid-column: span 4; }
-  .work-item:nth-child(6)  { grid-column: span 5; }
-  .work-item:nth-child(7)  { grid-column: span 7; }
-  .work-item:nth-child(8)  { grid-column: span 6; }
-  .work-item:nth-child(9)  { grid-column: span 6; }
-  .work-item:nth-child(10) { grid-column: span 8; grid-column-start: 3; }
+  .work-item {
+    cursor: pointer;
+    break-inside: avoid;
+    margin-bottom: 56px;
+    display: block;
+  }
+  /* Varied aspect ratios for visual rhythm */
+  .work-item:nth-child(1)  .work-thumb { aspect-ratio: 4/5; }
+  .work-item:nth-child(2)  .work-thumb { aspect-ratio: 1/1; }
+  .work-item:nth-child(3)  .work-thumb { aspect-ratio: 4/3; }
+  .work-item:nth-child(4)  .work-thumb { aspect-ratio: 3/4; }
+  .work-item:nth-child(5)  .work-thumb { aspect-ratio: 4/3; }
+  .work-item:nth-child(6)  .work-thumb { aspect-ratio: 1/1; }
+  .work-item:nth-child(7)  .work-thumb { aspect-ratio: 16/10; }
+  .work-item:nth-child(8)  .work-thumb { aspect-ratio: 3/4; }
+  .work-item:nth-child(9)  .work-thumb { aspect-ratio: 4/3; }
+  .work-item:nth-child(10) .work-thumb { aspect-ratio: 4/5; }
+
   .work-thumb {
-    width: 100%; aspect-ratio: 4/3;
+    width: 100%;
     background: var(--bg-alt); overflow: hidden;
     display: flex; align-items: center; justify-content: center;
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .work-item:nth-child(2) .work-thumb,
-  .work-item:nth-child(5) .work-thumb,
-  .work-item:nth-child(8) .work-thumb { aspect-ratio: 3/4; }
-  .work-item:nth-child(1) .work-thumb,
-  .work-item:nth-child(7) .work-thumb { aspect-ratio: 16/10; }
   .work-thumb-placeholder {
     color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
@@ -281,25 +285,14 @@
     text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute);
   }
 
-  /* HOME */
-  .home-page {
-    padding: 80px var(--gutter); min-height: calc(100vh - 88px);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .home-placeholder { text-align: center; max-width: 600px; }
-  .home-placeholder h2 {
-    font-size: clamp(40px, 5vw, 64px); font-weight: 300;
-    line-height: 1; letter-spacing: -0.03em;
-    margin-bottom: 24px; font-style: italic;
-  }
-  .home-placeholder p { font-size: 17px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 32px; }
-
   /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .work-grid { column-count: 2; column-gap: 24px; }
+    .work-item { margin-bottom: 40px; }
+  }
   @media (max-width: 900px) {
     .work-header, .detail-intro { grid-template-columns: 1fr; gap: 40px; }
     .work-header .meta { text-align: left; }
-    .work-grid { grid-template-columns: repeat(6, 1fr); gap: 24px 16px; }
-    .work-item:nth-child(n) { grid-column: span 6; }
     .section-images-grid { grid-template-columns: 1fr; }
     .img-block.full { grid-column: span 1; }
     .related-grid, .contact-grid { grid-template-columns: 1fr; gap: 24px; }
@@ -308,6 +301,10 @@
     }
     .clients-grid { grid-template-columns: repeat(2, 1fr); }
     .nav-links { gap: 20px; }
+  }
+  @media (max-width: 640px) {
+    .work-grid { column-count: 1; }
+    .work-item { margin-bottom: 48px; }
   }
 </style>
 </head>
@@ -321,17 +318,6 @@
   </div>
 </nav>
 
-<section class="page home-page" id="page-home">
-  <div class="home-placeholder">
-    <div class="mono" style="color: var(--ink-mute); margin-bottom: 24px;">Landing — TBD</div>
-    <h2>Home page<br>will live <em>here</em>.</h2>
-    <p>The home / landing composition we'll figure out later. For now, head over to <strong>Work</strong> to see the layout direction, and <strong>About</strong> for the closing page.</p>
-    <div style="display: flex; gap: 16px; justify-content: center;">
-      <button class="nav-link" onclick="showPage('work')" style="color: var(--ink); border-bottom: 1px solid var(--ink);">→ View Work</button>
-    </div>
-  </div>
-</section>
-
 <section class="page active" id="page-work">
   <header class="work-header">
     <h1>Selected <em>Work</em></h1>
@@ -341,16 +327,16 @@
     </div>
   </header>
   <div class="work-grid">
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">01 — Image</span></div><div class="work-info"><div class="work-title">Brand identity<em>for a museum</em></div><div class="work-meta">Branding · 2024</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">02 — Image</span></div><div class="work-info"><div class="work-title">Type system<em>study</em></div><div class="work-meta">Typography · 2024</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">03 — Image</span></div><div class="work-info"><div class="work-title">Mobile app<em>redesign</em></div><div class="work-meta">UI / UX · 2024</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">04 — Image</span></div><div class="work-info"><div class="work-title">Editorial design</div><div class="work-meta">Print · 2023</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">05 — Image</span></div><div class="work-info"><div class="work-title">Poster series</div><div class="work-meta">Graphic · 2023</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">06 — Image</span></div><div class="work-info"><div class="work-title">Campaign<em>for a startup</em></div><div class="work-meta">Advertising · 2023</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">07 — Image</span></div><div class="work-info"><div class="work-title">Web platform</div><div class="work-meta">UI / UX · 2022</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">08 — Image</span></div><div class="work-info"><div class="work-title">Exhibition<em>design</em></div><div class="work-meta">Spatial · 2022</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">09 — Image</span></div><div class="work-info"><div class="work-title">Packaging</div><div class="work-meta">Branding · 2021</div></div></div>
-    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">10 — Image</span></div><div class="work-info"><div class="work-title">Personal project</div><div class="work-meta">Experiment · 2021</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">01 — 4:5</span></div><div class="work-info"><div class="work-title">Brand identity<em>for a museum</em></div><div class="work-meta">Branding · 2024</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">02 — 1:1</span></div><div class="work-info"><div class="work-title">Type system<em>study</em></div><div class="work-meta">Typography · 2024</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">03 — 4:3</span></div><div class="work-info"><div class="work-title">Mobile app<em>redesign</em></div><div class="work-meta">UI / UX · 2024</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">04 — 3:4</span></div><div class="work-info"><div class="work-title">Editorial design</div><div class="work-meta">Print · 2023</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">05 — 4:3</span></div><div class="work-info"><div class="work-title">Poster series</div><div class="work-meta">Graphic · 2023</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">06 — 1:1</span></div><div class="work-info"><div class="work-title">Campaign<em>for a startup</em></div><div class="work-meta">Advertising · 2023</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">07 — 16:10</span></div><div class="work-info"><div class="work-title">Web platform</div><div class="work-meta">UI / UX · 2022</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">08 — 3:4</span></div><div class="work-info"><div class="work-title">Exhibition<em>design</em></div><div class="work-meta">Spatial · 2022</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">09 — 4:3</span></div><div class="work-info"><div class="work-title">Packaging</div><div class="work-meta">Branding · 2021</div></div></div>
+    <div class="work-item" onclick="showPage('detail')"><div class="work-thumb"><span class="work-thumb-placeholder">10 — 4:5</span></div><div class="work-info"><div class="work-title">Personal project</div><div class="work-meta">Experiment · 2021</div></div></div>
   </div>
 </section>
 
