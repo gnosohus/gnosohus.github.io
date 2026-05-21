@@ -651,22 +651,19 @@
     </div>
   </div>
 
-  <!-- ─── 3. PRODUCT IMAGE (사진 02 — Verifly 모자이크, intro 직후) ─── -->
-  <div class="detail-section" style="padding-bottom: 0;">
-    <div class="img-block full">
-      <img src="images/thimble-1/02.png" alt="Verifly's initial launch screens" onerror="this.style.display='none'"><span class="img-fallback">Verifly's initial launch screens</span>
-    </div>
-    <div class="img-caption">
-      2018 — Initial Launch · Thimble (formerly Verifly)
-    </div>
-  </div>
-
-  <!-- ─── 4. CHAPTER 01 — THE PROBLEM ─────────────────────────── -->
+  <!-- ─── 3. CHAPTER 01 — THE PROBLEM (text first, then image 02) ─── -->
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">01 — The Problem</div>
       <h2 class="section-heading">A new way to<br>buy <em>insurance.</em></h2>
       <p class="section-body">Traditional insurance only came one way — a year-long policy, bought through a broker, locked in for twelve months. But independent workers were hiring out by the gig, by the day, sometimes by the hour. Thimble built a platform where they could buy short-term, flexible coverage on demand. Insurance that matched how work actually happened.</p>
+    </div>
+    <!-- 02. Full-width — Verifly launch screens -->
+    <div class="img-block full" style="margin-top: 24px;">
+      <img src="images/thimble-1/02.png" alt="Verifly's initial launch screens" onerror="this.style.display='none'"><span class="img-fallback">Verifly's initial launch screens</span>
+    </div>
+    <div class="img-caption">
+      2018 — Initial Launch · Thimble (formerly Verifly)
     </div>
   </div>
 
@@ -871,8 +868,12 @@
 <section class="page" id="page-thimble-broker">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
 
-  <div class="detail-banner">Banner image — Broker portal hero (dashboard / desktop view). 21:9</div>
+  <!-- 01. Banner — Lifestyle photo of a broker -->
+  <div class="detail-banner">
+    <img src="images/thimble-2/01.png" alt="An insurance broker working with a client" />
+  </div>
 
+  <!-- Intro -->
   <div class="detail-intro">
     <div>
       <h1 class="detail-title">Designing for the people<br>who <em>sell</em> insurance to<br>everyone <em>else.</em></h1>
@@ -882,23 +883,20 @@
       <div class="meta-row"><div class="meta-label">Company</div><div class="meta-value">Thimble</div></div>
       <div class="meta-row"><div class="meta-label">Role</div><div class="meta-value">Lead Designer · End-to-end</div></div>
       <div class="meta-row"><div class="meta-label">Scope</div><div class="meta-value">Broker portal · Onboarding · Enterprise</div></div>
-      <p style="margin-top: 16px;">A new question for Thimble: how do you design a product not for the end customer, but for the agent placing coverage on their behalf? I led the end-to-end UX of the broker platform — onboarding, purchase, and portal — opening a D2B2C channel that grew Gross Written Premium by 900% in two years and helped lead Thimble to its acquisition by Arch Insurance in April 2023.</p>
+      <p style="margin-top: 16px;">During the pandemic, Thimble's flexible, on-demand coverage gained traction in an unexpected place. Insurance brokers. I led the end-to-end design of a new broker platform, opening a D2B2C channel that grew Gross Written Premium by 900% in two years and became a core driver behind Thimble's acquisition by Arch Insurance in April 2023.</p>
     </div>
   </div>
 
-  <!-- ============ 01 OPPORTUNITY ============ -->
+  <!-- ============ 01 THE OPPORTUNITY ============ -->
   <div class="detail-section">
-    <div class="img-block full" style="margin-bottom: 24px;">
-      Context image — broker workflow before Thimble (spreadsheets, emails, multi-carrier comparison). 16:9
-    </div>
-    <div class="section-images-grid">
-      <div class="img-block">Market data visualization — D2C vs broker channel sizing</div>
-      <div class="img-block">Broker interview photos / workflow audit</div>
-    </div>
     <div class="section-text">
       <div class="section-tag">01 — The Opportunity</div>
       <h2 class="section-heading">A new <em>channel,</em><br>a new kind of <em>user.</em></h2>
-      <p class="section-body">During the pandemic, Thimble's flexible, on-demand coverage gained traction in places we hadn't designed for — brokers placing policies for clients who couldn't get covered fast enough through traditional carriers. Together with PMs, customer support, insurance, and BD, I ran broker interviews and webinars to understand how they actually work: dozens of clients in motion, multi-carrier comparison spreadsheets, fifteen-minute phone calls that needed a quote on the screen by minute three. The opportunity was clear — a D2B2C channel that could meaningfully expand revenue without diluting the consumer product. But brokers don't behave like consumers, and pretending otherwise would have killed the channel before it started.</p>
+      <p class="section-body">Brokers started using Thimble on their own, placing coverage faster than traditional carriers could. Together with PMs, customer support, insurance, and BD, I ran broker interviews and audited their workflows: dozens of clients in motion, multi-carrier spreadsheets, fifteen-minute calls that needed a quote on screen by minute three. The opportunity was clear. A D2B2C channel could expand revenue without diluting the consumer product. But brokers needed a product built for how they actually work.</p>
+    </div>
+    <!-- 02. Full-width — Welcome dashboard -->
+    <div class="img-block full" style="margin-top: 24px; aspect-ratio: 16/9;">
+      <img src="images/thimble-2/02.png" alt="Thimble broker portal — Welcome dashboard with activity, commission, and coverage overview" />
     </div>
   </div>
 
@@ -908,32 +906,81 @@
     <cite>— Insight from broker discovery interviews</cite>
   </div>
 
-  <!-- ============ 02 APPROACH ============ -->
-  <div class="detail-section dark">
-    <div class="section-images-grid">
-      <div class="img-block tall">Broker onboarding — signup, license verification, agency setup</div>
-      <div class="img-block tall">Broker dashboard — clients, policies, renewals at a glance</div>
-    </div>
+  <!-- ============ 02 A DIFFERENT USER (DARK) ============ -->
+  <div class="detail-section dark" style="padding-bottom: 0;">
     <div class="section-text">
       <div class="section-tag">02 — A Different User</div>
       <h2 class="section-heading">Built for <em>volume,</em><br>not for a <em>single sale.</em></h2>
-      <p class="section-body">A consumer buys insurance once or twice a year. A broker writes dozens of policies a week, across multiple clients, often inside a fifteen-minute phone call. The design language had to shift: dense information over generous whitespace, keyboard shortcuts over decorative buttons, repeatable flows over discovery moments. I rebuilt the system to support both audiences from the same foundation — same brand, two very different paces.</p>
+      <p class="section-body">A consumer buys insurance once or twice a year. A broker writes dozens of policies a week — different pace, different mental model, different design. Through research, I learned that broker workflows are full of friction the consumer product never had to handle: verifying broker licenses, collecting state-specific documents, linking commission bank accounts, and keeping track of dozens of clients at once. To translate that gap into product, I ran a four-phase process across research, strategy, design, and implementation. Each phase was grounded in real broker workflows and validated with PMs, customer support, insurance, and BD.</p>
     </div>
   </div>
 
-  <!-- ============ 03 PRODUCT ============ -->
-  <div class="detail-section">
-    <div class="section-images-grid">
-      <div class="img-block">Quote and bind flow — broker view (multi-client)</div>
-      <div class="img-block">Policy management — endorse, renew, cancel in bulk</div>
-      <div class="img-block full">Enterprise tier — agency-level admin, team permissions, reporting. Full width screenshot.</div>
-      <div class="img-block">Certificate of insurance generator — instant download / email</div>
-      <div class="img-block">Mobile companion — on-the-go quote and bind for field brokers</div>
+  <!-- Process Timeline (dark, sits between Ch02 text and Ch02 images) -->
+  <div class="detail-section dark" style="padding-top: 20px; padding-bottom: 20px;">
+    <div class="tl-wrap">
+      <div class="tl-line"></div>
+      <div class="tl-track" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="tl-milestone">
+          <div class="tl-quarter">Phase 01</div>
+          <div class="tl-label">Conduct Research<br><span style="opacity: 0.6; font-weight: 400; font-size: 13px;">Competitive analysis · CS feedback · Broker interviews</span></div>
+        </div>
+        <div class="tl-milestone">
+          <div class="tl-quarter">Phase 02</div>
+          <div class="tl-label">Plan &amp; Strategize<br><span style="opacity: 0.6; font-weight: 400; font-size: 13px;">Card sorting · Workshops · Commitments</span></div>
+        </div>
+        <div class="tl-milestone tl-highlight">
+          <div class="tl-quarter">Phase 03</div>
+          <div class="tl-label">Design<br><span style="opacity: 0.6; font-weight: 400; font-size: 13px;">Flow mapping · Wireframing · Prototyping</span></div>
+        </div>
+        <div class="tl-milestone">
+          <div class="tl-quarter">Phase 04</div>
+          <div class="tl-label">Implement &amp; Monitor<br><span style="opacity: 0.6; font-weight: 400; font-size: 13px;">FullStory · Looker · Amplitude</span></div>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- Ch02 process artifacts (continuation of dark section) -->
+  <div class="detail-section dark" style="padding-top: 40px;">
+    <!-- 03 + 04. 1+1 — Workflow planning + Onboarding flow -->
+    <div class="section-images-grid">
+      <div class="img-block" style="aspect-ratio: 4/3;">
+        <img src="images/thimble-2/03.png" alt="Strategy artifact — broker journey mapping, customer phase analysis, opportunities" />
+      </div>
+      <div class="img-block" style="aspect-ratio: 4/3;">
+        <img src="images/thimble-2/04.png" alt="Design artifact — broker onboarding flow from sign-up through Stripe verification, W-9, role, and language" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 03 THE PRODUCT ============ -->
+  <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">03 — The Product</div>
-      <h2 class="section-heading">One platform.<br>From a <em>solo agent</em> to an <em>agency of 200.</em></h2>
-      <p class="section-body">The platform scaled from a single broker placing one policy to enterprise agencies running entire teams — with role-based permissions, agency-level reporting, and white-glove onboarding for the largest accounts. An "appetite checker" tool up front — four inputs: location, business type, coverage, duration — let brokers know in seconds whether Thimble could write the risk, eliminating the dead-end quotes that erode trust with broker users. Every flow was designed to disappear: a broker shouldn't have to think about the tool, only about the client on the other end of the line.</p>
+      <h2 class="section-heading"><em>See what's possible,</em><br>then sell it.</h2>
+      <p class="section-body">The hardest part of selling insurance isn't writing the policy. It's figuring out <em>what</em> to write. The Appetite Checker takes a few inputs about the client's business and surfaces every coverage Thimble can write, including GL, PL, Cyber, IM, and WC, along with the flexible durations Thimble is known for. From there, brokers move straight into quote and bind. No dead ends, no second guessing, no leaving the page.</p>
+    </div>
+    <!-- 07. Full-width — Quote flow -->
+    <div class="img-block full" style="margin-top: 24px; aspect-ratio: 16/9;">
+      <img src="images/thimble-2/07.png" alt="Quote and bind flow — from ZIP code to coverage selection to bound policy" />
+    </div>
+  </div>
+
+  <!-- ============ 04 ONE WORKSPACE ============ -->
+  <div class="detail-section">
+    <div class="section-text">
+      <div class="section-tag">04 — One Workspace</div>
+      <h2 class="section-heading"><em>Quote, bind, manage</em><br>in one place.</h2>
+      <p class="section-body">Beyond a single sale, brokers run an ongoing book of business. The portal brings every client and policy into one workspace where brokers track activity, manage renewals, handle endorsements, and scale from a solo agent to an agency of 200 with role-based permissions and agency-level reporting.</p>
+    </div>
+    <!-- 05 + 06. 1+1 — Appetite Guide + Policy Activity -->
+    <div class="section-images-grid" style="margin-top: 24px;">
+      <div class="img-block" style="aspect-ratio: 3/4;">
+        <img src="images/thimble-2/05.png" alt="Appetite Checker results — every coverage Thimble can write for a given business" />
+      </div>
+      <div class="img-block" style="aspect-ratio: 3/4;">
+        <img src="images/thimble-2/06.png" alt="Policy Activity — manage active, scheduled, pending, and expired policies in one view" />
+      </div>
     </div>
   </div>
 
@@ -961,12 +1008,12 @@
         <div class="stat-label">GWP in 2 years · $1.4M → $14M</div>
       </div>
       <div class="stat-cell">
-        <div class="stat-number">Apr 2023</div>
-        <div class="stat-label">Acquired by Arch Insurance</div>
+        <div class="stat-number">40%</div>
+        <div class="stat-label">Of total GWP from brokers · Q3 2023</div>
       </div>
       <div class="stat-cell">
-        <div class="stat-number">Core</div>
-        <div class="stat-label">Channel cited in acquisition thesis</div>
+        <div class="stat-number">Apr 2023</div>
+        <div class="stat-label">Acquired by Arch · broker channel central to the deal</div>
       </div>
     </div>
   </div>
@@ -999,6 +1046,8 @@
     </div>
   </div>
 </section>
+
+
 
 <!-- =========================================================
      LOOKSCOPE — Self-initiated iOS app, 2 friends, App Store launch
