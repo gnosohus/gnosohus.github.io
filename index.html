@@ -10,15 +10,18 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #f5f4f0;
-    --bg-alt: #ebe9e3;
+    --bg: #f7f7f7;
+    --bg-alt: #ededed;
     --ink: #1a1a1a;
     --ink-soft: #5a5856;
     --ink-mute: #8a8884;
     --line: #d8d4ca;
-    --accent: #c54a1d;
+    --accent: #ff5722;
     --gutter: clamp(20px, 4vw, 56px);
+    --radius: 40px;
   }
+  /* Per-project accent overrides */
+  #page-thimble-app, #page-thimble-broker { --accent: #07DB7F; }
   html { scroll-behavior: smooth; }
   body {
     background: var(--bg); color: var(--ink);
@@ -34,7 +37,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 24px var(--gutter);
     display: flex; justify-content: space-between; align-items: center;
-    background: rgba(245, 244, 240, 0.85);
+    background: rgba(247, 247, 247, 0.85);
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid transparent;
     transition: border-color 0.3s ease;
@@ -107,6 +110,7 @@
     background: var(--bg-alt); overflow: hidden;
     display: flex; align-items: center; justify-content: center;
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    border-radius: var(--radius);
   }
   .work-thumb-placeholder {
     color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
@@ -138,8 +142,12 @@
     display: flex; align-items: center; justify-content: center;
     color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
-    text-align: center; padding: 0 24px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: var(--radius);
   }
+  .detail-banner { position: relative; }
+  .detail-banner img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 2; }
   .detail-intro {
     padding: 80px var(--gutter);
     display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
@@ -166,16 +174,31 @@
   .detail-section { padding: 80px var(--gutter); }
   .detail-section.dark { background: var(--ink); color: var(--bg); }
   .section-images-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 60px; }
+  .section-images-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-bottom: 60px; }
   .img-block {
     aspect-ratio: 4/3; background: var(--bg-alt);
     display: flex; align-items: center; justify-content: center;
     color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    text-align: center;
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+  .img-block { position: relative; }
+  .img-block img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 2; }
+  .img-fallback {
+    position: absolute; inset: 0; z-index: 1;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
     text-align: center; padding: 0 16px;
   }
+  .dark .img-fallback { color: #6a6a6a; }
   .dark .img-block { background: #2a2a2a; color: #6a6a6a; }
   .img-block.full { aspect-ratio: 16/9; grid-column: span 2; }
   .img-block.tall { aspect-ratio: 3/4; }
+  .img-block.flex { aspect-ratio: auto; }
+  .img-block.flex img { height: auto; aspect-ratio: auto; }
   .section-text { max-width: 720px; margin: 0 auto; text-align: center; padding: 40px 0; }
   .section-tag {
     font-family: 'JetBrains Mono', monospace; font-size: 11px;
@@ -201,6 +224,142 @@
     text-transform: uppercase; letter-spacing: 0.08em;
     color: var(--ink-mute); font-style: normal;
   }
+
+  /* ═══════════════════════════════════════════════════════════
+     IMAGE CAPTIONS — small mono labels under images
+     ═══════════════════════════════════════════════════════════ */
+  .img-caption {
+    margin-top: 14px;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .dark .img-caption { color: #8a8884; }
+
+  /* ═══════════════════════════════════════════════════════════
+     TAP, INSURE, GO — the product promise callout
+     Lives inside Chapter 02, between section text and timeline
+     ═══════════════════════════════════════════════════════════ */
+  .ti-callout {
+    padding: 120px var(--gutter);
+    text-align: center;
+    background: var(--bg-alt);
+  }
+  .ti-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-mute);
+    margin-bottom: 28px;
+  }
+  .ti-headline {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(64px, 11vw, 144px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 36px;
+  }
+  .ti-headline em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .ti-sub {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+  .ti-sub em {
+    font-style: italic;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  @media (max-width: 640px) {
+    .ti-callout { padding: 80px var(--gutter); }
+    .ti-headline { font-size: clamp(48px, 14vw, 80px); }
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     TIMELINE — used in Thimble 0→1 (Chapter 02)
+     6 milestones, horizontal layout, mobile uses shortened labels
+     ═══════════════════════════════════════════════════════════ */
+  .tl-section { padding: 100px var(--gutter) 80px; }
+  .tl-wrap {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 40px;
+  }
+  .tl-line {
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--ink);
+  }
+  .dark .tl-line { background: rgba(255,255,255,0.4); }
+  .tl-track {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .tl-milestone {
+    position: relative;
+    padding-top: 60px;
+    padding-right: 16px;
+  }
+  .tl-year {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1;
+    position: absolute;
+    top: -16px;
+    left: 0;
+    letter-spacing: -0.01em;
+  }
+  .dark .tl-year { color: var(--bg); }
+  .tl-quarter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+    position: absolute;
+    top: 28px;
+    left: 0;
+  }
+  .tl-milestone.tl-highlight .tl-quarter { color: var(--accent); }
+  .dark .tl-quarter { color: var(--bg); }
+  .dark .tl-milestone.tl-highlight .tl-quarter { color: var(--accent); }
+  .tl-label {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+  }
+  .dark .tl-label { color: var(--bg); }
+  .tl-milestone.tl-highlight .tl-label { color: var(--accent); }
+  /* Short labels for narrow viewports — shown via CSS at <900px */
+  .tl-label-short { display: none; }
+  .tl-quarter-short { display: none; }
 
   /* IMPACT STATS — emphasizes key numbers in a project */
   .impact-stats {
@@ -240,6 +399,8 @@
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     text-align: center; padding: 0 16px;
+    border-radius: var(--radius);
+    overflow: hidden;
   }
   .related-item:hover .related-thumb { transform: scale(0.98); }
 
@@ -322,6 +483,7 @@
     .work-header, .detail-intro { grid-template-columns: 1fr; gap: 40px; }
     .work-header .meta { text-align: left; }
     .section-images-grid { grid-template-columns: 1fr; }
+    .section-images-grid-3 { grid-template-columns: 1fr; }
     .img-block.full { grid-column: span 1; }
     .related-grid, .contact-grid { grid-template-columns: 1fr; gap: 24px; }
     .impact-stats { grid-template-columns: 1fr; }
@@ -330,10 +492,17 @@
     }
     .clients-grid { grid-template-columns: repeat(2, 1fr); }
     .nav-links { gap: 20px; }
+    /* Timeline — compact for narrow screens, allow 2-line labels */
+    .tl-milestone { padding-right: 6px; }
+    .tl-label { font-size: 12px; line-height: 1.3; }
+    .tl-quarter { font-size: 9px; }
   }
   @media (max-width: 640px) {
     .work-grid { column-count: 1; }
     .work-item { margin-bottom: 48px; }
+    .tl-section { padding: 60px var(--gutter) 40px; }
+    .tl-label { font-size: 11px; }
+    .tl-quarter { font-size: 9px; }
   }
 </style>
 </head>
@@ -438,100 +607,194 @@
   </div>
 </section>
 
-<!-- =========================================================
-     THIMBLE PROJECT 01 — Building Thimble from 0→1
-     Story: Founding designer launches Thimble, then scales it
-     through retention work + design system.
-     ========================================================= -->
+<!-- ╔═══════════════════════════════════════════════════════════════════╗ -->
+<!-- ║                                                                   ║ -->
+<!-- ║   ▰ THIMBLE 0→1                                                  ║ -->
+<!-- ║                                                                   ║ -->
+<!-- ║   Founding designer story · 2018 — 2020                          ║ -->
+<!-- ║   Page id: page-thimble-app                                       ║ -->
+<!-- ║   Image folder: /images/thimble-1/                                ║ -->
+<!-- ║                                                                   ║ -->
+<!-- ║   Structure:                                                      ║ -->
+<!-- ║     1. Banner (21:9)                                              ║ -->
+<!-- ║     2. Intro + meta                                               ║ -->
+<!-- ║     3. Chapter 01 — Problem (workshop research)                   ║ -->
+<!-- ║     4. Quote block                                                ║ -->
+<!-- ║     5. Chapter 02 — Design Framework (timeline + logo +           ║ -->
+<!-- ║                     mobile + web)                                 ║ -->
+<!-- ║     6. Chapter 03 — Scaling (cancellation + engagement)           ║ -->
+<!-- ║     7. Chapter 04 — Design System (DARK section)                  ║ -->
+<!-- ║     8. Impact stats grid                                          ║ -->
+<!-- ║     9. Related projects                                           ║ -->
+<!-- ║                                                                   ║ -->
+<!-- ╚═══════════════════════════════════════════════════════════════════╝ -->
+
 <section class="page" id="page-thimble-app">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
 
-  <div class="detail-banner">Banner image — Hero shot of Thimble app on phone, ideally on warm/contextual background (small business owner using it). 21:9</div>
+  <!-- ─── 1. BANNER ───────────────────────────────────────────── -->
+  <div class="detail-banner">
+    <img src="images/thimble-1/01.png" alt="iPhone and iPad showing Thimble app on wood desk" onerror="this.style.display='none'"><span class="img-fallback">iPhone and iPad showing Thimble app on wood desk</span>
+  </div>
 
+  <!-- ─── 2. INTRO ────────────────────────────────────────────── -->
   <div class="detail-intro">
     <div>
-      <h1 class="detail-title">Making insurance<br><em>feel like</em> something<br>you'd actually <em>use.</em></h1>
+      <h1 class="detail-title">Simple insurance,<br><em>made</em> to fit<br><em>your</em> work.</h1>
     </div>
     <div class="detail-intro-meta">
-      <div class="meta-row"><div class="meta-label">Year</div><div class="meta-value">2019 — 2021</div></div>
+      <div class="meta-row"><div class="meta-label">Year</div><div class="meta-value">2018 — 2020</div></div>
       <div class="meta-row"><div class="meta-label">Company</div><div class="meta-value">Thimble (formerly Verifly)</div></div>
       <div class="meta-row"><div class="meta-label">Role</div><div class="meta-value">Founding Product Designer · Lead</div></div>
       <div class="meta-row"><div class="meta-label">Scope</div><div class="meta-value">iOS · Android · Web · Design System</div></div>
-      <p style="margin-top: 16px;">As the founding product designer at Thimble, I shaped the entire customer-facing experience from a blank canvas — turning small business insurance, an industry famous for fine print and friction, into something a contractor could buy from their phone in under five minutes. Six years, two platforms, one acquisition.</p>
+      <p style="margin-top: 16px;">As the founding product designer at Thimble, I shaped the entire customer-facing experience from a blank canvas. Insurance is famous for its fine print and friction. We turned it into something small business owners could understand, buy, and manage from their phone in 60 seconds.</p>
     </div>
   </div>
 
-  <!-- ============ 01 RESEARCH: THE PROBLEM ============ -->
+  <!-- ─── 3. PRODUCT IMAGE (사진 02 — Verifly 모자이크, intro 직후) ─── -->
+  <div class="detail-section" style="padding-bottom: 0;">
+    <div class="img-block full">
+      <img src="images/thimble-1/02.png" alt="Verifly's initial launch screens" onerror="this.style.display='none'"><span class="img-fallback">Verifly's initial launch screens</span>
+    </div>
+    <div class="img-caption">
+      2018 — Initial Launch · Thimble (formerly Verifly)
+    </div>
+  </div>
+
+  <!-- ─── 4. CHAPTER 01 — THE PROBLEM ─────────────────────────── -->
   <div class="detail-section">
-    <div class="img-block full" style="margin-bottom: 24px;">
-      The "before" landscape — screenshot or illustration showing the traditional insurance buying experience (long forms, call-broker, PDF certificates). 16:9
-    </div>
-    <div class="section-images-grid">
-      <div class="img-block">User research photos / interview snapshots with small business owners</div>
-      <div class="img-block">Sticky notes, journey maps, or early problem-framing artifacts</div>
-    </div>
     <div class="section-text">
       <div class="section-tag">01 — The Problem</div>
-      <h2 class="section-heading">Insurance was built for <em>insurers,</em><br>not for the people <em>buying it.</em></h2>
-      <p class="section-body">Photographers, contractors, dog walkers, food truck owners — millions of small operators needed liability coverage to get hired, and the existing options were the same as they'd been for decades: phone calls, brokers, paperwork, week-long waits. Our challenge was to compress all of that into a self-serve flow that someone could complete between gigs, without ever speaking to a person.</p>
+      <h2 class="section-heading">A new way to<br>buy <em>insurance.</em></h2>
+      <p class="section-body">Traditional insurance only came one way — a year-long policy, bought through a broker, locked in for twelve months. But independent workers were hiring out by the gig, by the day, sometimes by the hour. Thimble built a platform where they could buy short-term, flexible coverage on demand. Insurance that matched how work actually happened.</p>
     </div>
   </div>
 
-  <!-- ============ QUOTE ============ -->
+  <!-- Quote (Problem 직후, 회색 배경) -->
   <div class="quote-block">
-    <blockquote>"I just need to show this venue I'm covered by Saturday."</blockquote>
-    <cite>— Small business owner, user interview · 2019</cite>
+    <blockquote>"I just need to show this venue I'm covered in a few hours."</blockquote>
+    <cite>— Small business owner, user interview · 2018</cite>
   </div>
 
-  <!-- ============ 02 DESIGN: THE FRAMEWORK ============ -->
-  <div class="detail-section dark">
-    <div class="section-images-grid">
-      <div class="img-block tall">Mobile app — quote flow, key screens stacked vertically</div>
-      <div class="img-block tall">Mobile app — purchase confirmation, certificate, dashboard</div>
+  <!-- ─── 5. TIMELINE ─────────────────────────────────────────── -->
+  <div class="tl-section">
+    <div class="tl-wrap">
+      <div class="tl-line"></div>
+      <div class="tl-track">
+        <div class="tl-milestone">
+          <div class="tl-year">2018</div>
+          <div class="tl-quarter">Q1</div>
+          <div class="tl-label">Joined Thimble</div>
+        </div>
+        <div class="tl-milestone tl-highlight">
+          <div class="tl-quarter">Q3</div>
+          <div class="tl-label">Initial launch · GL</div>
+        </div>
+        <div class="tl-milestone">
+          <div class="tl-year">2019</div>
+          <div class="tl-quarter">Q2</div>
+          <div class="tl-label">PL & Cyber launch</div>
+        </div>
+        <div class="tl-milestone">
+          <div class="tl-quarter">Q3</div>
+          <div class="tl-label">Event & IM launch</div>
+        </div>
+        <div class="tl-milestone tl-highlight">
+          <div class="tl-quarter">Q4</div>
+          <div class="tl-label">$22M Series A</div>
+        </div>
+        <div class="tl-milestone">
+          <div class="tl-year">2020</div>
+          <div class="tl-quarter">Q2</div>
+          <div class="tl-label">Subscription launch</div>
+        </div>
+        <div class="tl-milestone">
+          <div class="tl-quarter">Q3</div>
+          <div class="tl-label">Nationwide launch</div>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- ─── 6. CHAPTER 02 — DESIGN FRAMEWORK ────────────────────── -->
+  <div class="detail-section" style="padding-bottom: 40px;">
     <div class="section-text">
       <div class="section-tag">02 — Design Framework</div>
       <h2 class="section-heading">A foundation built<br><em>once,</em> used <em>everywhere.</em></h2>
-      <p class="section-body">As founding designer on a team of seven, I owned the full design framework: the transactional mobile app, the marketing site, the visual identity, even the deck that closed our Series A. Working directly with the CEO and early stakeholders, I helped translate a new SaaS model for episodic liability coverage into something users could actually grasp. Every surface had to feel like the same product. I built the early system around three principles — plain language over jargon, momentum over completeness, and one decision per screen — and applied them consistently across mobile, web, and email.</p>
-    </div>
-
-    <div style="margin-top: 80px;">
-      <div class="section-images-grid">
-        <div class="img-block">Web app — quote and checkout flow</div>
-        <div class="img-block">Brand system — logo, typography, color application</div>
-      </div>
-      <div class="img-block full" style="margin-top: 24px;">Marketing site — homepage and product landing pages, full width</div>
+      <p class="section-body">As founding designer on a team of seven, I owned the full design framework — the transactional mobile app, the marketing site, the visual identity, even the deck that closed our Series A. Working directly with the CEO and early stakeholders, I helped translate a new SaaS model for episodic liability coverage into something users could actually grasp. Every surface had to feel like the same product. I built the early system around three principles — plain language over jargon, momentum over completeness, and one decision per screen — and applied them consistently across mobile, web, and email.</p>
     </div>
   </div>
 
-  <!-- ============ 03 SCALING: RETENTION ============ -->
+  <!-- ─── 6. TAP, INSURE, GO callout (sits after Timeline) ─── -->
+  <div class="ti-callout">
+    <div class="ti-eyebrow">— The product promise</div>
+    <h3 class="ti-headline"><em>Tap.</em> <em>Insure.</em> <em>Go.</em></h3>
+    <p class="ti-sub">A new platform built for independent workers. Short-term, flexible coverage. Quotes and approvals in <em>60 seconds.</em> No phone calls. No paperwork.</p>
+  </div>
+
+  <!-- ─── 7. 사진 03 + 04, 1+1 그리드 3:4 ─── -->
   <div class="detail-section">
     <div class="section-images-grid">
-      <div class="img-block">Post-purchase dashboard — personalized home view</div>
-      <div class="img-block">Cancellation flow — alternative options (pause, downgrade, rewards)</div>
-      <div class="img-block full">Mobile screens — pause coverage, manage policy, help center, notifications</div>
-    </div>
-    <div class="section-text">
-      <div class="section-tag">03 — Scaling the Story</div>
-      <h2 class="section-heading">When growth shifted,<br>the <em>design</em> had to <em>follow.</em></h2>
-      <p class="section-body">In the first two years we obsessed over acquisition. As subscriptions matured, the question changed: how do we keep customers between gigs, between seasons, between policies? Cancellation surveys and traffic analysis revealed two patterns — users who left because the product felt rigid, and involuntary churn from failed payments. I led an end-to-end revamp: a personalized dashboard with "what's next" prompts, a pause option instead of a hard cancel, a rewards program for referrals, backup payment methods, and an in-app help center. A one-time transaction became an ongoing relationship — and Fast Company named it a finalist for Best UX Design of 2021.</p>
+      <div class="img-block" style="aspect-ratio: 3/4;">
+        <img src="images/thimble-1/03.png" alt="Product image — 03" onerror="this.style.display='none'"><span class="img-fallback">Image — 03 (3:4)</span>
+      </div>
+      <div class="img-block" style="aspect-ratio: 3/4;">
+        <img src="images/thimble-1/04.png" alt="Product image — 04" onerror="this.style.display='none'"><span class="img-fallback">Image — 04 (3:4)</span>
+      </div>
     </div>
   </div>
 
-  <!-- ============ 04 SYSTEM (supporting) ============ -->
-  <div class="detail-section dark">
-    <div class="section-images-grid">
-      <div class="img-block tall">Design system — atomic components, color tokens, type scale</div>
-      <div class="img-block tall">Figma library — component variants, documentation pages</div>
+  <!-- ─── 7. CHAPTER 03 — SCALING ─────────────────────────────── -->
+  <div class="detail-section">
+    <div class="section-text">
+      <div class="section-tag">03 — Scaling the Story</div>
+      <h2 class="section-heading">Stream and subscribe<br>your <em>policy.</em></h2>
+      <p class="section-body">To become a one-stop shop, we kept expanding — more jobs covered, more product lines, and a new subscription plan. Users could pay monthly, modify their coverage, pause when work slows down, and cancel anytime. Insurance you could use the same way you use a streaming service.</p>
     </div>
+
+    <!-- Process: 2x2 grid, 4 slots, all 16:9 -->
+    <div class="section-images-grid">
+      <div class="img-block" style="aspect-ratio: 16/9;">
+        <img src="images/thimble-1/05.png" alt="Process artifact 1" onerror="this.style.display='none'"><span class="img-fallback">Process — 05</span>
+      </div>
+      <div class="img-block" style="aspect-ratio: 16/9;">
+        <img src="images/thimble-1/06.png" alt="Process artifact 2" onerror="this.style.display='none'"><span class="img-fallback">Process — 06</span>
+      </div>
+    </div>
+    <div class="section-images-grid" style="margin-top: 24px;">
+      <div class="img-block" style="aspect-ratio: 16/9;">
+        <img src="images/thimble-1/07.png" alt="Process artifact 3" onerror="this.style.display='none'"><span class="img-fallback">Process — 07</span>
+      </div>
+      <div class="img-block" style="aspect-ratio: 16/9;">
+        <img src="images/thimble-1/08.png" alt="Process artifact 4" onerror="this.style.display='none'"><span class="img-fallback">Process — 08</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── 7. CHAPTER 04 — DESIGN SYSTEM (DARK) ────────────────── -->
+  <div class="detail-section dark">
     <div class="section-text">
       <div class="section-tag">04 — Behind the scenes</div>
       <h2 class="section-heading">A design system, rebuilt<br>for a <em>remote</em> team.</h2>
       <p class="section-body">When the team went fully remote during the pandemic, I led the migration from Sketch to Figma and rebuilt the design system from atomic principles. Tokens, components, and patterns were all versioned and shared — letting a small team ship product faster, with more consistency, across more surfaces than its headcount should have allowed.</p>
     </div>
+
+    <!-- System pages + Icon library: side by side -->
+    <div class="section-images-grid">
+      <div class="img-block">
+        <img src="images/thimble-1/09.png" alt="Design system pages — typography, colors, buttons, form fields" onerror="this.style.display='none'"><span class="img-fallback">Design system pages — typography, colors, buttons, form fields</span>
+      </div>
+      <div class="img-block">
+        <img src="images/thimble-1/10.png" alt="Icon library categorized — communications, add-ons, insurance, industry" onerror="this.style.display='none'"><span class="img-fallback">Icon library categorized — communications, add-ons, insurance, industry</span>
+      </div>
+    </div>
+    <!-- Changelog: full -->
+    <div class="img-block full" style="aspect-ratio: 16/9; margin-top: 24px;">
+      <img src="images/thimble-1/11.png" alt="Changelog and Text Styles guide — system in active maintenance" onerror="this.style.display='none'"><span class="img-fallback">Changelog and Text Styles guide — system in active maintenance</span>
+    </div>
   </div>
 
-  <!-- ============ IMPACT STATS ============ -->
+  <!-- ─── 9. IMPACT ───────────────────────────────────────────── -->
   <div class="detail-section" style="padding-top: 40px;">
     <div class="section-text">
       <div class="section-tag">— Impact</div>
@@ -552,7 +815,7 @@
       </div>
       <div class="stat-cell">
         <div class="stat-number">70K</div>
-        <div class="stat-label">Monthly active users · −28% churn</div>
+        <div class="stat-label">Monthly active users · churn −28% · renewals 6→25%</div>
       </div>
       <div class="stat-cell">
         <div class="stat-number">+800%</div>
@@ -565,7 +828,14 @@
     </div>
   </div>
 
-  <!-- ============ RELATED ============ -->
+  <!-- ─── 10. 16:9 image slot — after Impact ─── -->
+  <div class="detail-section" style="padding-top: 40px;">
+    <div class="img-block full" style="aspect-ratio: 16/9;">
+      <img src="images/thimble-1/12.png" alt="Product image — closing visual" onerror="this.style.display='none'"><span class="img-fallback">Image — 12 (16:9)</span>
+    </div>
+  </div>
+
+  <!-- ─── 11. RELATED ─────────────────────────────────────────── -->
   <div class="related">
     <h3>Related Projects</h3>
     <div class="related-grid">
@@ -732,8 +1002,6 @@
 
 <!-- =========================================================
      LOOKSCOPE — Self-initiated iOS app, 2 friends, App Store launch
-     Story: Two-person passion project that grew to 300K downloads.
-     Tone: craft, curiosity, collaboration, growth story.
      ========================================================= -->
 <section class="page" id="page-lookscope">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
@@ -752,7 +1020,6 @@
     </div>
   </div>
 
-  <!-- ============ 01 THE SPARK ============ -->
   <div class="detail-section">
     <div class="img-block full" style="margin-bottom: 24px;">
       Mood / context image — overflowing closet, "nothing to wear" feeling, or early sketch capturing the spark. 16:9
@@ -768,13 +1035,11 @@
     </div>
   </div>
 
-  <!-- ============ QUOTE ============ -->
   <div class="quote-block">
     <blockquote>"Let's just make the thing<br>we'd actually use ourselves."</blockquote>
     <cite>— Where the whole project started</cite>
   </div>
 
-  <!-- ============ 02 THE CRAFT (dark section) ============ -->
   <div class="detail-section dark">
     <div class="section-images-grid">
       <div class="img-block tall">App screens — wardrobe library, item detail, photo editor</div>
@@ -795,7 +1060,6 @@
     </div>
   </div>
 
-  <!-- ============ 03 THE TENSION ============ -->
   <div class="detail-section">
     <div class="section-images-grid">
       <div class="img-block">Iteration shots — early version vs final version of a key flow</div>
@@ -808,7 +1072,6 @@
     </div>
   </div>
 
-  <!-- ============ 04 LAUNCH & AFTER ============ -->
   <div class="detail-section dark">
     <div class="section-images-grid">
       <div class="img-block tall">App Store listing screenshot — the moment it went live</div>
@@ -821,7 +1084,6 @@
     </div>
   </div>
 
-  <!-- ============ IMPACT STATS ============ -->
   <div class="detail-section" style="padding-top: 40px;">
     <div class="section-text">
       <div class="section-tag">— Impact</div>
@@ -855,7 +1117,6 @@
     </div>
   </div>
 
-  <!-- ============ RELATED ============ -->
   <div class="related">
     <h3>Related Projects</h3>
     <div class="related-grid">
@@ -886,8 +1147,6 @@
 
 <!-- =========================================================
      HUDSON MARKET — Brand identity & visual system
-     A Midtown Manhattan organic grocer near the Hudson River.
-     Tone: mid-weight visual story, retro reimagined for today.
      ========================================================= -->
 <section class="page" id="page-hudson-market">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
@@ -906,7 +1165,6 @@
     </div>
   </div>
 
-  <!-- ============ 01 THE APPROACH ============ -->
   <div class="detail-section">
     <div class="img-block full" style="margin-bottom: 24px;">
       Mood / reference board — 1950s-60s American grocery aesthetics, vintage signage, postwar typography. 16:9
@@ -922,7 +1180,6 @@
     </div>
   </div>
 
-  <!-- ============ 02 ACROSS EVERY TOUCHPOINT (dark section) ============ -->
   <div class="detail-section dark">
     <div class="section-text" style="margin-bottom: 60px;">
       <div class="section-tag">02 — Across Every Touchpoint</div>
@@ -950,7 +1207,6 @@
     </div>
   </div>
 
-  <!-- ============ 03 CLOSING NOTE ============ -->
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">— In closing</div>
@@ -959,7 +1215,6 @@
     </div>
   </div>
 
-  <!-- ============ RELATED ============ -->
   <div class="related">
     <h3>Related Projects</h3>
     <div class="related-grid">
@@ -990,8 +1245,6 @@
 
 <!-- =========================================================
      EVERYTHING STUDIO × AIGA × MAD
-     Digital invitation for "Owner at Self" event.
-     Tone: light detail, conceptual graphic showcase, career origin chapter.
      ========================================================= -->
 <section class="page" id="page-everything-aiga">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
@@ -1011,7 +1264,6 @@
     </div>
   </div>
 
-  <!-- ============ 01 THE CONCEPT ============ -->
   <div class="detail-section">
     <div class="img-block full" style="margin-bottom: 24px;">
       Final invitation hero — the dome composition in context. 16:9
@@ -1027,7 +1279,6 @@
     </div>
   </div>
 
-  <!-- ============ 02 THE PIECES ============ -->
   <div class="detail-section dark">
     <div class="section-text" style="margin-bottom: 60px;">
       <div class="section-tag">02 — The Pieces</div>
@@ -1045,7 +1296,6 @@
     </div>
   </div>
 
-  <!-- ============ CLOSING ============ -->
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">— In closing</div>
@@ -1054,7 +1304,6 @@
     </div>
   </div>
 
-  <!-- ============ RELATED ============ -->
   <div class="related">
     <h3>Related Projects</h3>
     <div class="related-grid">
@@ -1085,8 +1334,6 @@
 
 <!-- =========================================================
      TRANSFONER — njenworks (now Pentagram)
-     Visual identity for an Android app where icons have character.
-     Tone: tight, professional, work-focused (no retrospective).
      ========================================================= -->
 <section class="page" id="page-transfoner">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
@@ -1105,7 +1352,6 @@
     </div>
   </div>
 
-  <!-- ============ 01 THE CONCEPT ============ -->
   <div class="detail-section">
     <div class="img-block full" style="margin-bottom: 24px;">
       Hero composition — Transfoner home screen with icons in their transformed states. 16:9
@@ -1121,7 +1367,6 @@
     </div>
   </div>
 
-  <!-- ============ 02 VISUAL PIECES (dark) ============ -->
   <div class="detail-section dark">
     <div class="section-images-grid">
       <div class="img-block tall">Icon variations — individual character designs, full set</div>
@@ -1138,7 +1383,6 @@
     </div>
   </div>
 
-  <!-- ============ CLOSING ============ -->
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">— Archived</div>
@@ -1147,7 +1391,6 @@
     </div>
   </div>
 
-  <!-- ============ RELATED ============ -->
   <div class="related">
     <h3>Related Projects</h3>
     <div class="related-grid">
@@ -1177,9 +1420,7 @@
 </section>
 
 <!-- =========================================================
-     DRUNKEN RICE BOMB — Brand identity for a global makgeolli concept
-     Folk spirit masks meet Korea's oldest drink. Series of regional rice labels.
-     Tone: mid-weight visual story, bold mystery, hide self-initiated framing.
+     DRUNKEN RICE BOMB
      ========================================================= -->
 <section class="page" id="page-drunken-rice">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
@@ -1198,7 +1439,6 @@
     </div>
   </div>
 
-  <!-- ============ 01 THE STORY BEHIND IT ============ -->
   <div class="detail-section">
     <div class="img-block full" style="margin-bottom: 24px;">
       Traditional Korean folk masks — wooden, hand-carved, used in ritual and theater. Strong inspiration image. 16:9
@@ -1214,7 +1454,6 @@
     </div>
   </div>
 
-  <!-- ============ 02 THE COLLECTION (dark, main visual showcase) ============ -->
   <div class="detail-section dark">
     <div class="section-text" style="margin-bottom: 60px;">
       <div class="section-tag">02 — The Collection</div>
@@ -1237,7 +1476,6 @@
     </div>
   </div>
 
-  <!-- ============ CLOSING ============ -->
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">— In closing</div>
@@ -1246,7 +1484,6 @@
     </div>
   </div>
 
-  <!-- ============ RELATED ============ -->
   <div class="related">
     <h3>Related Projects</h3>
     <div class="related-grid">
@@ -1276,16 +1513,13 @@
 </section>
 
 <!-- =========================================================
-     MISCELLANEOUS — Gallery-mode page (no hero, no chapters)
-     A visual showcase of brand work across industries.
-     Tone: different from the case studies — pure visual breadth.
+     MISCELLANEOUS
      ========================================================= -->
 <section class="page" id="page-miscellaneous">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
 
   <div class="detail-banner">Banner image — A strong composite or single standout piece that signals "more work to see." 21:9</div>
 
-  <!-- Compact header instead of full detail-intro -->
   <div class="detail-intro">
     <div>
       <h1 class="detail-title"><em>Miscellaneous.</em></h1>
@@ -1295,38 +1529,27 @@
     </div>
   </div>
 
-  <!-- ============ GALLERY (no chapters, no story) ============ -->
   <div class="detail-section">
-    <!-- Row 1: Full-width statement -->
     <div class="img-block full" style="margin-bottom: 24px;">
       Featured work 01 — strongest piece, full-width
     </div>
-
-    <!-- Row 2: Side-by-side -->
     <div class="section-images-grid">
       <div class="img-block">Brand work 02</div>
       <div class="img-block">Brand work 03</div>
     </div>
-
-    <!-- Row 3: Tall pair (different rhythm) -->
     <div class="section-images-grid" style="margin-top: 24px;">
       <div class="img-block tall">Brand work 04 — tall format</div>
       <div class="img-block tall">Brand work 05 — tall format</div>
     </div>
-
-    <!-- Row 4: Full-width -->
     <div class="img-block full" style="margin-top: 24px;">
       Brand work 06 — full-width
     </div>
-
-    <!-- Row 5: Side-by-side -->
     <div class="section-images-grid" style="margin-top: 24px;">
       <div class="img-block">Brand work 07</div>
       <div class="img-block">Brand work 08</div>
     </div>
   </div>
 
-  <!-- ============ Dark section for visual rhythm ============ -->
   <div class="detail-section dark">
     <div class="section-images-grid">
       <div class="img-block tall">Brand work 09 — looks better on dark background</div>
@@ -1341,7 +1564,6 @@
     </div>
   </div>
 
-  <!-- ============ Final light section ============ -->
   <div class="detail-section">
     <div class="section-images-grid">
       <div class="img-block">Brand work 14</div>
@@ -1352,14 +1574,12 @@
     </div>
   </div>
 
-  <!-- ============ CLOSING ============ -->
   <div class="detail-section">
     <div class="section-text">
       <h2 class="section-heading">Always <em>more</em> to see<br>— <em>let's</em> <a href="mailto:suhosong.design@gmail.com" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); font-style: normal;">talk.</a></h2>
     </div>
   </div>
 
-  <!-- ============ RELATED ============ -->
   <div class="related">
     <h3>Related Projects</h3>
     <div class="related-grid">
@@ -1390,9 +1610,6 @@
 
 <!-- =========================================================
      BONDU — Founding designer, AI parenting platform
-     4-month sprint to Christmas launch, then scale & growth.
-     Two-phase structure: Phase 1 Launch (light) → Phase 2 Scale (dark).
-     Tone: full case study, second founding-designer chapter after Thimble.
      ========================================================= -->
 <section class="page" id="page-bondu">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
@@ -1412,7 +1629,6 @@
     </div>
   </div>
 
-  <!-- ============ 01 THE CHALLENGE ============ -->
   <div class="detail-section">
     <div class="img-block full" style="margin-bottom: 24px;">
       Context image — the bondu toy in a child's hands, or app+toy together. Sets the world of the product. 16:9
@@ -1428,11 +1644,6 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════════════════════════════════
-       PHASE 1: LAUNCH — light section
-       ════════════════════════════════════════════════════════ -->
-
-  <!-- ============ 02 THE 4-MONTH SPRINT ============ -->
   <div class="detail-section">
     <div class="section-text" style="margin-bottom: 60px;">
       <div class="section-tag">— Phase 1: Launch</div>
@@ -1451,7 +1662,6 @@
     </div>
   </div>
 
-  <!-- ============ 03 TRUST FIRST ============ -->
   <div class="detail-section">
     <div class="section-images-grid">
       <div class="img-block">Trust UX details — chat review, conversation feed, intervention moments</div>
@@ -1464,11 +1674,6 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════════════════════════════════
-       PHASE 2: SCALE & GROW — dark section
-       ════════════════════════════════════════════════════════ -->
-
-  <!-- ============ 04 ADDING PLAY ============ -->
   <div class="detail-section dark">
     <div class="section-text" style="margin-bottom: 60px;">
       <div class="section-tag">— Phase 2: Scale & Grow</div>
@@ -1491,7 +1696,6 @@
     </div>
   </div>
 
-  <!-- ============ 05 BEYOND THE APP ============ -->
   <div class="detail-section dark">
     <div class="section-text" style="margin-bottom: 60px;">
       <div class="section-tag">03 — Beyond the App</div>
@@ -1509,32 +1713,25 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════════════════════════════════
-       BACK TO LIGHT — Impact
-       ════════════════════════════════════════════════════════ -->
-
-  <!-- ============ IMPACT HIGHLIGHT — Single stat, focused ============ -->
   <div class="detail-section" style="padding-top: 60px; padding-bottom: 80px;">
     <div class="section-text" style="margin-bottom: 48px;">
       <div class="section-tag">— Impact so far</div>
       <h2 class="section-heading">Built for <em>trust.</em><br>And it <em>showed.</em></h2>
     </div>
 
-    <!-- Focused single-stat layout, larger than grid cells -->
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; padding: 60px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
       <div>
-        <div style="font-family: var(--serif); font-size: clamp(80px, 12vw, 160px); line-height: 1; font-weight: 400; letter-spacing: -0.04em; color: var(--accent);">76.93<span style="font-size: 0.5em; vertical-align: top; line-height: 1.6;">%</span></div>
+        <div style="font-family: 'Fraunces', Georgia, serif; font-size: clamp(80px, 12vw, 160px); line-height: 1; font-weight: 400; letter-spacing: -0.04em; color: var(--accent);">76.93<span style="font-size: 0.5em; vertical-align: top; line-height: 1.6;">%</span></div>
         <div class="mono" style="margin-top: 16px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft);">Subscription retention</div>
       </div>
       <div style="padding-bottom: 12px;">
-        <p style="font-family: var(--serif); font-size: 18px; line-height: 1.5; color: var(--ink-soft); max-width: 380px;">In a category where most consumer subscriptions struggle to keep half their users past month one, bondu held nearly four out of five — the clearest signal yet that the trust UX was landing.</p>
+        <p style="font-family: 'Fraunces', Georgia, serif; font-size: 18px; line-height: 1.5; color: var(--ink-soft); max-width: 380px;">In a category where most consumer subscriptions struggle to keep half their users past month one, bondu held nearly four out of five — the clearest signal yet that the trust UX was landing.</p>
       </div>
     </div>
 
     <p class="mono" style="margin-top: 24px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-soft); opacity: 0.6;">More team-level metrics coming as the product matures.</p>
   </div>
 
-  <!-- ============ RELATED ============ -->
   <div class="related">
     <h3>Related Projects</h3>
     <div class="related-grid">
