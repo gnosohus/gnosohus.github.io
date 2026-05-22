@@ -1052,11 +1052,20 @@
 <!-- =========================================================
      LOOKSCOPE — Self-initiated iOS app, 2 friends, App Store launch
      ========================================================= -->
+<!-- =========================================================
+     LOOKSCOPE — Self-initiated iOS app
+     Image folder: /images/lookscope/
+     5 images total — banner + 1 per chapter
+     ========================================================= -->
 <section class="page" id="page-lookscope">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
 
-  <div class="detail-banner">Banner image — Lookscope app hero shot, ideally lifestyle context (phone in hand, opening a closet, or outfit grid view). 21:9</div>
+  <!-- ─── 1. BANNER ───────────────────────────────────────────── -->
+  <div class="detail-banner">
+    <img src="images/lookscope/01.png" alt="Person holding iPhone with Lookscope logo, editorial portrait" onerror="this.style.display='none'"><span class="img-fallback">Lookscope hero — phone in hand with logo</span>
+  </div>
 
+  <!-- ─── 2. INTRO ────────────────────────────────────────────── -->
   <div class="detail-intro">
     <div>
       <h1 class="detail-title">Two friends,<br>one year, <em>three hundred<br>thousand</em> wardrobes.</h1>
@@ -1065,71 +1074,61 @@
       <div class="meta-row"><div class="meta-label">Type</div><div class="meta-value">Self-initiated · iOS app</div></div>
       <div class="meta-row"><div class="meta-label">Role</div><div class="meta-value">Product Design · Visual Identity · UX</div></div>
       <div class="meta-row"><div class="meta-label">Team</div><div class="meta-value">Designed with Jay (iOS Engineering)</div></div>
-      <p style="margin-top: 16px;">Lookscope is a wardrobe organizer and outfit planner that's now lived in over 300,000 closets. My friend Jay handled the iOS build; I handled everything design — visual identity, UX, every screen. We started with a question that felt almost too simple to take seriously: why is getting dressed so hard when you already own everything you need?</p>
+      <p style="margin-top: 16px;">Lookscope is a wardrobe organizer and outfit planner. It now lives in over 300,000 closets. Jay built the iOS app, and I designed everything else — the brand, the screens, every interaction. We started with a question that sounded almost too simple: why is getting dressed so hard when you already own everything you need?</p>
     </div>
   </div>
 
+  <!-- ─── 3. CHAPTER 01 — THE SPARK ───────────────────────────── -->
   <div class="detail-section">
-    <div class="img-block full" style="margin-bottom: 24px;">
-      Mood / context image — overflowing closet, "nothing to wear" feeling, or early sketch capturing the spark. 16:9
-    </div>
-    <div class="section-images-grid">
-      <div class="img-block">Early sketches / paper wireframes / notebook pages from the first weeks</div>
-      <div class="img-block">Mood board — references, color exploration, app aesthetic studies</div>
-    </div>
     <div class="section-text">
       <div class="section-tag">01 — The Spark</div>
       <h2 class="section-heading">A closet full of clothes<br>and <em>nothing to wear.</em></h2>
-      <p class="section-body">Jay and I weren't trying to build a company. We were trying to solve our own problem. Most people own dozens of pieces of clothing they barely think about — and every morning, they decide what to wear by digging through the same five things on top. Wardrobe apps existed, but they all felt like spreadsheets with photos. We wanted something that felt like a tool you'd actually open. No funding, no investors, no roadmap longer than a weekend at a time. Just two friends with a shared frustration and a shared hunch that the experience could be a hundred times better.</p>
+      <p class="section-body">Jay and I weren't trying to build a company. We were trying to solve our own problem. Most people own dozens of clothes they barely think about. Every morning, they pick from the same five things on top. Wardrobe apps existed, but they all looked like spreadsheets with photos. We wanted something that felt like a tool you'd actually open. No funding, no investors, no roadmap longer than a weekend. The whole product came down to three moves: add the clothes you love, plan outfits, build your wardrobe.</p>
+    </div>
+    <div class="img-block full" style="aspect-ratio: 21/9; margin-top: 60px;">
+      <img src="images/lookscope/02.png" alt="Lookscope three-step onboarding — Add clothes, Discover outfits, Build wardrobe" onerror="this.style.display='none'"><span class="img-fallback">Three-step onboarding — Add / Discover / Build</span>
     </div>
   </div>
 
+  <!-- ─── 4. QUOTE ────────────────────────────────────────────── -->
   <div class="quote-block">
     <blockquote>"Let's just make the thing<br>we'd actually use ourselves."</blockquote>
     <cite>— Where the whole project started</cite>
   </div>
 
+  <!-- ─── 5. CHAPTER 02 — THE CRAFT (dark) ────────────────────── -->
   <div class="detail-section dark">
-    <div class="section-images-grid">
-      <div class="img-block tall">App screens — wardrobe library, item detail, photo editor</div>
-      <div class="img-block tall">App screens — outfit builder, filter view (weather/occasion/color), saved looks</div>
-    </div>
     <div class="section-text">
       <div class="section-tag">02 — The Craft</div>
       <h2 class="section-heading">Every detail, decided<br>by <em>the same two people.</em></h2>
-      <p class="section-body">I led the full design end-to-end — logo, color, typography, iconography, every screen, every micro-interaction. The app needed to handle a surprising amount: importing clothing photos with background removal, organizing them by category and color, filtering outfits by weather and occasion, building looks visually, saving favorites. With no team to abstract the work, every choice landed back on the same desk. The constraint forced clarity: if a feature couldn't earn its place against the rest of the interface, it didn't ship.</p>
+      <p class="section-body">I led the full design end-to-end. Logo, color, typography, icons, every screen, every micro-interaction. The app handled a lot: importing clothing photos with background removal, sorting by category and color, filtering by weather and occasion, building outfits visually, saving favorites. With no team to split the work, every decision came back to the same desk. That kept the app clean. If a feature couldn't justify itself, it didn't ship.</p>
     </div>
-
-    <div style="margin-top: 80px;">
-      <div class="section-images-grid">
-        <div class="img-block">Visual identity — logo, wordmark, color palette</div>
-        <div class="img-block">Type & icon system — typography hierarchy, custom icons</div>
-      </div>
-      <div class="img-block full" style="margin-top: 24px;">App Store screenshots / promotional artwork — the full launch presence</div>
+    <div class="img-block full" style="aspect-ratio: 21/9; margin-top: 60px;">
+      <img src="images/lookscope/03.png" alt="Lookscope app screens — category picker, photo editor, wardrobe grid, filters, change room" onerror="this.style.display='none'"><span class="img-fallback">App screens — wardrobe, editor, filters, change room</span>
     </div>
   </div>
 
+  <!-- ─── 6. CHAPTER 03 — THE TENSION ─────────────────────────── -->
   <div class="detail-section">
-    <div class="section-images-grid">
-      <div class="img-block">Iteration shots — early version vs final version of a key flow</div>
-      <div class="img-block">Beta testing notes / user feedback collected during testing rounds</div>
-    </div>
     <div class="section-text">
       <div class="section-tag">03 — The Tension</div>
       <h2 class="section-heading">Where design meets <em>engineering,</em><br>something has to give.</h2>
-      <p class="section-body">A year of working alone with one engineer taught me lessons no team setting could have. We disagreed often — sometimes for weeks — about whether a particular feature was worth its build cost. The resolution wasn't who was right. It was sitting down regularly, walking through trade-offs out loud, and finding a third option neither of us had seen alone. The harder lesson was about time. Without a client or deadline, the project stretched longer than it should have. I learned that even a passion project needs milestones, and that "we'll get to it" is the most expensive sentence two collaborators can say.</p>
+      <p class="section-body">A year of working with one engineer taught me lessons no team could have. We disagreed often — sometimes for weeks — about whether a feature was worth building. The fix wasn't picking a winner. It was sitting down, talking through trade-offs, and finding a third option together. The harder lesson was time. Without a client or deadline, the project stretched longer than it should have. Even a passion project needs milestones. "We'll get to it" is the most expensive sentence two collaborators can say.</p>
+    </div>
+    <div class="img-block full" style="aspect-ratio: 21/9; margin-top: 60px;">
+      <img src="images/lookscope/04.png" alt="Lookscope icon system printed on paper — weather, garments, expressions" onerror="this.style.display='none'"><span class="img-fallback">Icon system — printed sheet of custom icons</span>
     </div>
   </div>
 
+  <!-- ─── 7. CHAPTER 04 — LAUNCH & AFTER (dark) ───────────────── -->
   <div class="detail-section dark">
-    <div class="section-images-grid">
-      <div class="img-block tall">App Store listing screenshot — the moment it went live</div>
-      <div class="img-block tall">Apple "Editor's Recommendation" feature screenshot</div>
-    </div>
     <div class="section-text">
       <div class="section-tag">04 — Launch & After</div>
       <h2 class="section-heading">The app we built for ourselves<br>found <em>everyone else.</em></h2>
-      <p class="section-body">Lookscope launched on the App Store and, to our genuine surprise, kept growing. Apple featured it as an Editor's Recommendation of the Week. Users started subscribing — one month, six months, a year at a time — to unlock the deeper outfit-planning features. Years later, the app is still live, still updated, still earning revenue. Two people, one year, and a quiet, persistent product. It taught me everything I'd later bring to Thimble: how to take responsibility for the whole experience, how to advocate for users when no one else is in the room, and how to keep going when there's no one telling you to.</p>
+      <p class="section-body">Lookscope launched on the App Store and, to our surprise, kept growing. Apple featured it as an Editor's Recommendation of the Week. Users started subscribing — one month, six months, a year at a time. Years later, the app is still live, still updated, still earning. Two people, one year, a quiet product that found its audience. It taught me what I later brought to Thimble: how to own the whole experience, how to speak for users when no one else is in the room, how to keep going without anyone telling you to.</p>
+    </div>
+    <div class="img-block full" style="aspect-ratio: 16/9; margin-top: 60px;">
+      <img src="images/lookscope/05.png" alt="Person using Lookscope app on iPhone in denim outfit" onerror="this.style.display='none'"><span class="img-fallback">Real user moment — Lookscope in someone's hands</span>
     </div>
   </div>
 
