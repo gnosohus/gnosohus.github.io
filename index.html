@@ -22,6 +22,45 @@
   }
   /* Per-project accent overrides */
   #page-thimble-app, #page-thimble-broker { --accent: #07DB7F; }
+
+  /* ═══════════════════════════════════════════════════════════
+     MISCELLANEOUS PAGE — fully dark theme
+     ═══════════════════════════════════════════════════════════ */
+  #page-miscellaneous { background: var(--ink); }
+  #page-miscellaneous .detail-banner { background: #2a2a2a; }
+  #page-miscellaneous .detail-intro {
+    background: var(--ink);
+    color: var(--bg);
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+  #page-miscellaneous .detail-title { color: var(--bg); }
+  #page-miscellaneous .detail-intro p { color: #a0a0a0 !important; }
+  #page-miscellaneous .detail-section { background: var(--ink); color: var(--bg); }
+  #page-miscellaneous .img-block { background: #2a2a2a; color: #6a6a6a; }
+  #page-miscellaneous .img-fallback { color: #6a6a6a; }
+  #page-miscellaneous .section-heading { color: var(--bg); }
+  #page-miscellaneous .section-body { color: #a0a0a0; }
+  #page-miscellaneous .section-tag { color: #8a8884; }
+  #page-miscellaneous .detail-back { color: #a0a0a0; }
+  #page-miscellaneous .detail-back:hover { color: var(--bg); }
+  #page-miscellaneous .related {
+    background: var(--ink);
+    border-top-color: rgba(255,255,255,0.1);
+  }
+  #page-miscellaneous .related h3 { color: #8a8884; }
+  #page-miscellaneous .related-thumb { background: #2a2a2a; color: #6a6a6a; }
+  #page-miscellaneous .work-title { color: var(--bg); }
+  #page-miscellaneous .work-meta { color: #8a8884; }
+
+  /* NAV dark mode — applied when on misc page */
+  nav.nav-dark {
+    background: rgba(26, 26, 26, 0.85);
+  }
+  nav.nav-dark.scrolled { border-bottom-color: rgba(255,255,255,0.15); }
+  nav.nav-dark .logo { color: var(--bg); }
+  nav.nav-dark .nav-link { color: #a0a0a0; }
+  nav.nav-dark .nav-link.active, nav.nav-dark .nav-link:hover { color: var(--bg); }
+  nav.nav-dark .nav-link::after { background: var(--bg); }
   html { scroll-behavior: smooth; }
   body {
     background: var(--bg); color: var(--ink);
@@ -786,7 +825,7 @@
       </div>
     </div>
     <!-- Changelog: full -->
-    <div class="img-block full" style="aspect-ratio: 16/9; margin-top: 24px;">
+    <div class="img-block full" style="aspect-ratio: 21/9; margin-top: 24px;">
       <img src="images/thimble-1/11.png" alt="Changelog and Text Styles guide — system in active maintenance" onerror="this.style.display='none'"><span class="img-fallback">Changelog and Text Styles guide — system in active maintenance</span>
     </div>
   </div>
@@ -822,13 +861,6 @@
         <div class="stat-number">2021</div>
         <div class="stat-label">Fast Company · Best UX Design finalist</div>
       </div>
-    </div>
-  </div>
-
-  <!-- ─── 10. 16:9 image slot — after Impact ─── -->
-  <div class="detail-section" style="padding-top: 40px;">
-    <div class="img-block full" style="aspect-ratio: 16/9;">
-      <img src="images/thimble-1/12.png" alt="Product image — closing visual" onerror="this.style.display='none'"><span class="img-fallback">Image — 12 (16:9)</span>
     </div>
   </div>
 
@@ -1097,13 +1129,13 @@
   </div>
 
   <!-- ─── 5. CHAPTER 02 — THE CRAFT (dark) ────────────────────── -->
-  <div class="detail-section dark">
+  <div class="detail-section dark" style="padding-bottom: 0;">
     <div class="section-text">
       <div class="section-tag">02 — The Craft</div>
       <h2 class="section-heading">Every detail, decided<br>by <em>the same two people.</em></h2>
       <p class="section-body">I led the full design end-to-end. Logo, color, typography, icons, every screen, every micro-interaction. The app handled a lot: importing clothing photos with background removal, sorting by category and color, filtering by weather and occasion, building outfits visually, saving favorites. With no team to split the work, every decision came back to the same desk. That kept the app clean. If a feature couldn't justify itself, it didn't ship.</p>
     </div>
-    <div class="img-block full" style="aspect-ratio: 21/9; margin-top: 60px;">
+    <div class="img-block full" style="aspect-ratio: 21/9; margin-top: 60px; margin-bottom: 0;">
       <img src="images/lookscope/03.png" alt="Lookscope app screens — category picker, photo editor, wardrobe grid, filters, change room" onerror="this.style.display='none'"><span class="img-fallback">App screens — wardrobe, editor, filters, change room</span>
     </div>
   </div>
@@ -1661,11 +1693,16 @@
 
 <!-- =========================================================
      MISCELLANEOUS
+     Image folder: /images/misc/
+     17 images total — banner + brand work grid + closing
      ========================================================= -->
 <section class="page" id="page-miscellaneous">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
 
-  <div class="detail-banner">Banner image — A strong composite or single standout piece that signals "more work to see." 21:9</div>
+  <!-- ─── 1. BANNER (21:9) ─── -->
+  <div class="detail-banner">
+    <img src="images/misc/01.png" alt="Miscellaneous brand work — hero composition" onerror="this.style.display='none'"><span class="img-fallback">Banner — composite or standout piece. 21:9</span>
+  </div>
 
   <div class="detail-intro">
     <div>
@@ -1676,48 +1713,100 @@
     </div>
   </div>
 
+  <!-- ─── 2. LIGHT SECTION — Featured + grid ─── -->
   <div class="detail-section">
-    <div class="img-block full" style="margin-bottom: 24px;">
-      Featured work 01 — strongest piece, full-width
+    <!-- SET 1: 02, 03, 04 (20px between) -->
+    <div class="img-block full" style="aspect-ratio: 21/9;">
+      <img src="images/misc/02.png" alt="Featured brand work — full-width" onerror="this.style.display='none'"><span class="img-fallback">Featured work 01 — full-width · 21:9</span>
     </div>
-    <div class="section-images-grid">
-      <div class="img-block">Brand work 02</div>
-      <div class="img-block">Brand work 03</div>
+    <div class="section-images-grid" style="margin-top: 20px; margin-bottom: 0;">
+      <div class="img-block">
+        <img src="images/misc/03.png" alt="Brand work 02" onerror="this.style.display='none'"><span class="img-fallback">Brand work 02</span>
+      </div>
+      <div class="img-block">
+        <img src="images/misc/04.png" alt="Brand work 03" onerror="this.style.display='none'"><span class="img-fallback">Brand work 03</span>
+      </div>
     </div>
-    <div class="section-images-grid" style="margin-top: 24px;">
-      <div class="img-block tall">Brand work 04 — tall format</div>
-      <div class="img-block tall">Brand work 05 — tall format</div>
+
+    <!-- SET 2: 05, 06, 07, 08 (20px between) — 160px gap from SET 1 -->
+    <div class="img-block full" style="margin-top: 160px; aspect-ratio: 3/1;">
+      <img src="images/misc/05.png" alt="Brand work 04 — full-width" onerror="this.style.display='none'"><span class="img-fallback">Brand work 04 — full-width · 3:1</span>
     </div>
-    <div class="img-block full" style="margin-top: 24px;">
-      Brand work 06 — full-width
+    <div class="img-block full" style="margin-top: 20px; aspect-ratio: 2/1;">
+      <img src="images/misc/06.png" alt="Brand work 05 — full-width" onerror="this.style.display='none'"><span class="img-fallback">Brand work 05 — full-width · 2:1</span>
     </div>
-    <div class="section-images-grid" style="margin-top: 24px;">
-      <div class="img-block">Brand work 07</div>
-      <div class="img-block">Brand work 08</div>
+    <div class="section-images-grid" style="margin-top: 20px; margin-bottom: 0;">
+      <div class="img-block">
+        <img src="images/misc/07.png" alt="Brand work 06" onerror="this.style.display='none'"><span class="img-fallback">Brand work 06 · 4:3</span>
+      </div>
+      <div class="img-block">
+        <img src="images/misc/08.png" alt="Brand work 07" onerror="this.style.display='none'"><span class="img-fallback">Brand work 07 · 4:3</span>
+      </div>
+    </div>
+
+    <!-- SET 3: 09, 10, 11 (20px between) — 160px gap from SET 2 -->
+    <div class="img-block full" style="margin-top: 160px; aspect-ratio: 16/9;">
+      <img src="images/misc/09.png" alt="Brand work 08 — full-width" onerror="this.style.display='none'"><span class="img-fallback">Brand work 08 — full-width · 16:9</span>
+    </div>
+    <div class="section-images-grid" style="margin-top: 20px; margin-bottom: 0;">
+      <div class="img-block">
+        <img src="images/misc/10.png" alt="Brand work 09" onerror="this.style.display='none'"><span class="img-fallback">Brand work 09 · 4:3</span>
+      </div>
+      <div class="img-block">
+        <img src="images/misc/11.png" alt="Brand work 10" onerror="this.style.display='none'"><span class="img-fallback">Brand work 10 · 4:3</span>
+      </div>
     </div>
   </div>
 
+  <!-- ─── 3. DARK SECTION — Pieces that look better on dark ─── -->
   <div class="detail-section dark">
-    <div class="section-images-grid">
-      <div class="img-block tall">Brand work 09 — looks better on dark background</div>
-      <div class="img-block tall">Brand work 10 — looks better on dark background</div>
+    <div class="img-block full" style="margin-top: 0;">
+      <img src="images/misc/12.png" alt="Brand work 11 — full-width statement on dark" onerror="this.style.display='none'"><span class="img-fallback">Brand work 11 — full-width on dark</span>
     </div>
-    <div class="img-block full" style="margin-top: 24px;">
-      Brand work 11 — full-width statement piece on dark
+
+    <!-- SET 4: 13, 14, 15 (20px between) — 160px gap from previous -->
+    <div class="img-block full" style="margin-top: 160px; aspect-ratio: 21/9;">
+      <img src="images/misc/13.png" alt="Brand work 12 — full-width" onerror="this.style.display='none'"><span class="img-fallback">Brand work 12 — full-width · 21:9</span>
     </div>
-    <div class="section-images-grid" style="margin-top: 24px;">
-      <div class="img-block">Brand work 12</div>
-      <div class="img-block">Brand work 13</div>
+    <div class="section-images-grid" style="margin-top: 20px; margin-bottom: 0;">
+      <div class="img-block">
+        <img src="images/misc/14.png" alt="Brand work 13" onerror="this.style.display='none'"><span class="img-fallback">Brand work 13 · 4:3</span>
+      </div>
+      <div class="img-block">
+        <img src="images/misc/15.png" alt="Brand work 14" onerror="this.style.display='none'"><span class="img-fallback">Brand work 14 · 4:3</span>
+      </div>
     </div>
   </div>
 
+  <!-- ─── 4. LIGHT SECTION — Closing ─── -->
   <div class="detail-section">
-    <div class="section-images-grid">
-      <div class="img-block">Brand work 14</div>
-      <div class="img-block">Brand work 15</div>
+    <!-- Dream Hotel video — 70% centered, no autoplay -->
+    <div style="max-width: 70%; margin: 0 auto;">
+      <video
+        controls
+        playsinline
+        preload="metadata"
+        style="width: 100%; height: auto; display: block; border-radius: var(--radius); background: #2a2a2a;"
+      >
+        <source src="images/misc/dreamhotel.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
-    <div class="img-block full" style="margin-top: 24px;">
-      Closing image — final strong piece, full-width
+    <!-- Hwang video — same size, 60px gap -->
+    <div style="max-width: 70%; margin: 60px auto 0;">
+      <video
+        controls
+        playsinline
+        preload="metadata"
+        poster="images/misc/hwang-poster.png"
+        style="width: 100%; height: auto; display: block; border-radius: var(--radius); background: #2a2a2a;"
+      >
+        <source src="images/misc/hwang.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="img-block full" style="margin-top: 60px;">
+      <img src="images/misc/16.png" alt="Closing image — final strong piece" onerror="this.style.display='none'"><span class="img-fallback">Closing image — full-width</span>
     </div>
   </div>
 
@@ -1960,6 +2049,13 @@
     // Project detail pages should highlight "Work" in nav
     if (name === 'thimble-app' || name === 'thimble-broker' || name === 'lookscope' || name === 'hudson-market' || name === 'everything-aiga' || name === 'transfoner' || name === 'drunken-rice' || name === 'miscellaneous' || name === 'bondu') {
       document.querySelector('.nav-link[data-page="work"]').classList.add('active');
+    }
+    // Toggle nav dark mode for miscellaneous page
+    const nav = document.getElementById('nav');
+    if (name === 'miscellaneous') {
+      nav.classList.add('nav-dark');
+    } else {
+      nav.classList.remove('nav-dark');
     }
     window.scrollTo({ top: 0, behavior: 'instant' });
   }
