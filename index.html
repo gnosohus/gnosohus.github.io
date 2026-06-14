@@ -6,9 +6,10 @@
 <title>Suho Song — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  em { font-style: normal; }
   :root {
     --bg: #f7f7f7;
     --bg-alt: #ededed;
@@ -26,6 +27,7 @@
   /* ═══════════════════════════════════════════════════════════
      MISCELLANEOUS PAGE — fully dark theme
      ═══════════════════════════════════════════════════════════ */
+  #page-bondu .detail-intro { border-bottom: none; }
   #page-miscellaneous { background: var(--ink); }
   #page-miscellaneous .detail-banner { background: #2a2a2a; }
   #page-miscellaneous .detail-intro {
@@ -49,6 +51,9 @@
   }
   #page-miscellaneous .related h3 { color: #8a8884; }
   #page-miscellaneous .related-thumb { background: #2a2a2a; color: #6a6a6a; }
+  #page-miscellaneous .project-nav { background: var(--ink); border-top-color: rgba(255,255,255,0.1); }
+  #page-miscellaneous .project-nav-title { color: var(--bg); }
+  #page-miscellaneous .project-nav-label { color: #8a8884; }
   #page-miscellaneous .work-title { color: var(--bg); }
   #page-miscellaneous .work-meta { color: #8a8884; }
 
@@ -64,12 +69,12 @@
   html { scroll-behavior: smooth; }
   body {
     background: var(--bg); color: var(--ink);
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Space Grotesk', Georgia, serif;
     font-weight: 400; font-size: 16px; line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
-  .mono { font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em; text-transform: uppercase; font-size: 11px; }
+  .mono { font-family: 'Space Mono', monospace; letter-spacing: 0.02em; text-transform: uppercase; font-size: 11px; }
 
   /* NAV */
   nav {
@@ -82,10 +87,10 @@
     transition: border-color 0.3s ease;
   }
   nav.scrolled { border-bottom-color: var(--line); }
-  .logo { font-size: 18px; font-weight: 500; letter-spacing: -0.01em; cursor: pointer; font-style: italic; }
+  .logo { font-size: 18px; font-weight: 500; letter-spacing: -0.01em; cursor: pointer; font-style: normal; }
   .nav-links { display: flex; gap: 36px; align-items: center; }
   .nav-link {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-family: 'Space Mono', monospace; font-size: 11px;
     text-transform: uppercase; letter-spacing: 0.08em;
     color: var(--ink-soft); cursor: pointer;
     background: none; border: none; padding: 6px 0;
@@ -106,23 +111,24 @@
 
   /* WORK HEADER */
   .work-header {
-    padding: 60px var(--gutter) 80px;
+    padding: 40px var(--gutter) 24px;
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 60px; align-items: end;
     border-bottom: 1px solid var(--line);
   }
   .work-header h1 {
-    font-size: clamp(56px, 9vw, 128px);
-    font-weight: 300; line-height: 0.92;
-    letter-spacing: -0.04em; font-style: italic;
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 300; line-height: 0.95;
+    letter-spacing: -0.03em; font-style: normal;
+    white-space: nowrap;
   }
-  .work-header h1 em { font-style: normal; font-weight: 400; }
+  .work-header h1 em { font-style: normal; font-weight: 300; }
   .work-header .meta { text-align: right; color: var(--ink-soft); }
   .work-header .meta .count { display: block; font-size: 13px; margin-bottom: 4px; }
 
   /* MASONRY WORK GRID */
   .work-grid {
-    padding: 60px var(--gutter) 120px;
+    padding: 32px var(--gutter) 120px;
     column-count: 3;
     column-gap: 32px;
   }
@@ -135,13 +141,13 @@
   /* Varied aspect ratios for visual rhythm */
   .work-item:nth-child(1)  .work-thumb { aspect-ratio: 4/5; }
   .work-item:nth-child(2)  .work-thumb { aspect-ratio: 1/1; }
-  .work-item:nth-child(3)  .work-thumb { aspect-ratio: 4/3; }
-  .work-item:nth-child(4)  .work-thumb { aspect-ratio: 3/4; }
-  .work-item:nth-child(5)  .work-thumb { aspect-ratio: 4/3; }
+  .work-item:nth-child(3)  .work-thumb { aspect-ratio: 4/5; }
+  .work-item:nth-child(4)  .work-thumb { aspect-ratio: 1/1; }
+  .work-item:nth-child(5)  .work-thumb { aspect-ratio: 1/1; }
   .work-item:nth-child(6)  .work-thumb { aspect-ratio: 1/1; }
-  .work-item:nth-child(7)  .work-thumb { aspect-ratio: 16/10; }
-  .work-item:nth-child(8)  .work-thumb { aspect-ratio: 3/4; }
-  .work-item:nth-child(9)  .work-thumb { aspect-ratio: 4/3; }
+  .work-item:nth-child(7)  .work-thumb { aspect-ratio: 4/5; }
+  .work-item:nth-child(8)  .work-thumb { aspect-ratio: 1/1; }
+  .work-item:nth-child(9)  .work-thumb { aspect-ratio: 4/5; }
   .work-item:nth-child(10) .work-thumb { aspect-ratio: 4/5; }
 
   .work-thumb {
@@ -150,18 +156,25 @@
     display: flex; align-items: center; justify-content: center;
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     border-radius: var(--radius);
+    position: relative;
+  }
+  .work-thumb img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block; position: relative; z-index: 2;
   }
   .work-thumb-placeholder {
-    color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
+    position: absolute; inset: 0; z-index: 1;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-mute); font-family: 'Space Mono', monospace;
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
     text-align: center; padding: 0 16px;
   }
   .work-item:hover .work-thumb { transform: scale(0.98); }
   .work-info { margin-top: 16px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
   .work-title { font-size: 17px; font-weight: 400; line-height: 1.3; }
-  .work-title em { font-style: italic; color: var(--ink-soft); margin-left: 4px; }
+  .work-title em { font-style: normal; color: var(--ink-soft); margin-left: 4px; }
   .work-meta {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-family: 'Space Mono', monospace; font-size: 11px;
     text-transform: uppercase; letter-spacing: 0.08em;
     color: var(--ink-mute); white-space: nowrap;
   }
@@ -169,7 +182,7 @@
   /* DETAIL */
   .detail-back {
     padding: 30px var(--gutter) 0;
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-family: 'Space Mono', monospace; font-size: 11px;
     text-transform: uppercase; letter-spacing: 0.08em;
     color: var(--ink-soft); background: none; border: none; cursor: pointer;
     display: inline-flex; align-items: center; gap: 8px;
@@ -179,7 +192,7 @@
     margin: 32px var(--gutter) 0; aspect-ratio: 21/9;
     background: var(--bg-alt);
     display: flex; align-items: center; justify-content: center;
-    color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
+    color: var(--ink-mute); font-family: 'Space Mono', monospace;
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
     text-align: center;
     overflow: hidden;
@@ -198,7 +211,7 @@
     padding-bottom: 12px; border-bottom: 1px solid var(--line);
   }
   .meta-label {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-family: 'Space Mono', monospace; font-size: 11px;
     text-transform: uppercase; letter-spacing: 0.08em;
     color: var(--ink-mute); padding-top: 4px;
   }
@@ -206,18 +219,22 @@
   .detail-title {
     font-size: clamp(40px, 5vw, 72px); font-weight: 300;
     line-height: 1; letter-spacing: -0.03em;
-    font-style: italic; margin-bottom: 32px;
+    font-style: normal; margin-bottom: 32px;
   }
   .detail-title em { font-style: normal; }
   .detail-intro p { font-size: 18px; line-height: 1.6; color: var(--ink-soft); max-width: 540px; }
   .detail-section { padding: 80px var(--gutter); }
   .detail-section.dark { background: var(--ink); color: var(--bg); }
+  .detail-section.gray { background: var(--bg-alt); }
   .section-images-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 60px; }
   .section-images-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-bottom: 60px; }
+  .section-images-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 60px; }
+  .section-images-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 60px; }
+  .img-block.square { aspect-ratio: 1/1; }
   .img-block {
     aspect-ratio: 4/3; background: var(--bg-alt);
     display: flex; align-items: center; justify-content: center;
-    color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
+    color: var(--ink-mute); font-family: 'Space Mono', monospace;
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
     text-align: center;
     overflow: hidden;
@@ -228,7 +245,7 @@
   .img-fallback {
     position: absolute; inset: 0; z-index: 1;
     display: flex; align-items: center; justify-content: center;
-    color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
+    color: var(--ink-mute); font-family: 'Space Mono', monospace;
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
     text-align: center; padding: 0 16px;
   }
@@ -240,14 +257,14 @@
   .img-block.flex img { height: auto; aspect-ratio: auto; }
   .section-text { max-width: 720px; margin: 0 auto; text-align: center; padding: 40px 0; }
   .section-tag {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-family: 'Space Mono', monospace; font-size: 11px;
     text-transform: uppercase; letter-spacing: 0.08em;
     color: var(--ink-mute); margin-bottom: 16px;
   }
   .section-heading {
     font-size: clamp(28px, 3.5vw, 42px); font-weight: 300;
     line-height: 1.15; letter-spacing: -0.02em;
-    margin-bottom: 24px; font-style: italic;
+    margin-bottom: 24px; font-style: normal;
   }
   .section-heading em { font-style: normal; }
   .section-body { font-size: 17px; line-height: 1.65; color: var(--ink-soft); }
@@ -259,7 +276,7 @@
     max-width: 900px; margin: 0 auto 32px; font-style: italic;
   }
   .quote-block cite {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-family: 'Space Mono', monospace; font-size: 11px;
     text-transform: uppercase; letter-spacing: 0.08em;
     color: var(--ink-mute); font-style: normal;
   }
@@ -270,7 +287,7 @@
   .img-caption {
     margin-top: 14px;
     text-align: center;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Space Mono', monospace;
     font-size: 11px;
     font-weight: 400;
     letter-spacing: 0.08em;
@@ -281,7 +298,6 @@
 
   /* ═══════════════════════════════════════════════════════════
      TAP, INSURE, GO — the product promise callout
-     Lives inside Chapter 02, between section text and timeline
      ═══════════════════════════════════════════════════════════ */
   .ti-callout {
     padding: 120px var(--gutter);
@@ -289,7 +305,7 @@
     background: var(--bg-alt);
   }
   .ti-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Space Mono', monospace;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -297,7 +313,7 @@
     margin-bottom: 28px;
   }
   .ti-headline {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Space Grotesk', Georgia, serif;
     font-size: clamp(64px, 11vw, 144px);
     font-weight: 300;
     line-height: 1;
@@ -311,7 +327,7 @@
     font-weight: 400;
   }
   .ti-sub {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Space Grotesk', Georgia, serif;
     font-size: clamp(18px, 1.6vw, 22px);
     line-height: 1.5;
     color: var(--ink-soft);
@@ -320,7 +336,7 @@
     font-weight: 300;
   }
   .ti-sub em {
-    font-style: italic;
+    font-style: normal;
     color: var(--ink);
     font-weight: 400;
   }
@@ -330,8 +346,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════════
-     TIMELINE — used in Thimble 0→1 (Chapter 02)
-     6 milestones, horizontal layout, mobile uses shortened labels
+     TIMELINE
      ═══════════════════════════════════════════════════════════ */
   .tl-section { padding: 100px var(--gutter) 80px; }
   .tl-wrap {
@@ -361,7 +376,7 @@
     padding-right: 16px;
   }
   .tl-year {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Space Grotesk', Georgia, serif;
     font-size: 28px;
     font-weight: 400;
     color: var(--ink);
@@ -373,11 +388,12 @@
   }
   .dark .tl-year { color: var(--bg); }
   .tl-quarter {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Space Mono', monospace;
     font-size: 11px;
     font-weight: 500;
     color: var(--ink);
     letter-spacing: 0.05em;
+    text-transform: uppercase;
     position: absolute;
     top: 28px;
     left: 0;
@@ -386,7 +402,7 @@
   .dark .tl-quarter { color: var(--bg); }
   .dark .tl-milestone.tl-highlight .tl-quarter { color: var(--accent); }
   .tl-label {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Space Grotesk', Georgia, serif;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
@@ -396,11 +412,10 @@
   }
   .dark .tl-label { color: var(--bg); }
   .tl-milestone.tl-highlight .tl-label { color: var(--accent); }
-  /* Short labels for narrow viewports — shown via CSS at <900px */
   .tl-label-short { display: none; }
   .tl-quarter-short { display: none; }
 
-  /* IMPACT STATS — emphasizes key numbers in a project */
+  /* IMPACT STATS */
   .impact-stats {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
     background: var(--line); border-top: 1px solid var(--line);
@@ -414,10 +429,10 @@
   .stat-number {
     font-size: clamp(36px, 5vw, 64px); font-weight: 300;
     line-height: 1; letter-spacing: -0.03em;
-    font-style: italic;
+    font-style: normal;
   }
   .stat-label {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-family: 'Space Mono', monospace; font-size: 11px;
     text-transform: uppercase; letter-spacing: 0.08em;
     color: var(--ink-mute);
   }
@@ -425,7 +440,7 @@
 
   .related { padding: 100px var(--gutter); border-top: 1px solid var(--line); }
   .related h3 {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-family: 'Space Mono', monospace; font-size: 11px;
     text-transform: uppercase; letter-spacing: 0.08em;
     color: var(--ink-mute); margin-bottom: 40px;
   }
@@ -434,7 +449,7 @@
   .related-thumb {
     aspect-ratio: 4/3; background: var(--bg-alt); margin-bottom: 12px;
     display: flex; align-items: center; justify-content: center;
-    color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
+    color: var(--ink-mute); font-family: 'Space Mono', monospace;
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     text-align: center; padding: 0 16px;
@@ -443,12 +458,35 @@
   }
   .related-item:hover .related-thumb { transform: scale(0.98); }
 
+  /* PROJECT PREV / NEXT NAV */
+  .project-nav {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    padding: 80px var(--gutter) 100px;
+    border-top: 1px solid var(--line);
+  }
+  .project-nav-item {
+    cursor: pointer; display: flex; flex-direction: column; gap: 10px;
+  }
+  .project-nav-item.next { text-align: right; align-items: flex-end; }
+  .project-nav-label {
+    font-family: 'Space Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-mute); transition: color 0.2s ease;
+  }
+  .project-nav-title {
+    font-size: clamp(24px, 3vw, 36px); font-weight: 300;
+    font-style: normal; letter-spacing: -0.02em; line-height: 1.1;
+    color: var(--ink); transition: color 0.2s ease;
+  }
+  .project-nav-item:hover .project-nav-label,
+  .project-nav-item:hover .project-nav-title { color: var(--accent); }
+
   /* ABOUT */
-  .about-hero { padding: 80px var(--gutter) 100px; border-bottom: 1px solid var(--line); }
+  .about-hero { padding: 56px var(--gutter) 72px; border-bottom: 1px solid var(--line); }
   .about-heading {
-    font-size: clamp(48px, 8vw, 120px); font-weight: 300;
-    line-height: 0.95; letter-spacing: -0.04em;
-    margin-top: 32px; font-style: italic; max-width: 1200px;
+    font-size: clamp(32px, 5vw, 60px); font-weight: 300;
+    line-height: 1.05; letter-spacing: -0.03em;
+    margin-top: 24px; font-style: normal; max-width: 1000px;
   }
   .about-heading em { font-style: normal; }
   .about-bio, .about-clients, .about-recognition, .about-contact {
@@ -471,7 +509,7 @@
   .client-cell {
     background: var(--bg); aspect-ratio: 2/1;
     display: flex; align-items: center; justify-content: center;
-    color: var(--ink-mute); font-family: 'JetBrains Mono', monospace;
+    color: var(--ink-mute); font-family: 'Space Mono', monospace;
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
   }
   .recognition-list { max-width: 720px; }
@@ -485,7 +523,7 @@
   .contact-heading-inline {
     font-size: clamp(40px, 5.5vw, 80px); font-weight: 300;
     line-height: 0.95; letter-spacing: -0.03em;
-    margin-bottom: 60px; font-style: italic;
+    margin-bottom: 60px; font-style: normal;
   }
   .contact-heading-inline em { font-style: normal; }
   .contact-heading-inline a {
@@ -499,7 +537,7 @@
     padding-top: 32px; border-top: 1px solid var(--line); max-width: 900px;
   }
   .contact-col h4 {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-family: 'Space Mono', monospace; font-size: 11px;
     text-transform: uppercase; letter-spacing: 0.08em;
     color: var(--ink-mute); margin-bottom: 16px; font-weight: 400;
   }
@@ -509,7 +547,7 @@
   }
   .contact-col a:hover { color: var(--accent); }
   .contact-eyebrow {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    font-family: 'Space Mono', monospace; font-size: 11px;
     text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute);
   }
 
@@ -523,6 +561,8 @@
     .work-header .meta { text-align: left; }
     .section-images-grid { grid-template-columns: 1fr; }
     .section-images-grid-3 { grid-template-columns: 1fr; }
+    .section-images-grid-4 { grid-template-columns: 1fr 1fr; }
+    .section-images-grid-5 { grid-template-columns: repeat(3, 1fr); }
     .img-block.full { grid-column: span 1; }
     .related-grid, .contact-grid { grid-template-columns: 1fr; gap: 24px; }
     .impact-stats { grid-template-columns: 1fr; }
@@ -531,7 +571,6 @@
     }
     .clients-grid { grid-template-columns: repeat(2, 1fr); }
     .nav-links { gap: 20px; }
-    /* Timeline — compact for narrow screens, allow 2-line labels */
     .tl-milestone { padding-right: 6px; }
     .tl-label { font-size: 12px; line-height: 1.3; }
     .tl-quarter { font-size: 9px; }
@@ -542,6 +581,76 @@
     .tl-section { padding: 60px var(--gutter) 40px; }
     .tl-label { font-size: 11px; }
     .tl-quarter { font-size: 9px; }
+  }
+  /* ─── Phase 3 feature marquee ─── */
+  .marquee-wrap {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 40s linear infinite;
+  }
+  .marquee-card {
+    flex: 0 0 auto;
+    width: 300px;
+    aspect-ratio: 2 / 3;
+    margin-right: 40px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #2a2a2a;
+  }
+  .marquee-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (max-width: 768px) {
+    .marquee-card { width: 220px; margin-right: 24px; border-radius: 12px; }
+  }
+  /* ─── Parent testimonial videos ─── */
+  .testimonial-videos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 60px;
+  }
+  .testimonial-video {
+    aspect-ratio: 9 / 16;
+    background: #2a2a2a;
+    border-radius: 32px;
+    overflow: hidden;
+  }
+  .testimonial-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .testimonial-videos {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      margin-left: calc(-1 * var(--gutter));
+      margin-right: calc(-1 * var(--gutter));
+      padding: 0 var(--gutter);
+      gap: 12px;
+    }
+    .testimonial-video {
+      flex: 0 0 75%;
+      scroll-snap-align: start;
+      border-radius: 24px;
+    }
   }
 </style>
 </head>
@@ -563,123 +672,133 @@
     </div>
   </header>
   <div class="work-grid">
-    <!-- BONDU — Founding designer, embodied AI for kids, 4-month sprint to Christmas launch -->
+
+    <!-- 1. bondu — 4:5 -->
     <div class="work-item" onclick="showPage('bondu')">
-      <div class="work-thumb"><span class="work-thumb-placeholder">bondu app hero<br>4:5</span></div>
+      <div class="work-thumb">
+        <img src="images/bondu/thumb.png" alt="bondu" onerror="this.style.display='none'">
+        <span class="work-thumb-placeholder">bondu/thumb.png · 4:5</span>
+      </div>
       <div class="work-info">
         <div class="work-title">bondu</div>
         <div class="work-meta">UI / UX · Embodied AI</div>
       </div>
     </div>
 
-    <!-- THIMBLE PROJECT 01 — Founding designer story -->
+    <!-- 2. Thimble 0→1 — 4:3 -->
     <div class="work-item" onclick="showPage('thimble-app')">
-      <div class="work-thumb"><span class="work-thumb-placeholder">Thimble app hero<br>1:1</span></div>
+      <div class="work-thumb">
+        <img src="images/thimble-1/thumb.png" alt="Thimble 0→1" onerror="this.style.display='none'">
+        <span class="work-thumb-placeholder">thimble-1/thumb.png · 1:1</span>
+      </div>
       <div class="work-info">
         <div class="work-title">Building Thimble<em>from 0→1</em></div>
         <div class="work-meta">UI / UX · Insure-tech</div>
       </div>
     </div>
 
-    <!-- THIMBLE PROJECT 02 — Broker platform -->
+    <!-- 3. Thimble Brokers — 4:3 -->
     <div class="work-item" onclick="showPage('thimble-broker')">
-      <div class="work-thumb"><span class="work-thumb-placeholder">Broker platform hero<br>4:3</span></div>
+      <div class="work-thumb">
+        <img src="images/thimble-2/thumb.png" alt="Thimble for Brokers" onerror="this.style.display='none'">
+        <span class="work-thumb-placeholder">thimble-2/thumb.png · 4:5</span>
+      </div>
       <div class="work-info">
         <div class="work-title">Thimble for Brokers<em>D2B2C platform</em></div>
         <div class="work-meta">UI / UX · Broker channel</div>
       </div>
     </div>
 
-    <!-- LOOKSCOPE — Self-initiated iOS app, 0→1 launch with one engineer -->
+    <!-- 4. Lookscope — 3:4 -->
     <div class="work-item" onclick="showPage('lookscope')">
-      <div class="work-thumb"><span class="work-thumb-placeholder">Lookscope hero<br>3:4</span></div>
+      <div class="work-thumb">
+        <img src="images/lookscope/thumb.png" alt="Lookscope" onerror="this.style.display='none'">
+        <span class="work-thumb-placeholder">lookscope/thumb.png · 1:1</span>
+      </div>
       <div class="work-info">
         <div class="work-title">Lookscope</div>
         <div class="work-meta">Mobile app · Self-initiated</div>
       </div>
     </div>
 
-    <!-- HUDSON MARKET — Brand identity & visual system for a NYC grocer -->
+    <!-- 5. Hudson Market — 4:3 -->
     <div class="work-item" onclick="showPage('hudson-market')">
-      <div class="work-thumb"><span class="work-thumb-placeholder">Hudson Market<br>storefront · 4:3</span></div>
+      <div class="work-thumb">
+        <img src="images/hudson/thumb.png" alt="Hudson Market" onerror="this.style.display='none'">
+        <span class="work-thumb-placeholder">hudson/thumb.png · 1:1</span>
+      </div>
       <div class="work-info">
         <div class="work-title">Hudson Market</div>
         <div class="work-meta">Branding · NYC</div>
       </div>
     </div>
 
-    <!-- EVERYTHING STUDIO × AIGA × MAD — Invitation design for AIGA event -->
+    <!-- 6. AIGA NY × MAD — 1:1 -->
     <div class="work-item" onclick="showPage('everything-aiga')">
-      <div class="work-thumb"><span class="work-thumb-placeholder">Geodesic domes<br>composition · 1:1</span></div>
+      <div class="work-thumb">
+        <img src="images/aiga/thumb.png" alt="AIGA NY × MAD" onerror="this.style.display='none'">
+        <span class="work-thumb-placeholder">aiga/thumb.png · 1:1</span>
+      </div>
       <div class="work-info">
         <div class="work-title">AIGA NY × MAD</div>
         <div class="work-meta">Graphic · Event</div>
       </div>
     </div>
 
-    <!-- DRUNKEN RICE BOMB — Self-initiated brand identity for makgeolli -->
+    <!-- 7. Drunken Rice Bomb — 4:5 -->
     <div class="work-item" onclick="showPage('drunken-rice')">
-      <div class="work-thumb"><span class="work-thumb-placeholder">Drunken Rice Bomb<br>can hero · 16:10</span></div>
+      <div class="work-thumb">
+        <img src="images/drunken/thumb.png" alt="Drunken Rice Bomb" onerror="this.style.display='none'">
+        <span class="work-thumb-placeholder">drunken/thumb.png · 4:5</span>
+      </div>
       <div class="work-info">
         <div class="work-title">Drunken Rice Bomb</div>
         <div class="work-meta">Branding · Beverage</div>
       </div>
     </div>
 
-    <!-- TRANSFONER — njenworks (now Pentagram), mobile app concept -->
+    <!-- 8. Transfoner — 1:1 -->
     <div class="work-item" onclick="showPage('transfoner')">
-      <div class="work-thumb"><span class="work-thumb-placeholder">Transfoner icons<br>3:4</span></div>
+      <div class="work-thumb">
+        <img src="images/transfoner/thumb.png" alt="Transfoner" onerror="this.style.display='none'">
+        <span class="work-thumb-placeholder">transfoner/thumb.png · 1:1</span>
+      </div>
       <div class="work-info">
         <div class="work-title">Transfoner</div>
         <div class="work-meta">Mobile app · Pentagram</div>
       </div>
     </div>
 
-    <!-- MISCELLANEOUS — Brand work across industries, visual showcase -->
+    <!-- 9. Miscellaneous — 4:5 -->
     <div class="work-item" onclick="showPage('miscellaneous')">
-      <div class="work-thumb"><span class="work-thumb-placeholder">Various works<br>collage · 4:3</span></div>
+      <div class="work-thumb">
+        <img src="images/misc/thumb.png" alt="Miscellaneous" onerror="this.style.display='none'">
+        <span class="work-thumb-placeholder">misc/thumb.png · 4:5</span>
+      </div>
       <div class="work-info">
         <div class="work-title">Miscellaneous</div>
         <div class="work-meta">Brand work · Various</div>
       </div>
     </div>
+
   </div>
 </section>
 
+
 <!-- ╔═══════════════════════════════════════════════════════════════════╗ -->
-<!-- ║                                                                   ║ -->
-<!-- ║   ▰ THIMBLE 0→1                                                  ║ -->
-<!-- ║                                                                   ║ -->
-<!-- ║   Founding designer story · 2018 — 2020                          ║ -->
-<!-- ║   Page id: page-thimble-app                                       ║ -->
-<!-- ║   Image folder: /images/thimble-1/                                ║ -->
-<!-- ║                                                                   ║ -->
-<!-- ║   Structure:                                                      ║ -->
-<!-- ║     1. Banner (21:9)                                              ║ -->
-<!-- ║     2. Intro + meta                                               ║ -->
-<!-- ║     3. Chapter 01 — Problem (workshop research)                   ║ -->
-<!-- ║     4. Quote block                                                ║ -->
-<!-- ║     5. Chapter 02 — Design Framework (timeline + logo +           ║ -->
-<!-- ║                     mobile + web)                                 ║ -->
-<!-- ║     6. Chapter 03 — Scaling (cancellation + engagement)           ║ -->
-<!-- ║     7. Chapter 04 — Design System (DARK section)                  ║ -->
-<!-- ║     8. Impact stats grid                                          ║ -->
-<!-- ║     9. Related projects                                           ║ -->
-<!-- ║                                                                   ║ -->
+<!-- ║   ▰ THIMBLE 0→1 · Image folder: /images/thimble-1/                ║ -->
 <!-- ╚═══════════════════════════════════════════════════════════════════╝ -->
 
 <section class="page" id="page-thimble-app">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
 
-  <!-- ─── 1. BANNER ───────────────────────────────────────────── -->
   <div class="detail-banner">
-    <img src="images/thimble-1/01.png" alt="iPhone and iPad showing Thimble app on wood desk" onerror="this.style.display='none'"><span class="img-fallback">iPhone and iPad showing Thimble app on wood desk</span>
+    <img src="images/thimble-1/01.png" alt="iPhone and iPad showing Thimble app on wood desk" onerror="this.style.display='none'"><span class="img-fallback">thimble-1/01.png · 21:9</span>
   </div>
 
-  <!-- ─── 2. INTRO ────────────────────────────────────────────── -->
   <div class="detail-intro">
     <div>
-      <h1 class="detail-title">Simple insurance,<br><em>made</em> to fit<br><em>your</em> work.</h1>
+      <h1 class="detail-title">Simple insurance, <em>made</em> to fit <em>your</em> work.</h1>
     </div>
     <div class="detail-intro-meta">
       <div class="meta-row"><div class="meta-label">Year</div><div class="meta-value">2018 — 2020</div></div>
@@ -690,29 +809,23 @@
     </div>
   </div>
 
-  <!-- ─── 3. CHAPTER 01 — THE PROBLEM (text first, then image 02) ─── -->
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">01 — The Problem</div>
       <h2 class="section-heading">A new way to<br>buy <em>insurance.</em></h2>
       <p class="section-body">Traditional insurance only came one way — a year-long policy, bought through a broker, locked in for twelve months. But independent workers were hiring out by the gig, by the day, sometimes by the hour. Thimble built a platform where they could buy short-term, flexible coverage on demand. Insurance that matched how work actually happened.</p>
     </div>
-    <!-- 02. Full-width — Verifly launch screens -->
     <div class="img-block full" style="margin-top: 24px;">
-      <img src="images/thimble-1/02.png" alt="Verifly's initial launch screens" onerror="this.style.display='none'"><span class="img-fallback">Verifly's initial launch screens</span>
+      <img src="images/thimble-1/02.png" alt="Verifly's initial launch screens" onerror="this.style.display='none'"><span class="img-fallback">thimble-1/02.png · 16:9</span>
     </div>
-    <div class="img-caption">
-      2018 — Initial Launch · Thimble (formerly Verifly)
-    </div>
+    <div class="img-caption">2018 — Initial Launch · Thimble (formerly Verifly)</div>
   </div>
 
-  <!-- Quote (Problem 직후, 회색 배경) -->
   <div class="quote-block">
     <blockquote>"I just need to show this venue I'm covered in a few hours."</blockquote>
     <cite>— Small business owner, user interview · 2018</cite>
   </div>
 
-  <!-- ─── 5. TIMELINE ─────────────────────────────────────────── -->
   <div class="tl-section">
     <div class="tl-wrap">
       <div class="tl-line"></div>
@@ -752,7 +865,6 @@
     </div>
   </div>
 
-  <!-- ─── 6. CHAPTER 02 — DESIGN FRAMEWORK ────────────────────── -->
   <div class="detail-section" style="padding-bottom: 40px;">
     <div class="section-text">
       <div class="section-tag">02 — Design Framework</div>
@@ -761,154 +873,104 @@
     </div>
   </div>
 
-  <!-- ─── 6. TAP, INSURE, GO callout (sits after Timeline) ─── -->
   <div class="ti-callout">
     <div class="ti-eyebrow">— The product promise</div>
     <h3 class="ti-headline"><em>Tap.</em> <em>Insure.</em> <em>Go.</em></h3>
     <p class="ti-sub">A new platform built for independent workers. Short-term, flexible coverage. Quotes and approvals in <em>60 seconds.</em> No phone calls. No paperwork.</p>
   </div>
 
-  <!-- ─── 7. 사진 03 + 04, 1+1 그리드 3:4 ─── -->
   <div class="detail-section">
     <div class="section-images-grid">
       <div class="img-block" style="aspect-ratio: 3/4;">
-        <img src="images/thimble-1/03.png" alt="Product image — 03" onerror="this.style.display='none'"><span class="img-fallback">Image — 03 (3:4)</span>
+        <img src="images/thimble-1/03.png" alt="Product image — 03" onerror="this.style.display='none'"><span class="img-fallback">thimble-1/03.png · 3:4</span>
       </div>
       <div class="img-block" style="aspect-ratio: 3/4;">
-        <img src="images/thimble-1/04.png" alt="Product image — 04" onerror="this.style.display='none'"><span class="img-fallback">Image — 04 (3:4)</span>
+        <img src="images/thimble-1/04.png" alt="Product image — 04" onerror="this.style.display='none'"><span class="img-fallback">thimble-1/04.png · 3:4</span>
       </div>
     </div>
   </div>
 
-  <!-- ─── 7. CHAPTER 03 — SCALING ─────────────────────────────── -->
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">03 — Scaling the Story</div>
       <h2 class="section-heading">Stream and subscribe<br>your <em>policy.</em></h2>
       <p class="section-body">To become a one-stop shop, we kept expanding — more jobs covered, more product lines, and a new subscription plan. Users could pay monthly, modify their coverage, pause when work slows down, and cancel anytime. Insurance you could use the same way you use a streaming service.</p>
     </div>
-
-    <!-- Process: 2x2 grid, 4 slots, all 16:9 -->
     <div class="section-images-grid">
       <div class="img-block" style="aspect-ratio: 16/9;">
-        <img src="images/thimble-1/05.png" alt="Process artifact 1" onerror="this.style.display='none'"><span class="img-fallback">Process — 05</span>
+        <img src="images/thimble-1/05.png" alt="Process artifact 1" onerror="this.style.display='none'"><span class="img-fallback">thimble-1/05.png · 16:9</span>
       </div>
       <div class="img-block" style="aspect-ratio: 16/9;">
-        <img src="images/thimble-1/06.png" alt="Process artifact 2" onerror="this.style.display='none'"><span class="img-fallback">Process — 06</span>
+        <img src="images/thimble-1/06.png" alt="Process artifact 2" onerror="this.style.display='none'"><span class="img-fallback">thimble-1/06.png · 16:9</span>
       </div>
     </div>
     <div class="section-images-grid" style="margin-top: 24px;">
       <div class="img-block" style="aspect-ratio: 16/9;">
-        <img src="images/thimble-1/07.png" alt="Process artifact 3" onerror="this.style.display='none'"><span class="img-fallback">Process — 07</span>
+        <img src="images/thimble-1/07.png" alt="Process artifact 3" onerror="this.style.display='none'"><span class="img-fallback">thimble-1/07.png · 16:9</span>
       </div>
       <div class="img-block" style="aspect-ratio: 16/9;">
-        <img src="images/thimble-1/08.png" alt="Process artifact 4" onerror="this.style.display='none'"><span class="img-fallback">Process — 08</span>
+        <img src="images/thimble-1/08.png" alt="Process artifact 4" onerror="this.style.display='none'"><span class="img-fallback">thimble-1/08.png · 16:9</span>
       </div>
     </div>
   </div>
 
-  <!-- ─── 7. CHAPTER 04 — DESIGN SYSTEM (DARK) ────────────────── -->
   <div class="detail-section dark">
     <div class="section-text">
       <div class="section-tag">04 — Behind the scenes</div>
       <h2 class="section-heading">A design system, rebuilt<br>for a <em>remote</em> team.</h2>
       <p class="section-body">When the team went fully remote during the pandemic, I led the migration from Sketch to Figma and rebuilt the design system from atomic principles. Tokens, components, and patterns were all versioned and shared — letting a small team ship product faster, with more consistency, across more surfaces than its headcount should have allowed.</p>
     </div>
-
-    <!-- System pages + Icon library: side by side -->
     <div class="section-images-grid">
       <div class="img-block">
-        <img src="images/thimble-1/09.png" alt="Design system pages — typography, colors, buttons, form fields" onerror="this.style.display='none'"><span class="img-fallback">Design system pages — typography, colors, buttons, form fields</span>
+        <img src="images/thimble-1/09.png" alt="Design system pages — typography, colors, buttons, form fields" onerror="this.style.display='none'"><span class="img-fallback">thimble-1/09.png · 4:3</span>
       </div>
       <div class="img-block">
-        <img src="images/thimble-1/10.png" alt="Icon library categorized — communications, add-ons, insurance, industry" onerror="this.style.display='none'"><span class="img-fallback">Icon library categorized — communications, add-ons, insurance, industry</span>
+        <img src="images/thimble-1/10.png" alt="Icon library categorized — communications, add-ons, insurance, industry" onerror="this.style.display='none'"><span class="img-fallback">thimble-1/10.png · 4:3</span>
       </div>
     </div>
-    <!-- Changelog: full -->
     <div class="img-block full" style="aspect-ratio: 21/9; margin-top: 24px;">
-      <img src="images/thimble-1/11.png" alt="Changelog and Text Styles guide — system in active maintenance" onerror="this.style.display='none'"><span class="img-fallback">Changelog and Text Styles guide — system in active maintenance</span>
+      <img src="images/thimble-1/11.png" alt="Changelog and Text Styles guide — system in active maintenance" onerror="this.style.display='none'"><span class="img-fallback">thimble-1/11.png · 21:9</span>
     </div>
   </div>
 
-  <!-- ─── 9. IMPACT ───────────────────────────────────────────── -->
   <div class="detail-section" style="padding-top: 40px;">
     <div class="section-text">
       <div class="section-tag">— Impact</div>
       <h2 class="section-heading">From a blank canvas<br>to a category <em>disruptor.</em></h2>
     </div>
     <div class="impact-stats">
-      <div class="stat-cell">
-        <div class="stat-number">100K+</div>
-        <div class="stat-label">Policies sold in Year 1</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">$22M</div>
-        <div class="stat-label">Series A · IAC-led, 2019</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">NPS 78</div>
-        <div class="stat-label">vs. industry average of 35</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">70K</div>
-        <div class="stat-label">Monthly active users · churn −28% · renewals 6→25%</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">+800%</div>
-        <div class="stat-label">LTV growth · $52 → $470 (2020—22)</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">2021</div>
-        <div class="stat-label">Fast Company · Best UX Design finalist</div>
-      </div>
+      <div class="stat-cell"><div class="stat-number">100K+</div><div class="stat-label">Policies sold in Year 1</div></div>
+      <div class="stat-cell"><div class="stat-number">$22M</div><div class="stat-label">Series A · IAC-led, 2019</div></div>
+      <div class="stat-cell"><div class="stat-number">NPS 78</div><div class="stat-label">vs. industry average of 35</div></div>
+      <div class="stat-cell"><div class="stat-number">70K</div><div class="stat-label">Monthly active users · churn −28% · renewals 6→25%</div></div>
+      <div class="stat-cell"><div class="stat-number">+800%</div><div class="stat-label">LTV growth · $52 → $470 (2020—22)</div></div>
+      <div class="stat-cell"><div class="stat-number">2021</div><div class="stat-label">Fast Company · Best UX Design finalist</div></div>
     </div>
   </div>
 
-  <!-- ─── 11. RELATED ─────────────────────────────────────────── -->
-  <div class="related">
-    <h3>Related Projects</h3>
-    <div class="related-grid">
-      <div class="related-item" onclick="showPage('thimble-broker')">
-        <div class="related-thumb">Broker platform thumb</div>
-        <div class="work-info">
-          <div class="work-title">Thimble for Brokers</div>
-          <div class="work-meta">2021—23</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('lookscope')">
-        <div class="related-thumb">Lookscope thumb</div>
-        <div class="work-info">
-          <div class="work-title">Lookscope</div>
-          <div class="work-meta">Mobile app · Self-initiated</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('about')">
-        <div class="related-thumb">About thumb</div>
-        <div class="work-info">
-          <div class="work-title">About Suho</div>
-          <div class="work-meta">Bio · Contact</div>
-        </div>
-      </div>
+  <div class="project-nav">
+    <div class="project-nav-item prev" onclick="showPage('bondu')">
+      <div class="project-nav-label">← Prev</div>
+      <div class="project-nav-title">bondu</div>
+    </div>
+    <div class="project-nav-item next" onclick="showPage('thimble-broker')">
+      <div class="project-nav-label">Next →</div>
+      <div class="project-nav-title">Thimble for Brokers</div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================
-     THIMBLE PROJECT 02 — Broker platform (D2B2C)
-     Story: When growth shifted, we opened a new channel.
+     THIMBLE BROKER · Image folder: /images/thimble-2/
      ========================================================= -->
 <section class="page" id="page-thimble-broker">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
-
-  <!-- 01. Banner — Lifestyle photo of a broker -->
   <div class="detail-banner">
     <img src="images/thimble-2/01.png" alt="An insurance broker working with a client" />
   </div>
-
-  <!-- Intro -->
   <div class="detail-intro">
     <div>
-      <h1 class="detail-title">Designing for the people<br>who <em>sell</em> insurance to<br>everyone <em>else.</em></h1>
+      <h1 class="detail-title">Designing for the people who <em>sell</em> insurance to everyone <em>else.</em></h1>
     </div>
     <div class="detail-intro-meta">
       <div class="meta-row"><div class="meta-label">Year</div><div class="meta-value">2021 — 2023</div></div>
@@ -918,27 +980,20 @@
       <p style="margin-top: 16px;">During the pandemic, Thimble's flexible, on-demand coverage gained traction in an unexpected place. Insurance brokers. I led the end-to-end design of a new broker platform, opening a D2B2C channel that grew Gross Written Premium by 900% in two years and became a core driver behind Thimble's acquisition by Arch Insurance in April 2023.</p>
     </div>
   </div>
-
-  <!-- ============ 01 THE OPPORTUNITY ============ -->
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">01 — The Opportunity</div>
       <h2 class="section-heading">A new <em>channel,</em><br>a new kind of <em>user.</em></h2>
       <p class="section-body">Brokers started using Thimble on their own, placing coverage faster than traditional carriers could. Together with PMs, customer support, insurance, and BD, I ran broker interviews and audited their workflows: dozens of clients in motion, multi-carrier spreadsheets, fifteen-minute calls that needed a quote on screen by minute three. The opportunity was clear. A D2B2C channel could expand revenue without diluting the consumer product. But brokers needed a product built for how they actually work.</p>
     </div>
-    <!-- 02. Full-width — Welcome dashboard -->
     <div class="img-block full" style="margin-top: 24px; aspect-ratio: 16/9;">
       <img src="images/thimble-2/02.png" alt="Thimble broker portal — Welcome dashboard with activity, commission, and coverage overview" />
     </div>
   </div>
-
-  <!-- ============ QUOTE ============ -->
   <div class="quote-block">
     <blockquote>"Brokers don't want to be charmed.<br>They want to be fast."</blockquote>
     <cite>— Insight from broker discovery interviews</cite>
   </div>
-
-  <!-- ============ 02 A DIFFERENT USER (DARK) ============ -->
   <div class="detail-section dark" style="padding-bottom: 0;">
     <div class="section-text">
       <div class="section-tag">02 — A Different User</div>
@@ -946,8 +1001,6 @@
       <p class="section-body">A consumer buys insurance once or twice a year. A broker writes dozens of policies a week — different pace, different mental model, different design. Through research, I learned that broker workflows are full of friction the consumer product never had to handle: verifying broker licenses, collecting state-specific documents, linking commission bank accounts, and keeping track of dozens of clients at once. To translate that gap into product, I ran a four-phase process across research, strategy, design, and implementation. Each phase was grounded in real broker workflows and validated with PMs, customer support, insurance, and BD.</p>
     </div>
   </div>
-
-  <!-- Process Timeline (dark, sits between Ch02 text and Ch02 images) -->
   <div class="detail-section dark" style="padding-top: 20px; padding-bottom: 20px;">
     <div class="tl-wrap">
       <div class="tl-line"></div>
@@ -971,10 +1024,7 @@
       </div>
     </div>
   </div>
-
-  <!-- Ch02 process artifacts (continuation of dark section) -->
   <div class="detail-section dark" style="padding-top: 40px;">
-    <!-- 03 + 04. 1+1 — Workflow planning + Onboarding flow -->
     <div class="section-images-grid">
       <div class="img-block" style="aspect-ratio: 4/3;">
         <img src="images/thimble-2/03.png" alt="Strategy artifact — broker journey mapping, customer phase analysis, opportunities" />
@@ -984,28 +1034,22 @@
       </div>
     </div>
   </div>
-
-  <!-- ============ 03 THE PRODUCT ============ -->
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">03 — The Product</div>
       <h2 class="section-heading"><em>See what's possible,</em><br>then sell it.</h2>
       <p class="section-body">The hardest part of selling insurance isn't writing the policy. It's figuring out <em>what</em> to write. The Appetite Checker takes a few inputs about the client's business and surfaces every coverage Thimble can write, including GL, PL, Cyber, IM, and WC, along with the flexible durations Thimble is known for. From there, brokers move straight into quote and bind. No dead ends, no second guessing, no leaving the page.</p>
     </div>
-    <!-- 07. Full-width — Quote flow -->
     <div class="img-block full" style="margin-top: 24px; aspect-ratio: 16/9;">
       <img src="images/thimble-2/07.png" alt="Quote and bind flow — from ZIP code to coverage selection to bound policy" />
     </div>
   </div>
-
-  <!-- ============ 04 ONE WORKSPACE ============ -->
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">04 — One Workspace</div>
       <h2 class="section-heading"><em>Quote, bind, manage</em><br>in one place.</h2>
       <p class="section-body">Beyond a single sale, brokers run an ongoing book of business. The portal brings every client and policy into one workspace where brokers track activity, manage renewals, handle endorsements, and scale from a solo agent to an agency of 200 with role-based permissions and agency-level reporting.</p>
     </div>
-    <!-- 05 + 06. 1+1 — Appetite Guide + Policy Activity -->
     <div class="section-images-grid" style="margin-top: 24px;">
       <div class="img-block" style="aspect-ratio: 3/4;">
         <img src="images/thimble-2/05.png" alt="Appetite Checker results — every coverage Thimble can write for a given business" />
@@ -1015,102 +1059,51 @@
       </div>
     </div>
   </div>
-
-  <!-- ============ IMPACT STATS ============ -->
   <div class="detail-section dark" style="padding-top: 40px;">
     <div class="section-text">
       <div class="section-tag">— Impact</div>
       <h2 class="section-heading">A side channel<br>that became <em>the</em> channel.</h2>
     </div>
     <div class="impact-stats">
-      <div class="stat-cell">
-        <div class="stat-number">18K</div>
-        <div class="stat-label">New broker signups</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">+91%</div>
-        <div class="stat-label">YoY active brokers · 1,320 monthly</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">+125%</div>
-        <div class="stat-label">AOV · $144 → $324 (2021—22)</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">+900%</div>
-        <div class="stat-label">GWP in 2 years · $1.4M → $14M</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">40%</div>
-        <div class="stat-label">Of total GWP from brokers · Q3 2023</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">Apr 2023</div>
-        <div class="stat-label">Acquired by Arch · broker channel central to the deal</div>
-      </div>
+      <div class="stat-cell"><div class="stat-number">18K</div><div class="stat-label">New broker signups</div></div>
+      <div class="stat-cell"><div class="stat-number">+91%</div><div class="stat-label">YoY active brokers · 1,320 monthly</div></div>
+      <div class="stat-cell"><div class="stat-number">+125%</div><div class="stat-label">AOV · $144 → $324 (2021—22)</div></div>
+      <div class="stat-cell"><div class="stat-number">+900%</div><div class="stat-label">GWP in 2 years · $1.4M → $14M</div></div>
+      <div class="stat-cell"><div class="stat-number">40%</div><div class="stat-label">Of total GWP from brokers · Q3 2023</div></div>
+      <div class="stat-cell"><div class="stat-number">Apr 2023</div><div class="stat-label">Acquired by Arch · broker channel central to the deal</div></div>
     </div>
   </div>
-
-  <!-- ============ RELATED ============ -->
-  <div class="related">
-    <h3>Related Projects</h3>
-    <div class="related-grid">
-      <div class="related-item" onclick="showPage('thimble-app')">
-        <div class="related-thumb">Thimble app thumb</div>
-        <div class="work-info">
-          <div class="work-title">Building Thimble 0→1</div>
-          <div class="work-meta">2019—21</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('lookscope')">
-        <div class="related-thumb">Lookscope thumb</div>
-        <div class="work-info">
-          <div class="work-title">Lookscope</div>
-          <div class="work-meta">Mobile app · Self-initiated</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('about')">
-        <div class="related-thumb">About thumb</div>
-        <div class="work-info">
-          <div class="work-title">About Suho</div>
-          <div class="work-meta">Bio · Contact</div>
-        </div>
-      </div>
+  <div class="project-nav">
+    <div class="project-nav-item prev" onclick="showPage('thimble-app')">
+      <div class="project-nav-label">← Prev</div>
+      <div class="project-nav-title">Building Thimble 0→1</div>
+    </div>
+    <div class="project-nav-item next" onclick="showPage('lookscope')">
+      <div class="project-nav-label">Next →</div>
+      <div class="project-nav-title">Lookscope</div>
     </div>
   </div>
 </section>
 
-
-
 <!-- =========================================================
-     LOOKSCOPE — Self-initiated iOS app, 2 friends, App Store launch
-     ========================================================= -->
-<!-- =========================================================
-     LOOKSCOPE — Self-initiated iOS app
-     Image folder: /images/lookscope/
-     5 images total — banner + 1 per chapter
+     LOOKSCOPE · Image folder: /images/lookscope/
      ========================================================= -->
 <section class="page" id="page-lookscope">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
-
-  <!-- ─── 1. BANNER ───────────────────────────────────────────── -->
   <div class="detail-banner">
-    <img src="images/lookscope/01.png" alt="Person holding iPhone with Lookscope logo, editorial portrait" onerror="this.style.display='none'"><span class="img-fallback">Lookscope hero — phone in hand with logo</span>
+    <img src="images/lookscope/01.png" alt="Person holding iPhone with Lookscope logo, editorial portrait" onerror="this.style.display='none'"><span class="img-fallback">lookscope/01.png · 21:9</span>
   </div>
-
-  <!-- ─── 2. INTRO ────────────────────────────────────────────── -->
   <div class="detail-intro">
     <div>
-      <h1 class="detail-title">Two friends,<br>one year, <em>three hundred<br>thousand</em> wardrobes.</h1>
+      <h1 class="detail-title">Two friends, one year, <em>three hundred thousand</em> wardrobes.</h1>
     </div>
     <div class="detail-intro-meta">
       <div class="meta-row"><div class="meta-label">Type</div><div class="meta-value">Self-initiated · iOS app</div></div>
-      <div class="meta-row"><div class="meta-label">Role</div><div class="meta-value">Product Design · Visual Identity · UX</div></div>
-      <div class="meta-row"><div class="meta-label">Team</div><div class="meta-value">Designed with Jay (iOS Engineering)</div></div>
+      <div class="meta-row"><div class="meta-label">Role</div><div class="meta-value">Product Identity · Product Design</div></div>
+      <div class="meta-row"><div class="meta-label">Team</div><div class="meta-value">Launched with Jay (iOS Engineering)</div></div>
       <p style="margin-top: 16px;">Lookscope is a wardrobe organizer and outfit planner. It now lives in over 300,000 closets. Jay built the iOS app, and I designed everything else — the brand, the screens, every interaction. We started with a question that sounded almost too simple: why is getting dressed so hard when you already own everything you need?</p>
     </div>
   </div>
-
-  <!-- ─── 3. CHAPTER 01 — THE SPARK ───────────────────────────── -->
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">01 — The Spark</div>
@@ -1118,17 +1111,13 @@
       <p class="section-body">Jay and I weren't trying to build a company. We were trying to solve our own problem. Most people own dozens of clothes they barely think about. Every morning, they pick from the same five things on top. Wardrobe apps existed, but they all looked like spreadsheets with photos. We wanted something that felt like a tool you'd actually open. No funding, no investors, no roadmap longer than a weekend. The whole product came down to three moves: add the clothes you love, plan outfits, build your wardrobe.</p>
     </div>
     <div class="img-block full" style="aspect-ratio: 21/9; margin-top: 60px;">
-      <img src="images/lookscope/02.png" alt="Lookscope three-step onboarding — Add clothes, Discover outfits, Build wardrobe" onerror="this.style.display='none'"><span class="img-fallback">Three-step onboarding — Add / Discover / Build</span>
+      <img src="images/lookscope/02.png" alt="Lookscope three-step onboarding — Add clothes, Discover outfits, Build wardrobe" onerror="this.style.display='none'"><span class="img-fallback">lookscope/02.png · 21:9</span>
     </div>
   </div>
-
-  <!-- ─── 4. QUOTE ────────────────────────────────────────────── -->
   <div class="quote-block">
     <blockquote>"Let's just make the thing<br>we'd actually use ourselves."</blockquote>
     <cite>— Where the whole project started</cite>
   </div>
-
-  <!-- ─── 5. CHAPTER 02 — THE CRAFT (dark) ────────────────────── -->
   <div class="detail-section dark" style="padding-bottom: 0;">
     <div class="section-text">
       <div class="section-tag">02 — The Craft</div>
@@ -1136,11 +1125,9 @@
       <p class="section-body">I led the full design end-to-end. Logo, color, typography, icons, every screen, every micro-interaction. The app handled a lot: importing clothing photos with background removal, sorting by category and color, filtering by weather and occasion, building outfits visually, saving favorites. With no team to split the work, every decision came back to the same desk. That kept the app clean. If a feature couldn't justify itself, it didn't ship.</p>
     </div>
     <div class="img-block full" style="aspect-ratio: 21/9; margin-top: 60px; margin-bottom: 0;">
-      <img src="images/lookscope/03.png" alt="Lookscope app screens — category picker, photo editor, wardrobe grid, filters, change room" onerror="this.style.display='none'"><span class="img-fallback">App screens — wardrobe, editor, filters, change room</span>
+      <img src="images/lookscope/03.png" alt="Lookscope app screens — category picker, photo editor, wardrobe grid, filters, change room" onerror="this.style.display='none'"><span class="img-fallback">lookscope/03.png · 21:9</span>
     </div>
   </div>
-
-  <!-- ─── 6. CHAPTER 03 — THE TENSION ─────────────────────────── -->
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">03 — The Tension</div>
@@ -1148,96 +1135,56 @@
       <p class="section-body">A year of working with one engineer taught me lessons no team could have. We disagreed often — sometimes for weeks — about whether a feature was worth building. The fix wasn't picking a winner. It was sitting down, talking through trade-offs, and finding a third option together. The harder lesson was time. Without a client or deadline, the project stretched longer than it should have. Even a passion project needs milestones. "We'll get to it" is the most expensive sentence two collaborators can say.</p>
     </div>
     <div class="img-block full" style="aspect-ratio: 21/9; margin-top: 60px;">
-      <img src="images/lookscope/04.png" alt="Lookscope icon system printed on paper — weather, garments, expressions" onerror="this.style.display='none'"><span class="img-fallback">Icon system — printed sheet of custom icons</span>
+      <img src="images/lookscope/04.png" alt="Lookscope icon system printed on paper — weather, garments, expressions" onerror="this.style.display='none'"><span class="img-fallback">lookscope/04.png · 21:9</span>
     </div>
   </div>
-
-  <!-- ─── 7. CHAPTER 04 — LAUNCH & AFTER (dark) ───────────────── -->
   <div class="detail-section dark">
     <div class="section-text">
       <div class="section-tag">04 — Launch & After</div>
       <h2 class="section-heading">The app we built for ourselves<br>found <em>everyone else.</em></h2>
       <p class="section-body">Lookscope launched on the App Store and, to our surprise, kept growing. Apple featured it as an Editor's Recommendation of the Week. Users started subscribing — one month, six months, a year at a time. Years later, the app is still live, still updated, still earning. Two people, one year, a quiet product that found its audience. It taught me what I later brought to Thimble: how to own the whole experience, how to speak for users when no one else is in the room, how to keep going without anyone telling you to.</p>
     </div>
-    <div class="img-block full" style="aspect-ratio: 16/9; margin-top: 60px;">
-      <img src="images/lookscope/05.png" alt="Person using Lookscope app on iPhone in denim outfit" onerror="this.style.display='none'"><span class="img-fallback">Real user moment — Lookscope in someone's hands</span>
+    <div class="img-block full" style="aspect-ratio: 21/9; margin-top: 60px;">
+      <img src="images/lookscope/05.png" alt="Person using Lookscope app on iPhone in denim outfit" onerror="this.style.display='none'"><span class="img-fallback">lookscope/05.png · 21:9</span>
     </div>
   </div>
-
   <div class="detail-section" style="padding-top: 40px;">
     <div class="section-text">
       <div class="section-tag">— Impact</div>
       <h2 class="section-heading">A side project<br>that <em>kept growing.</em></h2>
     </div>
     <div class="impact-stats">
-      <div class="stat-cell">
-        <div class="stat-number">300K+</div>
-        <div class="stat-label">App Store downloads · by 2025</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">4.3 ★</div>
-        <div class="stat-label">Global App Store rating</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">Editor's Pick</div>
-        <div class="stat-label">Apple's Recommendation of the Week</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">1 year</div>
-        <div class="stat-label">Concept to App Store launch</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">2 people</div>
-        <div class="stat-label">Design + iOS engineering</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">Still live</div>
-        <div class="stat-label">Monetized · 1mo / 6mo / 1yr plans</div>
-      </div>
+      <div class="stat-cell"><div class="stat-number">300K+</div><div class="stat-label">App Store downloads · by 2025</div></div>
+      <div class="stat-cell"><div class="stat-number">4.3 ★</div><div class="stat-label">Global App Store rating</div></div>
+      <div class="stat-cell"><div class="stat-number">Editor's Pick</div><div class="stat-label">Apple's Recommendation of the Week</div></div>
+      <div class="stat-cell"><div class="stat-number">1 year</div><div class="stat-label">Concept to App Store launch</div></div>
+      <div class="stat-cell"><div class="stat-number">2 people</div><div class="stat-label">Design + iOS engineering</div></div>
+      <div class="stat-cell"><div class="stat-number">Still live</div><div class="stat-label">Monetized · 1mo / 6mo / 1yr plans</div></div>
     </div>
   </div>
-
-  <div class="related">
-    <h3>Related Projects</h3>
-    <div class="related-grid">
-      <div class="related-item" onclick="showPage('thimble-app')">
-        <div class="related-thumb">Thimble app thumb</div>
-        <div class="work-info">
-          <div class="work-title">Building Thimble 0→1</div>
-          <div class="work-meta">2019—21</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('thimble-broker')">
-        <div class="related-thumb">Broker platform thumb</div>
-        <div class="work-info">
-          <div class="work-title">Thimble for Brokers</div>
-          <div class="work-meta">2021—23</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('hudson-market')">
-        <div class="related-thumb">Hudson Market thumb</div>
-        <div class="work-info">
-          <div class="work-title">Hudson Market</div>
-          <div class="work-meta">Branding · NYC</div>
-        </div>
-      </div>
+  <div class="project-nav">
+    <div class="project-nav-item prev" onclick="showPage('thimble-broker')">
+      <div class="project-nav-label">← Prev</div>
+      <div class="project-nav-title">Thimble for Brokers</div>
+    </div>
+    <div class="project-nav-item next" onclick="showPage('hudson-market')">
+      <div class="project-nav-label">Next →</div>
+      <div class="project-nav-title">Hudson Market</div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================
-     HUDSON MARKET — Brand identity & visual system
+     HUDSON MARKET · Image folder: /images/hudson/
      ========================================================= -->
 <section class="page" id="page-hudson-market">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
-
   <div class="detail-banner">
-    <img src="images/hudson/01.png" alt="Hudson Market storefront / exterior signage hero shot" onerror="this.style.display='none'"><span class="img-fallback">Banner — Hudson Market storefront / exterior signage hero shot. 21:9</span>
+    <img src="images/hudson/01.png" alt="Hudson Market storefront / exterior signage hero shot" onerror="this.style.display='none'"><span class="img-fallback">hudson/01.png · 21:9</span>
   </div>
-
   <div class="detail-intro">
     <div>
-      <h1 class="detail-title">Reimagining <em>retro</em><br>for <em>Hudson</em><br>Market.</h1>
+      <h1 class="detail-title">Reimagining <em>retro</em> for <em>Hudson</em> Market.</h1>
     </div>
     <div class="detail-intro-meta">
       <div class="meta-row"><div class="meta-label">Client</div><div class="meta-value">Hudson Market · W 57th St, NYC</div></div>
@@ -1246,7 +1193,6 @@
       <p style="margin-top: 16px;">Hudson Market is a neighborhood organic grocer on West 57th Street in Midtown Manhattan, just steps from the Hudson River. The brief was a brand that could feel rooted in the corner-grocer history of postwar New York — without ever feeling like a costume. I led the art and design direction across every surface of the identity.</p>
     </div>
   </div>
-
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">01 — The Approach</div>
@@ -1255,51 +1201,45 @@
     </div>
     <div class="section-images-grid">
       <div class="img-block">
-        <img src="images/hudson/02.png" alt="Logo / wordmark — final identity mark, multiple lockups" onerror="this.style.display='none'"><span class="img-fallback">Logo / wordmark — final identity mark, multiple lockups</span>
+        <img src="images/hudson/02.png" alt="Logo / wordmark — final identity mark, multiple lockups" onerror="this.style.display='none'"><span class="img-fallback">hudson/02.png · 4:3</span>
       </div>
       <div class="img-block">
-        <img src="images/hudson/03.png" alt="Color palette, typography system, secondary marks" onerror="this.style.display='none'"><span class="img-fallback">Color palette, typography system, secondary marks</span>
+        <img src="images/hudson/03.png" alt="Color palette, typography system, secondary marks" onerror="this.style.display='none'"><span class="img-fallback">hudson/03.png · 4:3</span>
       </div>
     </div>
     <div class="img-block full" style="margin-top: 24px; aspect-ratio: 21/9;">
-      <img src="images/hudson/04.png" alt="Mood / reference board — 1950s-60s American grocery aesthetics" onerror="this.style.display='none'"><span class="img-fallback">Mood / reference board — 1950s-60s American grocery aesthetics, vintage signage, postwar typography. 21:9</span>
+      <img src="images/hudson/04.png" alt="Mood / reference board — 1950s-60s American grocery aesthetics" onerror="this.style.display='none'"><span class="img-fallback">hudson/04.png · 21:9</span>
     </div>
   </div>
-
   <div class="detail-section dark">
     <div class="section-text" style="margin-bottom: 60px;">
       <div class="section-tag">02 — Beyond the Logo</div>
       <h2 class="section-heading">The store, <em>out</em><br>of time.</h2>
       <p class="section-body">A grocery brand isn't a logo — it's every surface around it. The sign, the napkin, the price tag, the receipt. I designed it all as one system, with one direction holding it together: a 1960s American grocer, found in the present. Familiar enough to walk into. Strange enough to stay with you.</p>
     </div>
-
     <div class="img-block full" style="aspect-ratio: 21/9;">
-      <img src="images/hudson/05.png" alt="Exterior signage — main storefront awning / blade sign" onerror="this.style.display='none'"><span class="img-fallback">Exterior signage — main storefront awning / blade sign. 21:9</span>
+      <img src="images/hudson/05.png" alt="Exterior signage — main storefront awning / blade sign" onerror="this.style.display='none'"><span class="img-fallback">hudson/05.png · 21:9</span>
     </div>
-
     <div class="section-images-grid" style="margin-top: 24px;">
       <div class="img-block">
-        <img src="images/hudson/06.png" alt="Window displays — produce announcements, seasonal graphics" onerror="this.style.display='none'"><span class="img-fallback">Window displays — produce announcements, seasonal graphics</span>
+        <img src="images/hudson/06.png" alt="Window displays — produce announcements, seasonal graphics" onerror="this.style.display='none'"><span class="img-fallback">hudson/06.png · 4:3</span>
       </div>
       <div class="img-block">
-        <img src="images/hudson/07.png" alt="Interior signage — aisle markers, department headers, wall graphics" onerror="this.style.display='none'"><span class="img-fallback">Interior signage — aisle markers, department headers, wall graphics</span>
+        <img src="images/hudson/07.png" alt="Interior signage — aisle markers, department headers, wall graphics" onerror="this.style.display='none'"><span class="img-fallback">hudson/07.png · 4:3</span>
       </div>
     </div>
-
     <div class="section-images-grid" style="margin-top: 24px;">
       <div class="img-block">
-        <img src="images/hudson/08.png" alt="Menu / deli boards — typography in use at counter scale" onerror="this.style.display='none'"><span class="img-fallback">Menu / deli boards — typography in use at counter scale</span>
+        <img src="images/hudson/08.png" alt="Menu / deli boards — typography in use at counter scale" onerror="this.style.display='none'"><span class="img-fallback">hudson/08.png · 4:3</span>
       </div>
       <div class="img-block">
-        <img src="images/hudson/09.png" alt="Collateral — business cards, packaging stickers, bags, receipts, loyalty cards" onerror="this.style.display='none'"><span class="img-fallback">Collateral — business cards, packaging stickers, bags, receipts, loyalty cards</span>
+        <img src="images/hudson/09.png" alt="Collateral — business cards, packaging stickers, bags, receipts, loyalty cards" onerror="this.style.display='none'"><span class="img-fallback">hudson/09.png · 4:3</span>
       </div>
     </div>
-
     <div class="img-block full" style="margin-top: 24px; aspect-ratio: 21/9;">
-      <img src="images/hudson/10.png" alt="Website — homepage / hero screen" onerror="this.style.display='none'"><span class="img-fallback">Website — homepage / hero screen. 21:9</span>
+      <img src="images/hudson/10.png" alt="Website — homepage / hero screen" onerror="this.style.display='none'"><span class="img-fallback">hudson/10.png · 21:9</span>
     </div>
   </div>
-
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">— Last note</div>
@@ -1307,31 +1247,14 @@
       <p class="section-body">Good retail design disappears. The store stops feeling designed and starts feeling found. That was the bar I set: not loud, just inevitable on the block. A corner of Midtown that finally felt like it had always been there.</p>
     </div>
   </div>
-
-  <div class="related">
-    <h3>Related Projects</h3>
-    <div class="related-grid">
-      <div class="related-item" onclick="showPage('lookscope')">
-        <div class="related-thumb">Lookscope thumb</div>
-        <div class="work-info">
-          <div class="work-title">Lookscope</div>
-          <div class="work-meta">Mobile app · Self-initiated</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('thimble-app')">
-        <div class="related-thumb">Thimble app thumb</div>
-        <div class="work-info">
-          <div class="work-title">Building Thimble 0→1</div>
-          <div class="work-meta">2019—21</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('about')">
-        <div class="related-thumb">About thumb</div>
-        <div class="work-info">
-          <div class="work-title">About Suho</div>
-          <div class="work-meta">Bio · Contact</div>
-        </div>
-      </div>
+  <div class="project-nav">
+    <div class="project-nav-item prev" onclick="showPage('lookscope')">
+      <div class="project-nav-label">← Prev</div>
+      <div class="project-nav-title">Lookscope</div>
+    </div>
+    <div class="project-nav-item next" onclick="showPage('everything-aiga')">
+      <div class="project-nav-label">Next →</div>
+      <div class="project-nav-title">AIGA NY × MAD</div>
     </div>
   </div>
 </section>
@@ -1341,14 +1264,12 @@
      ========================================================= -->
 <section class="page" id="page-everything-aiga">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
-
   <div class="detail-banner">
-    <img src="images/aiga/01.png" alt="AIGA NY × MAD invitation — final dome composition" onerror="this.style.display='none'"><span class="img-fallback">Banner — Final invitation cover. Dome composition. 21:9</span>
+    <img src="images/aiga/01.png" alt="AIGA NY × MAD invitation — final dome composition" onerror="this.style.display='none'"><span class="img-fallback">aiga/01.png · 21:9</span>
   </div>
-
   <div class="detail-intro">
     <div>
-      <h1 class="detail-title">When a logo<br>becomes <em>the lecture.</em></h1>
+      <h1 class="detail-title">When a logo becomes <em>the lecture.</em></h1>
     </div>
     <div class="detail-intro-meta">
       <div class="meta-row"><div class="meta-label">Studio</div><div class="meta-value">Everything Studio · Lower East Side, NYC</div></div>
@@ -1358,7 +1279,6 @@
       <p style="margin-top: 16px;">Everything Studio was invited as the guest speaker for an AIGA NY event hosted at the Museum of Arts and Design — a lecture about adaptive, multidisciplinary design practice. Joining the studio early in my career, working alongside its founder, I was asked to design the event's digital invitation. The brief was small. The audience was anyone who pays attention to graphic design in New York.</p>
     </div>
   </div>
-
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">01 — The Concept</div>
@@ -1366,47 +1286,43 @@
       <p class="section-body">Everything Studio's identity is built around the geodesic dome — Buckminster Fuller's icon of structure achieved through diversity of parts. The studio's whole practice runs the same way: many disciplines, one shape. The invitation needed to say something about how Everything Studio thinks before anyone had clicked into the event details, so I started where the studio starts — its own logo — and let it multiply. A single dome became a field of them, each one a slightly different angle, weight, and rhythm. The visual is the lecture in miniature: one studio, many ways of working, held together by a recognizable form.</p>
     </div>
     <div class="img-block full" style="aspect-ratio: 21/9; margin-top: 60px; margin-bottom: 24px;">
-      <img src="images/aiga/02.png" alt="Final invitation hero — dome composition in context" onerror="this.style.display='none'"><span class="img-fallback">Final invitation hero — dome composition in context. 21:9</span>
+      <img src="images/aiga/02.png" alt="Final invitation hero — dome composition in context" onerror="this.style.display='none'"><span class="img-fallback">aiga/02.png · 21:9</span>
     </div>
     <div class="section-images-grid" style="margin-bottom: 24px;">
       <div class="img-block">
-        <img src="images/aiga/03.png" alt="Everything Studio's original geodesic dome logo, Bucky Fuller reference" onerror="this.style.display='none'"><span class="img-fallback">Original geodesic dome logo (Bucky Fuller reference)</span>
+        <img src="images/aiga/03.png" alt="Everything Studio's original geodesic dome logo, Bucky Fuller reference" onerror="this.style.display='none'"><span class="img-fallback">aiga/03.png · 4:3</span>
       </div>
       <div class="img-block">
-        <img src="images/aiga/04.png" alt="Sketches and explorations of dome multiplying into variations" onerror="this.style.display='none'"><span class="img-fallback">Sketches / explorations — dome multiplying</span>
+        <img src="images/aiga/04.png" alt="Sketches and explorations of dome multiplying into variations" onerror="this.style.display='none'"><span class="img-fallback">aiga/04.png · 4:3</span>
       </div>
     </div>
     <div class="section-images-grid">
       <div class="img-block" style="aspect-ratio: 4/3;">
-        <img src="images/aiga/05.png" alt="Poster — printed invitation piece" onerror="this.style.display='none'"><span class="img-fallback">Poster piece. 4:3</span>
+        <img src="images/aiga/05.png" alt="Poster — printed invitation piece" onerror="this.style.display='none'"><span class="img-fallback">aiga/05.png · 4:3</span>
       </div>
       <div class="img-block" style="aspect-ratio: 4/3;">
-        <img src="images/aiga/06.png" alt="Poster — printed invitation piece" onerror="this.style.display='none'"><span class="img-fallback">Poster piece. 4:3</span>
+        <img src="images/aiga/06.png" alt="Poster — printed invitation piece" onerror="this.style.display='none'"><span class="img-fallback">aiga/06.png · 4:3</span>
       </div>
     </div>
   </div>
-
   <div class="detail-section dark">
     <div class="section-text" style="margin-bottom: 60px;">
       <div class="section-tag">02 — The Pieces</div>
       <h2 class="section-heading">A small invitation<br>for a <em>large</em> room.</h2>
       <p class="section-body">The final invitation lived across digital and print — a primary composition for the announcement, with supporting graphics and posters for the lead-up. The system was tight enough to feel cohesive on a single feed, and varied enough to keep returning visitors curious about what came next.</p>
     </div>
-
     <div class="section-images-grid">
       <div class="img-block" style="aspect-ratio: 1/1;">
-        <img src="images/aiga/07.gif" alt="Primary invitation — animated dome composition" onerror="this.style.display='none'"><span class="img-fallback">Primary invitation — animated. 1:1</span>
+        <img src="images/aiga/07.gif" alt="Primary invitation — animated dome composition" onerror="this.style.display='none'"><span class="img-fallback">aiga/07.gif · 1:1</span>
       </div>
       <div class="img-block" style="aspect-ratio: 1/1;">
-        <img src="images/aiga/08.png" alt="Variations — alternate dome arrangements, motion-ready frames" onerror="this.style.display='none'"><span class="img-fallback">Variations — alternate dome arrangements. 1:1</span>
+        <img src="images/aiga/08.png" alt="Variations — alternate dome arrangements, motion-ready frames" onerror="this.style.display='none'"><span class="img-fallback">aiga/08.png · 1:1</span>
       </div>
     </div>
-
     <div class="img-block full" style="margin-top: 24px;">
-      <img src="images/aiga/09.png" alt="Full system — invitation cover, social cards, supporting graphics" onerror="this.style.display='none'"><span class="img-fallback">Full system — cover, social cards, supporting graphics</span>
+      <img src="images/aiga/09.png" alt="Full system — invitation cover, social cards, supporting graphics" onerror="this.style.display='none'"><span class="img-fallback">aiga/09.png · 16:9</span>
     </div>
   </div>
-
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">— In closing</div>
@@ -1414,51 +1330,29 @@
       <p class="section-body">It was a short brief, an early credit, and a room I'm still proud to have designed for. The lesson stuck: when a studio's identity is strong enough, you don't need to invent a new visual language to speak with it — you just need to know how to make it talk.</p>
     </div>
   </div>
-
-  <div class="related">
-    <h3>Related Projects</h3>
-    <div class="related-grid">
-      <div class="related-item" onclick="showPage('hudson-market')">
-        <div class="related-thumb">Hudson Market thumb</div>
-        <div class="work-info">
-          <div class="work-title">Hudson Market</div>
-          <div class="work-meta">Branding · NYC</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('lookscope')">
-        <div class="related-thumb">Lookscope thumb</div>
-        <div class="work-info">
-          <div class="work-title">Lookscope</div>
-          <div class="work-meta">Mobile app · Self-initiated</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('about')">
-        <div class="related-thumb">About thumb</div>
-        <div class="work-info">
-          <div class="work-title">About Suho</div>
-          <div class="work-meta">Bio · Contact</div>
-        </div>
-      </div>
+  <div class="project-nav">
+    <div class="project-nav-item prev" onclick="showPage('hudson-market')">
+      <div class="project-nav-label">← Prev</div>
+      <div class="project-nav-title">Hudson Market</div>
+    </div>
+    <div class="project-nav-item next" onclick="showPage('drunken-rice')">
+      <div class="project-nav-label">Next →</div>
+      <div class="project-nav-title">Drunken Rice Bomb</div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================
-     TRANSFONER — njenworks (now Pentagram)
-     Image folder: /images/transfoner/
-     7 images total — banner + hero + 4 grid slots + full system
+     TRANSFONER · Image folder: /images/transfoner/
      ========================================================= -->
 <section class="page" id="page-transfoner">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
-
-  <!-- ─── 1. BANNER (21:9) ─── -->
   <div class="detail-banner">
-    <img src="images/transfoner/01.png" alt="Transfoner home screen hero shot, showing icons mid-transformation" onerror="this.style.display='none'"><span class="img-fallback">Banner image — Transfoner home screen hero shot, showing icons mid-transformation or in their character states. 21:9</span>
+    <img src="images/transfoner/01.png" alt="Transfoner home screen hero shot, showing icons mid-transformation" onerror="this.style.display='none'"><span class="img-fallback">transfoner/01.png · 21:9</span>
   </div>
-
   <div class="detail-intro">
     <div>
-      <h1 class="detail-title">App icons <em>with</em><br>a life of <em>their own.</em></h1>
+      <h1 class="detail-title">App icons <em>with</em> a life of <em>their own.</em></h1>
     </div>
     <div class="detail-intro-meta">
       <div class="meta-row"><div class="meta-label">Studio</div><div class="meta-value">njenworks (now Pentagram)</div></div>
@@ -1467,61 +1361,50 @@
       <p style="margin-top: 16px;">Transfoner reimagines the mobile home screen as a place where icons don't sit still. Each one carries its own character — transforming, shifting, breathing personality into the surface of the phone. I designed visual identity components for the project at njenworks, the studio of Natasha Jen, before she joined Pentagram as partner.</p>
     </div>
   </div>
-
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">01 — The Concept</div>
       <h2 class="section-heading">A home screen<br>with <em>personality.</em></h2>
       <p class="section-body">Phone home screens are static by default — rows of small rectangles that exist to be tapped, not to be looked at. Transfoner pushes against that. Each icon becomes a small character that breaks apart, transforms into objects, and reassembles. The phone surface stops being a grid of tools and starts behaving like a living scene.</p>
     </div>
-    <!-- ─── 2. Hero composition (21:9 full) ─── -->
     <div class="img-block full" style="margin-top: 60px; margin-bottom: 24px; aspect-ratio: 21/9;">
-      <img src="images/transfoner/02.png" alt="Transfoner home screen with icons in their transformed states" onerror="this.style.display='none'"><span class="img-fallback">Hero composition — Transfoner home screen with icons in their transformed states. 21:9</span>
+      <img src="images/transfoner/02.png" alt="Transfoner home screen with icons in their transformed states" onerror="this.style.display='none'"><span class="img-fallback">transfoner/02.png · 21:9</span>
     </div>
-    <!-- ─── 3 + 4. Static vs Transfoner + Icon character studies (4:3 pair) ─── -->
     <div class="section-images-grid">
       <div class="img-block">
-        <img src="images/transfoner/03.png" alt="Static home screen vs. Transfoner — before / after comparison" onerror="this.style.display='none'"><span class="img-fallback">Static home screen vs. Transfoner — "before / after" comparison</span>
+        <img src="images/transfoner/03.png" alt="Static home screen vs. Transfoner — before / after comparison" onerror="this.style.display='none'"><span class="img-fallback">transfoner/03.png · 4:3</span>
       </div>
       <div class="img-block">
-        <img src="images/transfoner/04.png" alt="Icon character studies — personality variations, transformation states" onerror="this.style.display='none'"><span class="img-fallback">Icon character studies — personality variations, transformation states</span>
+        <img src="images/transfoner/04.png" alt="Icon character studies — personality variations, transformation states" onerror="this.style.display='none'"><span class="img-fallback">transfoner/04.png · 4:3</span>
       </div>
     </div>
   </div>
-
   <div class="detail-section dark">
     <div class="section-text" style="margin-bottom: 60px;">
       <div class="section-tag">02 — Visual Pieces</div>
       <h2 class="section-heading">Built within<br>the <em>system.</em></h2>
       <p class="section-body">The brand language was set; my work lived inside it. Icon character studies, identity components, the small but defining pieces of how the world looks.</p>
     </div>
-
-    <!-- ─── 5 + 6. Icon variations + Identity components (1:1 pair) ─── -->
     <div class="section-images-grid">
       <div class="img-block" style="aspect-ratio: 1/1;">
-        <img src="images/transfoner/05.png" alt="Icon variations — individual character designs, full set" onerror="this.style.display='none'"><span class="img-fallback">Icon variations — individual character designs, full set</span>
+        <img src="images/transfoner/05.png" alt="Icon variations — individual character designs, full set" onerror="this.style.display='none'"><span class="img-fallback">transfoner/05.png · 1:1</span>
       </div>
       <div class="img-block" style="aspect-ratio: 1/1;">
-        <img src="images/transfoner/06.png" alt="Identity components — supporting visual elements, type, marks" onerror="this.style.display='none'"><span class="img-fallback">Identity components — supporting visual elements, type, marks</span>
+        <img src="images/transfoner/06.png" alt="Identity components — supporting visual elements, type, marks" onerror="this.style.display='none'"><span class="img-fallback">transfoner/06.png · 1:1</span>
       </div>
     </div>
-
-    <!-- ─── 7 + 8. Additional system views (1:1 pair) ─── -->
     <div class="section-images-grid" style="margin-top: 24px;">
       <div class="img-block" style="aspect-ratio: 1/1;">
-        <img src="images/transfoner/07.png" alt="System detail — additional view" onerror="this.style.display='none'"><span class="img-fallback">System detail — 07 · 1:1</span>
+        <img src="images/transfoner/07.png" alt="System detail — additional view" onerror="this.style.display='none'"><span class="img-fallback">transfoner/07.png · 1:1</span>
       </div>
       <div class="img-block" style="aspect-ratio: 1/1;">
-        <img src="images/transfoner/08.png" alt="System detail — additional view" onerror="this.style.display='none'"><span class="img-fallback">System detail — 08 · 1:1</span>
+        <img src="images/transfoner/08.png" alt="System detail — additional view" onerror="this.style.display='none'"><span class="img-fallback">transfoner/08.png · 1:1</span>
       </div>
     </div>
-
-    <!-- ─── 9. Full system view (16:10 full) ─── -->
     <div class="img-block full" style="margin-top: 24px; aspect-ratio: 16/10;">
-      <img src="images/transfoner/09.png" alt="Full system view — icons and supporting visual language together" onerror="this.style.display='none'"><span class="img-fallback">Full system view — icons and supporting visual language together. 16:10</span>
+      <img src="images/transfoner/09.png" alt="Full system view — icons and supporting visual language together" onerror="this.style.display='none'"><span class="img-fallback">transfoner/09.png · 16:10</span>
     </div>
   </div>
-
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">— Archived</div>
@@ -1529,48 +1412,29 @@
       <p class="section-body">Transfoner now lives in Pentagram's archive.</p>
     </div>
   </div>
-
-  <div class="related">
-    <h3>Related Projects</h3>
-    <div class="related-grid">
-      <div class="related-item" onclick="showPage('everything-aiga')">
-        <div class="related-thumb">AIGA × MAD thumb</div>
-        <div class="work-info">
-          <div class="work-title">AIGA NY × MAD</div>
-          <div class="work-meta">Graphic · Event</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('lookscope')">
-        <div class="related-thumb">Lookscope thumb</div>
-        <div class="work-info">
-          <div class="work-title">Lookscope</div>
-          <div class="work-meta">Mobile app · Self-initiated</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('about')">
-        <div class="related-thumb">About thumb</div>
-        <div class="work-info">
-          <div class="work-title">About Suho</div>
-          <div class="work-meta">Bio · Contact</div>
-        </div>
-      </div>
+  <div class="project-nav">
+    <div class="project-nav-item prev" onclick="showPage('drunken-rice')">
+      <div class="project-nav-label">← Prev</div>
+      <div class="project-nav-title">Drunken Rice Bomb</div>
+    </div>
+    <div class="project-nav-item next" onclick="showPage('miscellaneous')">
+      <div class="project-nav-label">Next →</div>
+      <div class="project-nav-title">Miscellaneous</div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================
-     DRUNKEN RICE BOMB
+     DRUNKEN RICE BOMB · Image folder: /images/drunken/
      ========================================================= -->
 <section class="page" id="page-drunken-rice">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
-
   <div class="detail-banner">
-    <img src="images/drunken/01.png" alt="Drunken Rice Bomb — hero can shot" onerror="this.style.display='none'"><span class="img-fallback">Banner — Hero can shot. 21:9</span>
+    <img src="images/drunken/01.png" alt="Drunken Rice Bomb — hero can shot" onerror="this.style.display='none'"><span class="img-fallback">drunken/01.png · 21:9</span>
   </div>
-
   <div class="detail-intro">
     <div>
-      <h1 class="detail-title">Ancient <em>spirits,</em><br>canned <em>with</em><br>a face.</h1>
+      <h1 class="detail-title">Ancient <em>spirits,</em> canned <em>with</em> a face.</h1>
     </div>
     <div class="detail-intro-meta">
       <div class="meta-row"><div class="meta-label">Project</div><div class="meta-value">Drunken Rice Bomb · Self-initiated</div></div>
@@ -1579,7 +1443,6 @@
       <p style="margin-top: 16px;">Drunken Rice Bomb is a self-initiated brand identity for makgeolli, Korea's oldest rice wine. The goal: introduce it to a global, younger audience without flattening what makes it Korean. Six cans, six rice-harvesting regions, six traditional folk spirits — one mask for each.</p>
     </div>
   </div>
-
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">01 — The Story Behind It</div>
@@ -1587,74 +1450,47 @@
       <p class="section-body">Like many other cultures, Korea has its share of superstitions and old beliefs — woven into villages, regions, the rhythms of the year. Ancient Koreans carved wooden masks of local spirit figures and wore them in ritual ceremonies and theatrical performances. The faces were extremely bizarre and grotesque on purpose — meant to ward off evil spirits, and to bring good fortune to families and neighbors. Drunken Rice Bomb borrows that same logic, pairing six rice-harvesting regions with six of their traditional folk spirits, one mask for each.</p>
     </div>
     <div class="img-block full" style="aspect-ratio: 21/9; margin-top: 60px; margin-bottom: 24px;">
-      <img src="images/drunken/02.png" alt="Traditional Korean folk masks — wooden, hand-carved" onerror="this.style.display='none'"><span class="img-fallback">Traditional Korean folk masks — inspiration. 21:9</span>
+      <img src="images/drunken/02.png" alt="Traditional Korean folk masks — wooden, hand-carved" onerror="this.style.display='none'"><span class="img-fallback">drunken/02.png · 21:9</span>
     </div>
     <div class="section-images-grid" style="margin-bottom: 24px;">
       <div class="img-block" style="aspect-ratio: 4/3;">
-        <img src="images/drunken/03.png" alt="Original mask photograph — bizarre, grotesque, beautiful" onerror="this.style.display='none'"><span class="img-fallback">Original mask photograph. 4:3</span>
+        <img src="images/drunken/03.png" alt="Original mask photograph — bizarre, grotesque, beautiful" onerror="this.style.display='none'"><span class="img-fallback">drunken/03.png · 4:3</span>
       </div>
       <div class="img-block" style="aspect-ratio: 4/3;">
-        <img src="images/drunken/04.png" alt="Ritual or performance context — masks in use" onerror="this.style.display='none'"><span class="img-fallback">Ritual / performance context. 4:3</span>
+        <img src="images/drunken/04.png" alt="Ritual or performance context — masks in use" onerror="this.style.display='none'"><span class="img-fallback">drunken/04.png · 4:3</span>
       </div>
     </div>
-
     <div class="section-images-grid">
       <div class="img-block tall">
-        <img src="images/drunken/05.png" alt="Can series — all six regional masks lined up" onerror="this.style.display='none'"><span class="img-fallback">Can series — six regional masks lined up. Tall</span>
+        <img src="images/drunken/05.png" alt="Can series — all six regional masks lined up" onerror="this.style.display='none'"><span class="img-fallback">drunken/05.png · 3:4</span>
       </div>
       <div class="img-block tall">
-        <img src="images/drunken/06.png" alt="Individual can hero — close-up with full label detail" onerror="this.style.display='none'"><span class="img-fallback">Individual can hero. Tall</span>
+        <img src="images/drunken/06.png" alt="Individual can hero — close-up with full label detail" onerror="this.style.display='none'"><span class="img-fallback">drunken/06.png · 3:4</span>
       </div>
     </div>
   </div>
-
   <div class="detail-section dark">
     <div class="section-text" style="margin-bottom: 60px;">
       <div class="section-tag">02 — The Collection</div>
       <h2 class="section-heading">Six regions,<br>six <em>faces.</em></h2>
       <p class="section-body">The system pairs one mask with one region with one rice. <em>Gaksi</em> for Icheon, <em>Mabu</em> for Nonsan, <em>Bangsangsi</em> for Cheorwon, <em>Maldduk</em> for Gimhae, <em>Mudang</em> for Honam, <em>Gwangdae</em> for Naju. Together the collection reads as one visual world — bold color, flat graphic language, masks that meet your eyes straight on. Apart, each one holds its own story.</p>
     </div>
-
     <div class="section-images-grid" style="margin-top: 24px; margin-bottom: 24px;">
-      <div class="img-block" style="aspect-ratio: 4/3;">
-        <img src="images/drunken/07.png" alt="Drunken Rice Bomb — detail" onerror="this.style.display='none'"><span class="img-fallback">Detail. 4:3</span>
-      </div>
-      <div class="img-block" style="aspect-ratio: 4/3;">
-        <img src="images/drunken/08.png" alt="Drunken Rice Bomb — detail" onerror="this.style.display='none'"><span class="img-fallback">Detail. 4:3</span>
-      </div>
+      <div class="img-block" style="aspect-ratio: 4/3;"><img src="images/drunken/07.png" alt="Drunken Rice Bomb — detail" onerror="this.style.display='none'"><span class="img-fallback">drunken/07.png · 4:3</span></div>
+      <div class="img-block" style="aspect-ratio: 4/3;"><img src="images/drunken/08.png" alt="Drunken Rice Bomb — detail" onerror="this.style.display='none'"><span class="img-fallback">drunken/08.png · 4:3</span></div>
     </div>
-
-    <div class="img-block full" style="aspect-ratio: 21/9; margin-bottom: 24px;">
-      <img src="images/drunken/09.png" alt="Drunken Rice Bomb — wide shot" onerror="this.style.display='none'"><span class="img-fallback">Wide shot. 21:9</span>
-    </div>
-
-    <div class="img-block full" style="aspect-ratio: 21/9; margin-bottom: 24px;">
-      <img src="images/drunken/10.png" alt="Drunken Rice Bomb — wide shot" onerror="this.style.display='none'"><span class="img-fallback">Wide shot. 21:9</span>
-    </div>
-
+    <div class="img-block full" style="aspect-ratio: 21/9; margin-bottom: 24px;"><img src="images/drunken/09.png" alt="Drunken Rice Bomb — wide shot" onerror="this.style.display='none'"><span class="img-fallback">drunken/09.png · 21:9</span></div>
+    <div class="img-block full" style="aspect-ratio: 21/9; margin-bottom: 24px;"><img src="images/drunken/10.png" alt="Drunken Rice Bomb — wide shot" onerror="this.style.display='none'"><span class="img-fallback">drunken/10.png · 21:9</span></div>
     <div class="section-images-grid" style="margin-bottom: 24px;">
-      <div class="img-block" style="aspect-ratio: 4/3;">
-        <img src="images/drunken/11.png" alt="Drunken Rice Bomb — detail" onerror="this.style.display='none'"><span class="img-fallback">Detail. 4:3</span>
-      </div>
-      <div class="img-block" style="aspect-ratio: 4/3;">
-        <img src="images/drunken/12.png" alt="Drunken Rice Bomb — detail" onerror="this.style.display='none'"><span class="img-fallback">Detail. 4:3</span>
-      </div>
+      <div class="img-block" style="aspect-ratio: 4/3;"><img src="images/drunken/11.png" alt="Drunken Rice Bomb — detail" onerror="this.style.display='none'"><span class="img-fallback">drunken/11.png · 4:3</span></div>
+      <div class="img-block" style="aspect-ratio: 4/3;"><img src="images/drunken/12.png" alt="Drunken Rice Bomb — detail" onerror="this.style.display='none'"><span class="img-fallback">drunken/12.png · 4:3</span></div>
     </div>
-
-    <div class="img-block full" style="aspect-ratio: 21/9; margin-bottom: 24px;">
-      <img src="images/drunken/13.png" alt="Drunken Rice Bomb — wide shot" onerror="this.style.display='none'"><span class="img-fallback">Wide shot. 21:9</span>
-    </div>
-
+    <div class="img-block full" style="aspect-ratio: 21/9; margin-bottom: 24px;"><img src="images/drunken/13.png" alt="Drunken Rice Bomb — wide shot" onerror="this.style.display='none'"><span class="img-fallback">drunken/13.png · 21:9</span></div>
     <div class="section-images-grid">
-      <div class="img-block" style="aspect-ratio: 4/3;">
-        <img src="images/drunken/14.png" alt="Drunken Rice Bomb — detail" onerror="this.style.display='none'"><span class="img-fallback">Detail. 4:3</span>
-      </div>
-      <div class="img-block" style="aspect-ratio: 4/3;">
-        <img src="images/drunken/15.png" alt="Drunken Rice Bomb — detail" onerror="this.style.display='none'"><span class="img-fallback">Detail. 4:3</span>
-      </div>
+      <div class="img-block" style="aspect-ratio: 4/3;"><img src="images/drunken/14.png" alt="Drunken Rice Bomb — detail" onerror="this.style.display='none'"><span class="img-fallback">drunken/14.png · 4:3</span></div>
+      <div class="img-block" style="aspect-ratio: 4/3;"><img src="images/drunken/15.png" alt="Drunken Rice Bomb — detail" onerror="this.style.display='none'"><span class="img-fallback">drunken/15.png · 4:3</span></div>
     </div>
   </div>
-
   <div class="detail-section">
     <div class="section-text">
       <div class="section-tag">— In closing</div>
@@ -1662,48 +1498,26 @@
       <p class="section-body">The masks did their job for centuries. Drunken Rice Bomb hopes to carry a little of that forward — warding off the bad and welcoming the good, with a little buzz along the way.</p>
     </div>
   </div>
-
-  <div class="related">
-    <h3>Related Projects</h3>
-    <div class="related-grid">
-      <div class="related-item" onclick="showPage('hudson-market')">
-        <div class="related-thumb">Hudson Market thumb</div>
-        <div class="work-info">
-          <div class="work-title">Hudson Market</div>
-          <div class="work-meta">Branding · NYC</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('everything-aiga')">
-        <div class="related-thumb">AIGA × MAD thumb</div>
-        <div class="work-info">
-          <div class="work-title">AIGA NY × MAD</div>
-          <div class="work-meta">Graphic · Event</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('about')">
-        <div class="related-thumb">About thumb</div>
-        <div class="work-info">
-          <div class="work-title">About Suho</div>
-          <div class="work-meta">Bio · Contact</div>
-        </div>
-      </div>
+  <div class="project-nav">
+    <div class="project-nav-item prev" onclick="showPage('everything-aiga')">
+      <div class="project-nav-label">← Prev</div>
+      <div class="project-nav-title">AIGA NY × MAD</div>
+    </div>
+    <div class="project-nav-item next" onclick="showPage('transfoner')">
+      <div class="project-nav-label">Next →</div>
+      <div class="project-nav-title">Transfoner</div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================
-     MISCELLANEOUS
-     Image folder: /images/misc/
-     17 images total — banner + brand work grid + closing
+     MISCELLANEOUS · Image folder: /images/misc/
      ========================================================= -->
 <section class="page" id="page-miscellaneous">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
-
-  <!-- ─── 1. BANNER (21:9) ─── -->
   <div class="detail-banner">
-    <img src="images/misc/01.png" alt="Miscellaneous brand work — hero composition" onerror="this.style.display='none'"><span class="img-fallback">Banner — composite or standout piece. 21:9</span>
+    <img src="images/misc/01.png" alt="Miscellaneous brand work — hero composition" onerror="this.style.display='none'"><span class="img-fallback">misc/01.png · 21:9</span>
   </div>
-
   <div class="detail-intro">
     <div>
       <h1 class="detail-title"><em>Miscellaneous.</em></h1>
@@ -1712,286 +1526,300 @@
       <p style="font-size: 18px; line-height: 1.6; color: var(--ink-soft); max-width: 540px;">A wider look at brand work across industries — e-commerce, retail, advertising, hospitality, and publication. Different clients, different briefs, one approach: clear thinking, careful execution, a strong visual hand.</p>
     </div>
   </div>
-
-  <!-- ─── 2. LIGHT SECTION — Featured + grid ─── -->
   <div class="detail-section">
-    <!-- SET 1: 02, 03, 04 (20px between) -->
-    <div class="img-block full" style="aspect-ratio: 21/9;">
-      <img src="images/misc/02.png" alt="Featured brand work — full-width" onerror="this.style.display='none'"><span class="img-fallback">Featured work 01 — full-width · 21:9</span>
-    </div>
+    <div class="img-block full" style="aspect-ratio: 21/9;"><img src="images/misc/02.png" alt="Featured brand work — full-width" onerror="this.style.display='none'"><span class="img-fallback">misc/02.png · 21:9</span></div>
     <div class="section-images-grid" style="margin-top: 20px; margin-bottom: 0;">
-      <div class="img-block">
-        <img src="images/misc/03.png" alt="Brand work 02" onerror="this.style.display='none'"><span class="img-fallback">Brand work 02</span>
-      </div>
-      <div class="img-block">
-        <img src="images/misc/04.png" alt="Brand work 03" onerror="this.style.display='none'"><span class="img-fallback">Brand work 03</span>
-      </div>
+      <div class="img-block"><img src="images/misc/03.png" alt="Brand work 02" onerror="this.style.display='none'"><span class="img-fallback">misc/03.png · 4:3</span></div>
+      <div class="img-block"><img src="images/misc/04.png" alt="Brand work 03" onerror="this.style.display='none'"><span class="img-fallback">misc/04.png · 4:3</span></div>
     </div>
-
-    <!-- SET 2: 05, 06, 07, 08 (20px between) — 160px gap from SET 1 -->
-    <div class="img-block full" style="margin-top: 160px; aspect-ratio: 3/1;">
-      <img src="images/misc/05.png" alt="Brand work 04 — full-width" onerror="this.style.display='none'"><span class="img-fallback">Brand work 04 — full-width · 3:1</span>
-    </div>
-    <div class="img-block full" style="margin-top: 20px; aspect-ratio: 2/1;">
-      <img src="images/misc/06.png" alt="Brand work 05 — full-width" onerror="this.style.display='none'"><span class="img-fallback">Brand work 05 — full-width · 2:1</span>
-    </div>
+    <div class="img-block full" style="margin-top: 160px; aspect-ratio: 3/1;"><img src="images/misc/05.png" alt="Brand work 04 — full-width" onerror="this.style.display='none'"><span class="img-fallback">misc/05.png · 3:1</span></div>
+    <div class="img-block full" style="margin-top: 20px; aspect-ratio: 2/1;"><img src="images/misc/06.png" alt="Brand work 05 — full-width" onerror="this.style.display='none'"><span class="img-fallback">misc/06.png · 2:1</span></div>
     <div class="section-images-grid" style="margin-top: 20px; margin-bottom: 0;">
-      <div class="img-block">
-        <img src="images/misc/07.png" alt="Brand work 06" onerror="this.style.display='none'"><span class="img-fallback">Brand work 06 · 4:3</span>
-      </div>
-      <div class="img-block">
-        <img src="images/misc/08.png" alt="Brand work 07" onerror="this.style.display='none'"><span class="img-fallback">Brand work 07 · 4:3</span>
-      </div>
+      <div class="img-block"><img src="images/misc/07.png" alt="Brand work 06" onerror="this.style.display='none'"><span class="img-fallback">misc/07.png · 4:3</span></div>
+      <div class="img-block"><img src="images/misc/08.png" alt="Brand work 07" onerror="this.style.display='none'"><span class="img-fallback">misc/08.png · 4:3</span></div>
     </div>
-
-    <!-- SET 3: 09, 10, 11 (20px between) — 160px gap from SET 2 -->
-    <div class="img-block full" style="margin-top: 160px; aspect-ratio: 16/9;">
-      <img src="images/misc/09.png" alt="Brand work 08 — full-width" onerror="this.style.display='none'"><span class="img-fallback">Brand work 08 — full-width · 16:9</span>
-    </div>
+    <div class="img-block full" style="margin-top: 160px; aspect-ratio: 16/9;"><img src="images/misc/09.png" alt="Brand work 08 — full-width" onerror="this.style.display='none'"><span class="img-fallback">misc/09.png · 16:9</span></div>
     <div class="section-images-grid" style="margin-top: 20px; margin-bottom: 0;">
-      <div class="img-block">
-        <img src="images/misc/10.png" alt="Brand work 09" onerror="this.style.display='none'"><span class="img-fallback">Brand work 09 · 4:3</span>
-      </div>
-      <div class="img-block">
-        <img src="images/misc/11.png" alt="Brand work 10" onerror="this.style.display='none'"><span class="img-fallback">Brand work 10 · 4:3</span>
-      </div>
+      <div class="img-block"><img src="images/misc/10.png" alt="Brand work 09" onerror="this.style.display='none'"><span class="img-fallback">misc/10.png · 4:3</span></div>
+      <div class="img-block"><img src="images/misc/11.png" alt="Brand work 10" onerror="this.style.display='none'"><span class="img-fallback">misc/11.png · 4:3</span></div>
     </div>
   </div>
-
-  <!-- ─── 3. DARK SECTION — Pieces that look better on dark ─── -->
   <div class="detail-section dark">
-    <div class="img-block full" style="margin-top: 0;">
-      <img src="images/misc/12.png" alt="Brand work 11 — full-width statement on dark" onerror="this.style.display='none'"><span class="img-fallback">Brand work 11 — full-width on dark</span>
-    </div>
-
-    <!-- SET 4: 13, 14, 15 (20px between) — 160px gap from previous -->
-    <div class="img-block full" style="margin-top: 160px; aspect-ratio: 21/9;">
-      <img src="images/misc/13.png" alt="Brand work 12 — full-width" onerror="this.style.display='none'"><span class="img-fallback">Brand work 12 — full-width · 21:9</span>
-    </div>
+    <div class="img-block full" style="margin-top: 0;"><img src="images/misc/12.png" alt="Brand work 11 — full-width statement on dark" onerror="this.style.display='none'"><span class="img-fallback">misc/12.png · 16:9</span></div>
+    <div class="img-block full" style="margin-top: 160px; aspect-ratio: 21/9;"><img src="images/misc/13.png" alt="Brand work 12 — full-width" onerror="this.style.display='none'"><span class="img-fallback">misc/13.png · 21:9</span></div>
     <div class="section-images-grid" style="margin-top: 20px; margin-bottom: 0;">
-      <div class="img-block">
-        <img src="images/misc/14.png" alt="Brand work 13" onerror="this.style.display='none'"><span class="img-fallback">Brand work 13 · 4:3</span>
-      </div>
-      <div class="img-block">
-        <img src="images/misc/15.png" alt="Brand work 14" onerror="this.style.display='none'"><span class="img-fallback">Brand work 14 · 4:3</span>
-      </div>
+      <div class="img-block"><img src="images/misc/14.png" alt="Brand work 13" onerror="this.style.display='none'"><span class="img-fallback">misc/14.png · 4:3</span></div>
+      <div class="img-block"><img src="images/misc/15.png" alt="Brand work 14" onerror="this.style.display='none'"><span class="img-fallback">misc/15.png · 4:3</span></div>
     </div>
   </div>
-
-  <!-- ─── 4. LIGHT SECTION — Closing ─── -->
   <div class="detail-section">
-    <!-- Dream Hotel video — 70% centered, no autoplay -->
     <div style="max-width: 70%; margin: 0 auto;">
-      <video
-        controls
-        playsinline
-        preload="metadata"
-        style="width: 100%; height: auto; display: block; border-radius: var(--radius); background: #2a2a2a;"
-      >
+      <video controls playsinline preload="metadata" style="width: 100%; height: auto; display: block; border-radius: var(--radius); background: #2a2a2a;">
         <source src="images/misc/dreamhotel.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
-    <!-- Hwang video — same size, 60px gap -->
     <div style="max-width: 70%; margin: 60px auto 0;">
-      <video
-        controls
-        playsinline
-        preload="metadata"
-        poster="images/misc/hwang-poster.png"
-        style="width: 100%; height: auto; display: block; border-radius: var(--radius); background: #2a2a2a;"
-      >
+      <video controls playsinline preload="metadata" poster="images/misc/hwang-poster.png" style="width: 100%; height: auto; display: block; border-radius: var(--radius); background: #2a2a2a;">
         <source src="images/misc/hwang.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
-    <div class="img-block full" style="margin-top: 60px;">
-      <img src="images/misc/16.png" alt="Closing image — final strong piece" onerror="this.style.display='none'"><span class="img-fallback">Closing image — full-width</span>
-    </div>
+    <div class="img-block full" style="margin-top: 60px;"><img src="images/misc/16.png" alt="Closing image — final strong piece" onerror="this.style.display='none'"><span class="img-fallback">misc/16.png · 16:9</span></div>
   </div>
-
   <div class="detail-section">
     <div class="section-text">
       <h2 class="section-heading">Always <em>more</em> to see<br>— <em>let's</em> <a href="mailto:suhosong.design@gmail.com" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); font-style: normal;">talk.</a></h2>
     </div>
   </div>
-
-  <div class="related">
-    <h3>Related Projects</h3>
-    <div class="related-grid">
-      <div class="related-item" onclick="showPage('hudson-market')">
-        <div class="related-thumb">Hudson Market thumb</div>
-        <div class="work-info">
-          <div class="work-title">Hudson Market</div>
-          <div class="work-meta">Branding · NYC</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('drunken-rice')">
-        <div class="related-thumb">Drunken Rice Bomb thumb</div>
-        <div class="work-info">
-          <div class="work-title">Drunken Rice Bomb</div>
-          <div class="work-meta">Branding · Self-initiated</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('about')">
-        <div class="related-thumb">About thumb</div>
-        <div class="work-info">
-          <div class="work-title">About Suho</div>
-          <div class="work-meta">Bio · Contact</div>
-        </div>
-      </div>
+  <div class="project-nav">
+    <div class="project-nav-item prev" onclick="showPage('transfoner')">
+      <div class="project-nav-label">← Prev</div>
+      <div class="project-nav-title">Transfoner</div>
     </div>
+    <div></div>
   </div>
 </section>
 
 <!-- =========================================================
-     BONDU — Founding designer, AI parenting platform
+     BONDU — Founding designer, AI companion toy for kids
+     Image folder: /images/bondu/
      ========================================================= -->
 <section class="page" id="page-bondu">
   <button class="detail-back" onclick="showPage('work')">← Back to Work</button>
 
-  <div class="detail-banner">Banner image — bondu app + toy in lifestyle context. Ideally a parent and child with the toy + phone showing the app. Or a strong product shot of the toy itself. 21:9</div>
+  <div class="detail-banner">
+    <img src="images/bondu/01.png" alt="bondu toy and parent app in lifestyle context" onerror="this.style.display='none'"><span class="img-fallback">bondu/01.png · 21:9</span>
+  </div>
 
   <div class="detail-intro">
     <div>
-      <h1 class="detail-title">A parent's <em>window</em><br>into their child's<br><em>first</em> AI friend.</h1>
+      <h1 class="detail-title">A parent's <em>window</em> into their child's <em>first</em> AI friend.</h1>
     </div>
     <div class="detail-intro-meta">
       <div class="meta-row"><div class="meta-label">Year</div><div class="meta-value">2025 — 2026</div></div>
-      <div class="meta-row"><div class="meta-label">Company</div><div class="meta-value">bondu · AI companion toy for kids ages 4–8</div></div>
+      <div class="meta-row"><div class="meta-label">Company</div><div class="meta-value">bondu · AI companion toy for kids 4–8</div></div>
       <div class="meta-row"><div class="meta-label">Role</div><div class="meta-value">Founding Designer · Design Lead</div></div>
       <div class="meta-row"><div class="meta-label">Scope</div><div class="meta-value">Mobile App · Brand · Web · Marketing</div></div>
-      <p style="margin-top: 16px;">bondu makes an AI companion toy for kids ages 4–8, and a parenting app that lets families monitor, guide, and shape how their child plays with it. I joined as the founding designer in September and led design end-to-end through the Christmas launch — then through scale, new toy features, and the brand's expansion into parent-facing growth.</p>
+      <p style="margin-top: 16px;">bondu makes an AI companion toy for kids ages 4–8, paired with a parenting app. The kid plays with the toy. The parent buys, sets up, watches, and guides. As founding designer, I led design across four phases of the business, end-to-end on every parent-facing surface: the app, the website, and beyond.</p>
+    </div>
+  </div>
+
+  <div class="detail-section dark" style="padding-bottom: 20px;">
+    <div class="section-text">
+      <div class="section-tag">— A new category, in four phases</div>
+      <h2 class="section-heading"><em>Launch.</em> <em>Sustain.</em><br><em>Build.</em> <em>Grow.</em></h2>
+      <p class="section-body">From a blank canvas to a subscription that 76.93% of users chose. Four phases shaped bondu's first chapter. Each one shipped one part of what bondu is today.</p>
+    </div>
+  </div>
+
+  <div class="detail-section dark" style="padding-top: 20px; padding-bottom: 80px;">
+    <div class="tl-wrap">
+      <div class="tl-line"></div>
+      <div class="tl-track" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="tl-milestone">
+          <div class="tl-quarter">Phase 01</div>
+          <div class="tl-label">Launch<br><span style="opacity: 0.6; font-weight: 400; font-size: 13px;">Parent app + design system, holiday shipping</span></div>
+        </div>
+        <div class="tl-milestone">
+          <div class="tl-quarter">Phase 02</div>
+          <div class="tl-label">Sustain<br><span style="opacity: 0.6; font-weight: 400; font-size: 13px;">Subscription model, Free vs Plus</span></div>
+        </div>
+        <div class="tl-milestone">
+          <div class="tl-quarter">Phase 03</div>
+          <div class="tl-label">Build<br><span style="opacity: 0.6; font-weight: 400; font-size: 13px;">North star research, habit-forming features</span></div>
+        </div>
+        <div class="tl-milestone">
+          <div class="tl-quarter">Phase 04</div>
+          <div class="tl-label">Grow<br><span style="opacity: 0.6; font-weight: 400; font-size: 13px;">bondu.com redesign, marketing system</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="img-block" style="aspect-ratio: 21/9; margin-top: 60px;">
+      <img src="images/bondu/02.png" alt="bondu overview — toy and parent app together" onerror="this.style.display='none'"><span class="img-fallback">bondu/02.png · 21:9</span>
     </div>
   </div>
 
   <div class="detail-section">
     <div class="section-text">
-      <div class="section-tag">01 — The Challenge</div>
-      <h2 class="section-heading">Designing <em>trust</em><br>for a brand new <em>category.</em></h2>
-      <p class="section-body">AI in a child's hands raises questions no one has fully answered yet. Parents need a way to see what their kid is talking about, set guardrails, and step in when needed — without making the interaction feel surveilled. Kids need a friend that's actually fun, not a chaperoned toy that knows it's being watched. The whole product had to hold both of those truths at once, inside a category that didn't have a playbook.</p>
-    </div>
-    <div class="img-block full" style="margin-top: 60px; margin-bottom: 24px;">
-      Context image — the bondu toy in a child's hands, or app+toy together. Sets the world of the product. 16:9
-    </div>
-    <div class="section-images-grid">
-      <div class="img-block">Research / discovery artifacts — parent interviews, market landscape</div>
-      <div class="img-block">Early UX explorations — trust, monitoring, family sharing concepts</div>
-    </div>
-  </div>
-
-  <div class="detail-section">
-    <div class="section-text" style="margin-bottom: 60px;">
       <div class="section-tag">— Phase 1: Launch</div>
-      <h2 class="section-heading">From <em>September</em><br>to <em>Christmas.</em></h2>
-      <p class="section-body">Four months from blank canvas to a shipping product, with one shot at the holiday season. As founding designer I built the entire parent-facing app — onboarding, chat monitoring, family dashboard, settings, family sharing, and the guidance layer that lets parents shape how the AI behaves. The design system came up alongside it, so the team could keep moving fast as features arrived.</p>
+      <h2 class="section-heading">Building the <em>bridge.</em></h2>
+      <p class="section-body">As the team's first designer, my main focus for the holiday launch was the parent app, end-to-end in four months. Onboarding, setup, dashboard, chat monitoring, settings, family sharing. The design foundation grew alongside — a system to tie every future feature together, so as bondu grew, it would still feel like one product.</p>
+      <p class="section-body" style="margin-top: 24px;">The entire bondu experience is COPPA-compliant, the US child-safety standard. Every play conversation runs through safety filters. And through the app, parents can monitor chat, get summaries and alerts, set guardrails, and delete anything anytime. <span style="color: #000000;">Safety, accessibility, and usability</span> — the three principles behind every design decision.</p>
     </div>
-
-    <div class="section-images-grid">
-      <div class="img-block tall">Mobile app — onboarding flow, key screens</div>
-      <div class="img-block tall">Mobile app — chat monitoring + guidance UI</div>
+    <div class="img-block" style="aspect-ratio: 21/9; margin-top: 60px;">
+      <img src="images/bondu/03.png" alt="Parent app — onboarding flow" onerror="this.style.display='none'"><span class="img-fallback">bondu/03.png · 21:9</span>
     </div>
-
-    <div class="section-images-grid" style="margin-top: 24px;">
-      <div class="img-block">Family dashboard — main parent home</div>
-      <div class="img-block">Settings + family sharing — multiple caregivers</div>
+    <div class="img-block" style="aspect-ratio: 21/9; margin-top: 24px;">
+      <img src="images/bondu/04.png" alt="Parent app — chat monitoring + guidance UI" onerror="this.style.display='none'"><span class="img-fallback">bondu/04.png · 21:9</span>
+    </div>
+    <div class="img-block" style="aspect-ratio: 21/9; margin-top: 24px;">
+      <img src="images/bondu/05.png" alt="Family dashboard" onerror="this.style.display='none'"><span class="img-fallback">bondu/05.png · 21:9</span>
     </div>
   </div>
 
   <div class="detail-section">
     <div class="section-text">
-      <div class="section-tag">02 — Trust First</div>
-      <h2 class="section-heading">Visible enough to <em>relax,</em><br>quiet enough to <em>let kids be kids.</em></h2>
-      <p class="section-body">The whole parent experience is built around one principle: show enough that you can trust the toy, hide enough that the child doesn't feel watched. Conversation feeds, persona controls, and bedtime boundaries all sit one tap away — but they don't shout. Compliance with child-focused requirements like COPPA shaped the UX from the first wireframe, not as an afterthought layer bolted on at the end.</p>
+      <div class="section-tag">— Phase 2: Sustain</div>
+      <h2 class="section-heading">A business that can<br><em>carry</em> the cost of AI.</h2>
+      <p class="section-body">AI doesn't run for free. LLM costs are real, and runway is tight. Just weeks after launch, we shipped a subscription model: Free vs Plus, at $19.99 a month. Plus opened up more talk time, in 27 languages, and the full library of play features — Personas, Bedtime Mode, Immersive Stories, Motion-responsive play, and more.</p>
+      <p class="section-body" style="margin-top: 24px;">"Scale" would imply natural growth. This was a deliberate bet to turn a one-time toy purchase into a recurring product, while keeping the toy itself accessible.</p>
     </div>
     <div class="section-images-grid" style="margin-top: 60px;">
-      <div class="img-block">Trust UX details — chat review, conversation feed, intervention moments</div>
-      <div class="img-block">COPPA-aligned safety flows — consent, data handling, parental control</div>
+      <div class="img-block" style="aspect-ratio: 1/1;">
+        <img src="images/bondu/06.png" alt="Subscription paywall — Free vs Plus" onerror="this.style.display='none'"><span class="img-fallback">bondu/06.png · 1:1</span>
+      </div>
+      <div class="img-block" style="aspect-ratio: 1/1;">
+        <img src="images/bondu/07.png" alt="Upgrade flow and manage subscription" onerror="this.style.display='none'"><span class="img-fallback">bondu/07.png · 1:1</span>
+      </div>
     </div>
   </div>
 
   <div class="detail-section dark">
-    <div class="section-text" style="margin-bottom: 60px;">
-      <div class="section-tag">— Phase 2: Scale & Grow</div>
-      <h2 class="section-heading">After launch,<br>the <em>real</em> design work.</h2>
-      <p class="section-body">Launching the product was the start, not the finish. Once kids and parents were actually using bondu, the question became how to keep them coming back. New toy features rolled out almost every week — Personas, Bedtime, Motion, Games like Treasure Hunt and Mugunghwa, Stories, Brain Boost. Each one needed its own UI in the parent app, all sitting inside the same system. A subscription model went in alongside it, turning a one-time toy into a recurring product.</p>
+    <div class="section-text">
+      <div class="section-tag">— Phase 3: Build</div>
+      <h2 class="section-heading">Built on <em>why</em><br>kids stayed.</h2>
+      <p class="section-body">Kids that age churn for endless scattered reasons. They get bored, move on, get distracted. The default product question is to ask <em>why they leave</em> and try to fix it. We asked the opposite. <em>Why do power users stay?</em> We studied the kids who kept coming back — power users across different ages, energies, and usage shapes. Three patterns held across all of them. Each one shaped a feature to build.</p>
     </div>
-
-    <div class="section-images-grid">
-      <div class="img-block tall">New feature UI — Personas, Bedtime, or another habit-forming play feature</div>
-      <div class="img-block tall">Games inside the app — Treasure Hunt, Mugunghwa, Brain Boost</div>
+    <div class="section-images-grid-3" style="margin-top: 60px; margin-bottom: 0;">
+      <div style="background: #2a2a2a; padding: 32px; border-radius: 32px; display: flex; flex-direction: column;">
+        <div class="mono" style="color: var(--accent); font-size: 11px;">— Personalization</div>
+        <div style="font-family: 'Space Grotesk', Georgia, serif; font-size: 64px; font-weight: 300; line-height: 1; color: var(--bg); font-style: normal; letter-spacing: -0.03em; margin-top: 24px;">266</div>
+        <div class="mono" style="color: #8a8884; margin-top: 10px; font-size: 11px;">emotional moments shared</div>
+        <p style="color: #a0a0a0; font-size: 14px; line-height: 1.55; margin-top: 20px; flex-grow: 1;">One power user shared 266 emotional moments across 463 sessions — feelings, family stories, what happened that day. Parents asked for the same on their end: <em style="color: var(--bg); font-style: normal;">a place to feed bondu their kid's news</em>, like "she was sick today" or "he scored his first goal", so bondu carried that context into every chat.</p>
+        <div class="mono" style="color: var(--bg); font-size: 11px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1);">→ Talk to bondu</div>
+      </div>
+      <div style="background: #2a2a2a; padding: 32px; border-radius: 32px; display: flex; flex-direction: column;">
+        <div class="mono" style="color: var(--accent); font-size: 11px;">— Routine</div>
+        <div style="font-family: 'Space Grotesk', Georgia, serif; font-size: 64px; font-weight: 300; line-height: 1; color: var(--bg); font-style: normal; letter-spacing: -0.03em; margin-top: 24px;">69 <span style="font-size: 0.6em;">days</span></div>
+        <div class="mono" style="color: #8a8884; margin-top: 10px; font-size: 11px;">of consistent return</div>
+        <p style="color: #a0a0a0; font-size: 14px; line-height: 1.55; margin-top: 20px; flex-grow: 1;">Kids who stayed didn't binge — they showed up. One power user came back across 69 active days. Another held a steady rhythm for 37. Parents kept asking for the same thing: <em style="color: var(--bg); font-style: normal;">a healthy daily rhythm where bondu plays alongside</em>.</p>
+        <div class="mono" style="color: var(--bg); font-size: 11px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1);">→ Bedtime Mode</div>
+      </div>
+      <div style="background: #2a2a2a; padding: 32px; border-radius: 32px; display: flex; flex-direction: column;">
+        <div class="mono" style="color: var(--accent); font-size: 11px;">— Pretend play</div>
+        <div style="font-family: 'Space Grotesk', Georgia, serif; font-size: 64px; font-weight: 300; line-height: 1; color: var(--bg); font-style: normal; letter-spacing: -0.03em; margin-top: 24px;">129</div>
+        <div class="mono" style="color: #8a8884; margin-top: 10px; font-size: 11px;">pretend play sessions</div>
+        <p style="color: #a0a0a0; font-size: 14px; line-height: 1.55; margin-top: 20px; flex-grow: 1;"><em style="color: var(--bg); font-style: normal;">Pretend play was the most common pattern across the power users.</em> 129 sessions for one kid alone. Kids treated bondu as a roleplay partner with a backstory: a pirate, a chef, a friend. Not a question-answering machine.</p>
+        <div class="mono" style="color: var(--bg); font-size: 11px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1);">→ Personas + Immersive Stories</div>
+      </div>
     </div>
-
-    <div class="img-block full" style="margin-top: 24px;">
-      Feature lineup — multiple toy features in the app, showing the system at scale
+    <div class="section-text" style="margin-top: 60px;">
+      <p class="section-body">Around those three, supporting features shipped alongside: Languages, Brain Boost, Motion-responsive play, and games like treasure hunt and red light, green light.</p>
     </div>
-
-    <div class="section-images-grid" style="margin-top: 24px;">
-      <div class="img-block">Subscription flow — pricing, upgrade, manage</div>
-      <div class="img-block">Stories + Brain Boost — content-driven feature design</div>
+    <div class="marquee-wrap" style="margin-top: 60px;">
+      <div class="marquee-track">
+        <div class="marquee-card"><img src="images/bondu/feature-1.png" alt="bondu feature 1" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-2.png" alt="bondu feature 2" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-3.png" alt="bondu feature 3" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-4.png" alt="bondu feature 4" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-5.png" alt="bondu feature 5" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-6.png" alt="bondu feature 6" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-7.png" alt="bondu feature 7" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-8.png" alt="bondu feature 8" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-9.png" alt="bondu feature 9" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-10.png" alt="bondu feature 10" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-11.png" alt="bondu feature 11" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-12.png" alt="bondu feature 12" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-13.png" alt="bondu feature 13" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-14.png" alt="bondu feature 14" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-15.png" alt="bondu feature 15" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-16.png" alt="bondu feature 16" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-17.png" alt="bondu feature 17" onerror="this.style.display='none'"></div>
+        <div class="marquee-card"><img src="images/bondu/feature-18.png" alt="bondu feature 18" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-1.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-2.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-3.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-4.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-5.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-6.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-7.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-8.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-9.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-10.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-11.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-12.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-13.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-14.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-15.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-16.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-17.png" alt="" onerror="this.style.display='none'"></div>
+        <div class="marquee-card" aria-hidden="true"><img src="images/bondu/feature-18.png" alt="" onerror="this.style.display='none'"></div>
+      </div>
     </div>
   </div>
 
-  <div class="detail-section dark">
-    <div class="section-text" style="margin-bottom: 60px;">
-      <div class="section-tag">03 — Beyond the App</div>
-      <h2 class="section-heading">Selling bondu meant<br>designing bondu's <em>voice.</em></h2>
-      <p class="section-body">As the product matured, the design work moved outward. I led the redesign of bondu.com, the brand's parent-facing site, and built out the visual system for social posts, ads, and growth materials. Same brand, new surfaces — keeping the top of the funnel running while the product team focused on what came after install.</p>
+  <div class="detail-section dark" style="padding-top: 20px;">
+    <div class="section-text">
+      <div class="section-tag">— Loved by 1,000+ families</div>
+      <h2 class="section-heading">Built for kids.<br><em>Felt</em> by parents.</h2>
     </div>
-
-    <div class="section-images-grid">
-      <div class="img-block tall">bondu.com homepage — hero + key sections</div>
-      <div class="img-block tall">Social posts / ad creative — feed view</div>
+    <div class="section-images-grid" style="margin-top: 60px;">
+      <div style="background: #2a2a2a; padding: 32px; border-radius: 32px; display: flex; flex-direction: column;">
+        <p style="font-size: 18px; line-height: 1.55; font-weight: 300; font-style: italic; color: #a0a0a0; flex-grow: 1; margin: 0;">"Cannot express enough how much I love this toy! From encouraging her to get ready for bed, telling stories, coming up with games, learning fun facts...this thing is amazing."</p>
+        <div class="mono" style="color: var(--bg); font-size: 11px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.04em;">William &middot; father of 4 &amp; 8 year olds</div>
+      </div>
+      <div style="background: #2a2a2a; padding: 32px; border-radius: 32px; display: flex; flex-direction: column;">
+        <p style="font-size: 18px; line-height: 1.55; font-weight: 300; font-style: italic; color: #a0a0a0; flex-grow: 1; margin: 0;">"bondu picks up on my son's speech, interests, and mood, and adjusts how it interacts. Sometimes it's silly and playful, other times it's gentle and comforting and always age-appropriate."</p>
+        <div class="mono" style="color: var(--bg); font-size: 11px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.04em;">Fatima &middot; mother of 4 year old boy</div>
+      </div>
+      <div style="background: #2a2a2a; padding: 32px; border-radius: 32px; display: flex; flex-direction: column;">
+        <p style="font-size: 18px; line-height: 1.55; font-weight: 300; font-style: italic; color: #a0a0a0; flex-grow: 1; margin: 0;">"It makes space for her imagination. With bondu, she's not just being entertained, she's leading the fun. And in a house full of big kids, that matters."</p>
+        <div class="mono" style="color: var(--bg); font-size: 11px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.04em;">Majaliwa &middot; mother of 8 year old girl</div>
+      </div>
+      <div style="background: #2a2a2a; padding: 32px; border-radius: 32px; display: flex; flex-direction: column;">
+        <p style="font-size: 18px; line-height: 1.55; font-weight: 300; font-style: italic; color: #a0a0a0; flex-grow: 1; margin: 0;">"My son has auditory processing disorder, bondu provides calm, one-on-one interaction without the overstimulation of a screen."</p>
+        <div class="mono" style="color: var(--bg); font-size: 11px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.04em;">Meryl &middot; mother of 5 year old boy</div>
+      </div>
     </div>
+    <div class="testimonial-videos">
+      <div class="testimonial-video">
+        <video src="images/bondu/video-1.mp4" controls preload="metadata" playsinline></video>
+      </div>
+      <div class="testimonial-video">
+        <video src="images/bondu/video-2.mp4" controls preload="metadata" playsinline></video>
+      </div>
+      <div class="testimonial-video">
+        <video src="images/bondu/video-3.mp4" controls preload="metadata" playsinline></video>
+      </div>
+      <div class="testimonial-video">
+        <video src="images/bondu/video-4.mp4" controls preload="metadata" playsinline></video>
+      </div>
+    </div>
+  </div>
 
-    <div class="img-block full" style="margin-top: 24px;">
-      Marketing system — social grid, ad variants, growth materials together
+  <div class="detail-section">
+    <div class="section-text">
+      <div class="section-tag">— Phase 4: Grow</div>
+      <h2 class="section-heading">From product to <em>brand</em><br>to <em>funnel.</em></h2>
+      <p class="section-body">As the product matured, the design work moved outward. I led the redesign of bondu.com, the parent-facing site that doubled web conversion. Social posts, ad creative, brand voice for the parent audience. Same brand, new surfaces.</p>
+    </div>
+    <div class="img-block full" style="margin-top: 60px; aspect-ratio: 3/2;">
+      <img src="images/bondu/13.png" alt="bondu.com homepage redesign" onerror="this.style.display='none'"><span class="img-fallback">bondu/13.png · 3:2</span>
     </div>
   </div>
 
   <div class="detail-section" style="padding-top: 60px; padding-bottom: 80px;">
-    <div class="section-text" style="margin-bottom: 48px;">
-      <div class="section-tag">— Impact so far</div>
-      <h2 class="section-heading">Built for <em>trust.</em><br>And it <em>showed.</em></h2>
+    <div class="section-text">
+      <div class="section-tag">— Impact</div>
+      <h2 class="section-heading">Four phases,<br><em>four</em> numbers.</h2>
     </div>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; padding: 60px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
-      <div>
-        <div style="font-family: 'Fraunces', Georgia, serif; font-size: clamp(80px, 12vw, 160px); line-height: 1; font-weight: 400; letter-spacing: -0.04em; color: var(--accent);">76.93<span style="font-size: 0.5em; vertical-align: top; line-height: 1.6;">%</span></div>
-        <div class="mono" style="margin-top: 16px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft);">Subscription retention</div>
-      </div>
-      <div style="padding-bottom: 12px;">
-        <p style="font-family: 'Fraunces', Georgia, serif; font-size: 18px; line-height: 1.5; color: var(--ink-soft); max-width: 380px;">In a category where most consumer subscriptions struggle to keep half their users past month one, bondu held nearly four out of five — the clearest signal yet that the trust UX was landing.</p>
-      </div>
+    <div class="impact-stats" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="stat-cell"><div class="stat-number">4,000+</div><div class="stat-label">Phase 1 · Units sold at holiday launch</div></div>
+      <div class="stat-cell"><div class="stat-number" style="color: var(--accent);">76.93%</div><div class="stat-label">Phase 2 · Subscription rate</div></div>
+      <div class="stat-cell"><div class="stat-number">4.4×</div><div class="stat-label">Phase 3 · session growth · 8 min → 35 min</div></div>
+      <div class="stat-cell"><div class="stat-number">2×</div><div class="stat-label">Phase 4 · bondu.com conversion lift</div></div>
     </div>
-
-    <p class="mono" style="margin-top: 24px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-soft); opacity: 0.6;">More team-level metrics coming as the product matures.</p>
+    <div class="img-block full" style="margin-top: 80px; aspect-ratio: 21/9;">
+      <img src="images/bondu/14.png" alt="Marketing system — social posts, ad variants, growth materials" onerror="this.style.display='none'"><span class="img-fallback">bondu/14.png · 21:9</span>
+    </div>
   </div>
 
-  <div class="related">
-    <h3>Related Projects</h3>
-    <div class="related-grid">
-      <div class="related-item" onclick="showPage('thimble-app')">
-        <div class="related-thumb">Thimble app thumb</div>
-        <div class="work-info">
-          <div class="work-title">Building Thimble 0→1</div>
-          <div class="work-meta">2019—21</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('thimble-broker')">
-        <div class="related-thumb">Thimble Broker thumb</div>
-        <div class="work-info">
-          <div class="work-title">Thimble for Brokers</div>
-          <div class="work-meta">2021—23</div>
-        </div>
-      </div>
-      <div class="related-item" onclick="showPage('about')">
-        <div class="related-thumb">About thumb</div>
-        <div class="work-info">
-          <div class="work-title">About Suho</div>
-          <div class="work-meta">Bio · Contact</div>
-        </div>
-      </div>
+  <div class="project-nav">
+    <div></div>
+    <div class="project-nav-item next" onclick="showPage('thimble-app')">
+      <div class="project-nav-label">Next →</div>
+      <div class="project-nav-title">Building Thimble 0→1</div>
     </div>
   </div>
 </section>
@@ -2046,11 +1874,9 @@
     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
     const navLink = document.querySelector(`.nav-link[data-page="${name}"]`);
     if (navLink) navLink.classList.add('active');
-    // Project detail pages should highlight "Work" in nav
     if (name === 'thimble-app' || name === 'thimble-broker' || name === 'lookscope' || name === 'hudson-market' || name === 'everything-aiga' || name === 'transfoner' || name === 'drunken-rice' || name === 'miscellaneous' || name === 'bondu') {
       document.querySelector('.nav-link[data-page="work"]').classList.add('active');
     }
-    // Toggle nav dark mode for miscellaneous page
     const nav = document.getElementById('nav');
     if (name === 'miscellaneous') {
       nav.classList.add('nav-dark');
