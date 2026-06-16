@@ -66,13 +66,15 @@
   nav.nav-dark .nav-link { color: #a0a0a0; }
   nav.nav-dark .nav-link.active, nav.nav-dark .nav-link:hover { color: var(--bg); }
   nav.nav-dark .nav-link::after { background: var(--bg); }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
   body {
     background: var(--bg); color: var(--ink);
     font-family: 'Space Grotesk', Georgia, serif;
     font-weight: 400; font-size: 16px; line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    width: 100%;
+    position: relative;
   }
   .mono { font-family: 'Space Mono', monospace; letter-spacing: 0.02em; text-transform: uppercase; font-size: 11px; }
 
