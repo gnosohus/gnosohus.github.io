@@ -507,10 +507,19 @@
     background: var(--line); border: 1px solid var(--line); max-width: 900px;
   }
   .client-cell {
-    background: var(--bg); aspect-ratio: 2/1;
+    background: var(--bg); aspect-ratio: 1/1;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .client-cell img {
+    width: 70%; height: 70%; object-fit: contain; display: block; position: relative; z-index: 2;
+  }
+  .client-fallback {
+    position: absolute; inset: 0; z-index: 1;
     display: flex; align-items: center; justify-content: center;
     color: var(--ink-mute); font-family: 'Space Mono', monospace;
     font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    text-align: center; padding: 0 16px;
   }
   .recognition-list { max-width: 720px; }
   .recognition-row {
@@ -521,8 +530,8 @@
   .recognition-year { color: var(--ink-mute); }
   .recognition-detail { font-size: 16px; color: var(--ink); }
   .contact-heading-inline {
-    font-size: clamp(40px, 5.5vw, 80px); font-weight: 300;
-    line-height: 0.95; letter-spacing: -0.03em;
+    font-size: clamp(32px, 5vw, 60px); font-weight: 300;
+    line-height: 1.05; letter-spacing: -0.03em;
     margin-bottom: 60px; font-style: normal;
   }
   .contact-heading-inline em { font-style: normal; }
@@ -569,7 +578,7 @@
     .about-bio, .about-clients, .about-recognition, .about-contact {
       grid-template-columns: 1fr; gap: 24px; padding: 60px var(--gutter);
     }
-    .clients-grid { grid-template-columns: repeat(2, 1fr); }
+    .clients-grid { grid-template-columns: repeat(3, 1fr); }
     .nav-links { gap: 20px; }
     .tl-milestone { padding-right: 6px; }
     .tl-label { font-size: 12px; line-height: 1.3; }
@@ -1827,22 +1836,30 @@
 <section class="page" id="page-about">
   <div class="about-hero">
     <div class="contact-eyebrow">— About</div>
-    <h1 class="about-heading">Hello, I'm <em>Suho</em> —<br>a visual<br>communication <em>artist.</em></h1>
+    <h1 class="about-heading">Hello, I'm <em>Suho</em> —<br>a designer who makes products<br>people use and brands people <em>remember.</em></h1>
   </div>
   <div class="about-bio">
     <div class="bio-label mono">Bio</div>
     <div class="bio-text">
-      <p>Suho is a visual communication artist working across diverse practices including branding, UI/UX, digital design, and advertising. His practice focuses on creating meaningful visual experiences that connect design and people through storytelling.</p>
-      <p>He works with various clients including tech startups, design studios, and museums and art events, exploring how design can shape perception and bring clarity to complex ideas — often blending commercial and cultural expressions through a minimalist yet human-centered approach.</p>
+      <p>I'm a product and brand designer based in the Bay Area, formerly in New York. I've spent the last several years as a founding designer at tech startups — building products from scratch, shipping features that moved numbers, and creating the visual systems that held everything together.</p>
+      <p>Outside of product work, I freelance across design agencies, art institutions, and retail — bringing the same thinking to brand identity and visual communication.</p>
     </div>
   </div>
   <div class="about-clients">
     <div class="bio-label mono">Selected Clients</div>
     <div class="clients-grid">
-      <div class="client-cell">Client 01</div><div class="client-cell">Client 02</div>
-      <div class="client-cell">Client 03</div><div class="client-cell">Client 04</div>
-      <div class="client-cell">Client 05</div><div class="client-cell">Client 06</div>
-      <div class="client-cell">Client 07</div><div class="client-cell">Client 08</div>
+      <div class="client-cell"><img src="images/about/client-1.png" alt="bondu" onerror="this.style.display='none'"><span class="client-fallback">client-1</span></div>
+      <div class="client-cell"><img src="images/about/client-2.png" alt="Thimble" onerror="this.style.display='none'"><span class="client-fallback">client-2</span></div>
+      <div class="client-cell"><img src="images/about/client-3.png" alt="Pentagram" onerror="this.style.display='none'"><span class="client-fallback">client-3</span></div>
+      <div class="client-cell"><img src="images/about/client-4.png" alt="AIGA NY" onerror="this.style.display='none'"><span class="client-fallback">client-4</span></div>
+      <div class="client-cell"><img src="images/about/client-5.png" alt="MAD" onerror="this.style.display='none'"><span class="client-fallback">client-5</span></div>
+      <div class="client-cell"><img src="images/about/client-6.png" alt="LG" onerror="this.style.display='none'"><span class="client-fallback">client-6</span></div>
+      <div class="client-cell"><img src="images/about/client-7.png" alt="Dream Hotels" onerror="this.style.display='none'"><span class="client-fallback">client-7</span></div>
+      <div class="client-cell"><img src="images/about/client-8.png" alt="MTV" onerror="this.style.display='none'"><span class="client-fallback">client-8</span></div>
+      <div class="client-cell"><img src="images/about/client-9.png" alt="YG Entertainment" onerror="this.style.display='none'"><span class="client-fallback">client-9</span></div>
+      <div class="client-cell"><img src="images/about/client-10.png" alt="Hudson Market" onerror="this.style.display='none'"><span class="client-fallback">client-10</span></div>
+      <div class="client-cell"><img src="images/about/client-11.png" alt="Kia" onerror="this.style.display='none'"><span class="client-fallback">client-11</span></div>
+      <div class="client-cell"><img src="images/about/client-12.png" alt="Food Network" onerror="this.style.display='none'"><span class="client-fallback">client-12</span></div>
     </div>
   </div>
   <div class="about-recognition">
@@ -1860,8 +1877,8 @@
       <h2 class="contact-heading-inline">Have a project<br>in mind? <em>Let's</em> <a href="mailto:suhosong.design@gmail.com">talk.</a></h2>
       <div class="contact-grid">
         <div class="contact-col"><h4>Email</h4><a href="mailto:suhosong.design@gmail.com">suhosong.design@gmail.com</a></div>
-        <div class="contact-col"><h4>Elsewhere</h4><a href="#">Instagram</a><a href="#">Behance</a><a href="#">LinkedIn</a></div>
-        <div class="contact-col"><h4>Based in</h4><p>Seoul, Korea<br>Available worldwide</p></div>
+        <div class="contact-col"><h4>Elsewhere</h4><a href="#">LinkedIn</a></div>
+        <div class="contact-col"><h4>Based in</h4><p>San Francisco, CA<br>Available worldwide</p></div>
       </div>
     </div>
   </div>
