@@ -595,6 +595,33 @@
     .tl-section { padding: 60px var(--gutter) 40px; }
     .tl-label { font-size: 11px; }
     .tl-quarter { font-size: 9px; }
+
+    .section-images-grid,
+    .section-images-grid-3,
+    .section-images-grid-4,
+    .section-images-grid-5 { gap: 20px !important; }
+    /* Unify vertical spacing between stacked images on mobile */
+    .detail-section .img-block,
+    .detail-section .section-images-grid,
+    .detail-section .section-images-grid-3,
+    .detail-section .section-images-grid-4,
+    .detail-section .section-images-grid-5 {
+      margin-top: 20px !important;
+      margin-bottom: 0 !important;
+    }
+    /* More breathing room after a text block */
+    .detail-section .section-text + .img-block,
+    .detail-section .section-text + .section-images-grid,
+    .detail-section .section-text + .section-images-grid-3,
+    .detail-section .section-text + .section-images-grid-4,
+    .detail-section .section-text + .section-images-grid-5 {
+      margin-top: 40px !important;
+    }
+    /* First image in a section needs no top gap */
+    .detail-section > .img-block:first-child,
+    .detail-section > .section-images-grid:first-child {
+      margin-top: 0 !important;
+    }
   }
   /* ─── Phase 3 feature marquee ─── */
   .marquee-wrap {
