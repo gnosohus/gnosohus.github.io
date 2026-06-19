@@ -571,6 +571,23 @@
   }
   @media (max-width: 900px) {
     .misc-video { max-width: 100% !important; }
+    /* Unify all stacked image spacing to 24px once layout collapses */
+    .section-images-grid,
+    .section-images-grid-3,
+    .section-images-grid-4,
+    .section-images-grid-5 { gap: 24px !important; row-gap: 24px !important; column-gap: 24px !important; }
+    .detail-section > .img-block,
+    .detail-section > .misc-video,
+    .detail-section > .section-images-grid,
+    .detail-section > .section-images-grid-3,
+    .detail-section > .section-images-grid-4,
+    .detail-section > .section-images-grid-5 {
+      margin-top: 24px !important;
+      margin-bottom: 0 !important;
+    }
+    .detail-section .misc-video { margin-left: auto !important; margin-right: auto !important; }
+    .detail-section > .img-block:first-child,
+    .detail-section > .section-images-grid:first-child { margin-top: 0 !important; }
     .work-header, .detail-intro { grid-template-columns: 1fr; gap: 40px; }
     .work-header .meta { text-align: left; }
     .section-images-grid { grid-template-columns: 1fr; }
@@ -595,25 +612,6 @@
     .tl-section { padding: 60px var(--gutter) 40px; }
     .tl-label { font-size: 11px; }
     .tl-quarter { font-size: 9px; }
-
-    .section-images-grid,
-    .section-images-grid-3,
-    .section-images-grid-4,
-    .section-images-grid-5 { gap: 24px !important; }
-    /* Unify vertical spacing between stacked images on mobile to 24px */
-    .detail-section .img-block,
-    .detail-section .section-images-grid,
-    .detail-section .section-images-grid-3,
-    .detail-section .section-images-grid-4,
-    .detail-section .section-images-grid-5 {
-      margin-top: 24px !important;
-      margin-bottom: 0 !important;
-    }
-    /* First image in a section needs no top gap (section padding handles it) */
-    .detail-section > .img-block:first-child,
-    .detail-section > .section-images-grid:first-child {
-      margin-top: 0 !important;
-    }
   }
   /* ─── Phase 3 feature marquee ─── */
   .marquee-wrap {
