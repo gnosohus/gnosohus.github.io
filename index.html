@@ -588,6 +588,13 @@
     .detail-section .misc-video { margin-left: auto !important; margin-right: auto !important; }
     .detail-section > .img-block:first-child,
     .detail-section > .section-images-grid:first-child { margin-top: 0 !important; }
+    /* misc is one continuous dark gallery — kill section padding so image flow stays even 24px */
+    #page-miscellaneous .detail-section { padding-top: 0 !important; padding-bottom: 0 !important; }
+    #page-miscellaneous .detail-section:has(.section-text) { padding-top: 60px !important; padding-bottom: 60px !important; }
+    #page-miscellaneous .detail-section > .img-block:first-child,
+    #page-miscellaneous .detail-section > .misc-video:first-child { margin-top: 24px !important; }
+    /* Larger gallery breaks (160px on desktop) become 80px on mobile */
+    #page-miscellaneous .img-block[style*="160px"] { margin-top: 80px !important; }
     .work-header, .detail-intro { grid-template-columns: 1fr; gap: 40px; }
     .work-header .meta { text-align: left; }
     .section-images-grid { grid-template-columns: 1fr; }
