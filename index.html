@@ -593,8 +593,6 @@
     #page-miscellaneous .detail-section:has(.section-text) { padding-top: 60px !important; padding-bottom: 60px !important; }
     #page-miscellaneous .detail-section > .img-block:first-child,
     #page-miscellaneous .detail-section > .misc-video:first-child { margin-top: 24px !important; }
-    /* Larger gallery breaks (160px on desktop) become 80px on mobile */
-    #page-miscellaneous .img-block[style*="160px"] { margin-top: 80px !important; }
     .work-header, .detail-intro { grid-template-columns: 1fr; gap: 40px; }
     .work-header .meta { text-align: left; }
     .section-images-grid { grid-template-columns: 1fr; }
@@ -603,7 +601,7 @@
     .section-images-grid-5 { grid-template-columns: repeat(3, 1fr); }
     .img-block.full { grid-column: span 1; }
     .related-grid, .contact-grid { grid-template-columns: 1fr; gap: 24px; }
-    .impact-stats { grid-template-columns: 1fr; }
+    .impact-stats { grid-template-columns: 1fr !important; }
     .about-bio, .about-clients, .about-recognition, .about-contact {
       grid-template-columns: 1fr; gap: 24px; padding: 60px var(--gutter);
     }
