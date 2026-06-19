@@ -228,10 +228,10 @@
   .detail-section { padding: 80px var(--gutter); }
   .detail-section.dark { background: var(--ink); color: var(--bg); }
   .detail-section.gray { background: var(--bg-alt); }
-  .section-images-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 60px; }
-  .section-images-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-bottom: 60px; }
-  .section-images-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 60px; }
-  .section-images-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 60px; }
+  .section-images-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 0; }
+  .section-images-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-bottom: 0; }
+  .section-images-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 0; }
+  .section-images-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; margin-bottom: 0; }
   .img-block.square { aspect-ratio: 1/1; }
   .img-block {
     aspect-ratio: 4/3; background: var(--bg-alt);
@@ -599,25 +599,17 @@
     .section-images-grid,
     .section-images-grid-3,
     .section-images-grid-4,
-    .section-images-grid-5 { gap: 20px !important; }
-    /* Unify vertical spacing between stacked images on mobile */
+    .section-images-grid-5 { gap: 24px !important; }
+    /* Unify vertical spacing between stacked images on mobile to 24px */
     .detail-section .img-block,
     .detail-section .section-images-grid,
     .detail-section .section-images-grid-3,
     .detail-section .section-images-grid-4,
     .detail-section .section-images-grid-5 {
-      margin-top: 20px !important;
+      margin-top: 24px !important;
       margin-bottom: 0 !important;
     }
-    /* More breathing room after a text block */
-    .detail-section .section-text + .img-block,
-    .detail-section .section-text + .section-images-grid,
-    .detail-section .section-text + .section-images-grid-3,
-    .detail-section .section-text + .section-images-grid-4,
-    .detail-section .section-text + .section-images-grid-5 {
-      margin-top: 40px !important;
-    }
-    /* First image in a section needs no top gap */
+    /* First image in a section needs no top gap (section padding handles it) */
     .detail-section > .img-block:first-child,
     .detail-section > .section-images-grid:first-child {
       margin-top: 0 !important;
@@ -639,7 +631,7 @@
     flex: 0 0 auto;
     width: 300px;
     aspect-ratio: 2 / 3;
-    margin-right: 40px;
+    margin-right: 24px;
     border-radius: 24px;
     overflow: hidden;
     background: #2a2a2a;
@@ -1569,18 +1561,18 @@
   </div>
   <div class="detail-section">
     <div class="img-block full" style="aspect-ratio: 21/9;"><img src="images/misc/02.png" alt="Featured brand work — full-width" onerror="this.style.display='none'"><span class="img-fallback">misc/02.png · 21:9</span></div>
-    <div class="section-images-grid" style="margin-top: 20px; margin-bottom: 0;">
+    <div class="section-images-grid" style="margin-top: 24px; margin-bottom: 0;">
       <div class="img-block"><img src="images/misc/03.png" alt="Brand work 02" onerror="this.style.display='none'"><span class="img-fallback">misc/03.png · 4:3</span></div>
       <div class="img-block"><img src="images/misc/04.png" alt="Brand work 03" onerror="this.style.display='none'"><span class="img-fallback">misc/04.png · 4:3</span></div>
     </div>
     <div class="img-block full" style="margin-top: 160px; aspect-ratio: 3/1;"><img src="images/misc/05.png" alt="Brand work 04 — full-width" onerror="this.style.display='none'"><span class="img-fallback">misc/05.png · 3:1</span></div>
-    <div class="img-block full" style="margin-top: 20px; aspect-ratio: 2/1;"><img src="images/misc/06.png" alt="Brand work 05 — full-width" onerror="this.style.display='none'"><span class="img-fallback">misc/06.png · 2:1</span></div>
-    <div class="section-images-grid" style="margin-top: 20px; margin-bottom: 0;">
+    <div class="img-block full" style="margin-top: 24px; aspect-ratio: 2/1;"><img src="images/misc/06.png" alt="Brand work 05 — full-width" onerror="this.style.display='none'"><span class="img-fallback">misc/06.png · 2:1</span></div>
+    <div class="section-images-grid" style="margin-top: 24px; margin-bottom: 0;">
       <div class="img-block"><img src="images/misc/07.png" alt="Brand work 06" onerror="this.style.display='none'"><span class="img-fallback">misc/07.png · 4:3</span></div>
       <div class="img-block"><img src="images/misc/08.png" alt="Brand work 07" onerror="this.style.display='none'"><span class="img-fallback">misc/08.png · 4:3</span></div>
     </div>
     <div class="img-block full" style="margin-top: 160px; aspect-ratio: 16/9;"><img src="images/misc/09.png" alt="Brand work 08 — full-width" onerror="this.style.display='none'"><span class="img-fallback">misc/09.png · 16:9</span></div>
-    <div class="section-images-grid" style="margin-top: 20px; margin-bottom: 0;">
+    <div class="section-images-grid" style="margin-top: 24px; margin-bottom: 0;">
       <div class="img-block"><img src="images/misc/10.png" alt="Brand work 09" onerror="this.style.display='none'"><span class="img-fallback">misc/10.png · 4:3</span></div>
       <div class="img-block"><img src="images/misc/11.png" alt="Brand work 10" onerror="this.style.display='none'"><span class="img-fallback">misc/11.png · 4:3</span></div>
     </div>
@@ -1588,7 +1580,7 @@
   <div class="detail-section dark">
     <div class="img-block full" style="margin-top: 0;"><img src="images/misc/12.png" alt="Brand work 11 — full-width statement on dark" onerror="this.style.display='none'"><span class="img-fallback">misc/12.png · 16:9</span></div>
     <div class="img-block full" style="margin-top: 160px; aspect-ratio: 21/9;"><img src="images/misc/13.png" alt="Brand work 12 — full-width" onerror="this.style.display='none'"><span class="img-fallback">misc/13.png · 21:9</span></div>
-    <div class="section-images-grid" style="margin-top: 20px; margin-bottom: 0;">
+    <div class="section-images-grid" style="margin-top: 24px; margin-bottom: 0;">
       <div class="img-block"><img src="images/misc/14.png" alt="Brand work 13" onerror="this.style.display='none'"><span class="img-fallback">misc/14.png · 4:3</span></div>
       <div class="img-block"><img src="images/misc/15.png" alt="Brand work 14" onerror="this.style.display='none'"><span class="img-fallback">misc/15.png · 4:3</span></div>
     </div>
@@ -1600,13 +1592,13 @@
         Your browser does not support the video tag.
       </video>
     </div>
-    <div class="misc-video" style="max-width: 70%; margin: 60px auto 0;">
+    <div class="misc-video" style="max-width: 70%; margin: 24px auto 0;">
       <video controls playsinline preload="metadata" poster="images/misc/hwang-poster.png" style="width: 100%; height: auto; display: block; border-radius: var(--radius); background: #2a2a2a;">
         <source src="images/misc/hwang.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
-    <div class="img-block full" style="margin-top: 60px;"><img src="images/misc/16.png" alt="Closing image — final strong piece" onerror="this.style.display='none'"><span class="img-fallback">misc/16.png · 16:9</span></div>
+    <div class="img-block full" style="margin-top: 24px;"><img src="images/misc/16.png" alt="Closing image — final strong piece" onerror="this.style.display='none'"><span class="img-fallback">misc/16.png · 16:9</span></div>
   </div>
   <div class="detail-section">
     <div class="section-text">
