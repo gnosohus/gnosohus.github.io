@@ -155,15 +155,15 @@
     display: block;
   }
   /* Varied aspect ratios for visual rhythm */
-  .work-item:nth-child(1)  .work-thumb { aspect-ratio: 4/5; }
-  .work-item:nth-child(2)  .work-thumb { aspect-ratio: 1/1; }
-  .work-item:nth-child(3)  .work-thumb { aspect-ratio: 4/5; }
-  .work-item:nth-child(4)  .work-thumb { aspect-ratio: 1/1; }
+  .work-item:nth-child(1)  .work-thumb { aspect-ratio: 1/1; }
+  .work-item:nth-child(2)  .work-thumb { aspect-ratio: 4/5; }
+  .work-item:nth-child(3)  .work-thumb { aspect-ratio: 1/1; }
+  .work-item:nth-child(4)  .work-thumb { aspect-ratio: 4/5; }
   .work-item:nth-child(5)  .work-thumb { aspect-ratio: 1/1; }
   .work-item:nth-child(6)  .work-thumb { aspect-ratio: 1/1; }
-  .work-item:nth-child(7)  .work-thumb { aspect-ratio: 4/5; }
-  .work-item:nth-child(8)  .work-thumb { aspect-ratio: 1/1; }
-  .work-item:nth-child(9)  .work-thumb { aspect-ratio: 4/5; }
+  .work-item:nth-child(7)  .work-thumb { aspect-ratio: 1/1; }
+  .work-item:nth-child(8)  .work-thumb { aspect-ratio: 4/5; }
+  .work-item:nth-child(9)  .work-thumb { aspect-ratio: 1/1; }
   .work-item:nth-child(10) .work-thumb { aspect-ratio: 4/5; }
 
   .work-thumb {
@@ -704,6 +704,27 @@
       border-radius: 24px;
     }
   }
+
+  /* ═══ BART LIVE MAP — page-scoped styles ═══ */
+  #page-bart { --accent: #0088ff; --link: #0088ff; }
+  .grid-item-title {
+    font-family: 'Space Grotesk', Georgia, serif;
+    font-size: 14px; font-weight: 500; color: var(--ink);
+    margin-top: 14px; letter-spacing: -0.01em;
+  }
+  .grid-item-desc {
+    font-size: 13px; line-height: 1.5; color: var(--ink-soft);
+    margin-top: 4px;
+  }
+  .detail-section.blue { background: var(--accent); color: #fff; }
+  .blue .section-tag { color: rgba(255,255,255,0.7); }
+  .blue .section-body { color: rgba(255,255,255,0.88); }
+  .blue .img-block { background: rgba(255,255,255,0.14); color: rgba(255,255,255,0.6); }
+  .blue .grid-item-title { color: #fff; }
+  .blue .grid-item-desc { color: rgba(255,255,255,0.82); }
+  .bart-domain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .bart-domain-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .bart-domain-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -720,10 +741,22 @@
   <header class="work-header">
     <h1>Selected <em>Work</em></h1>
     <div class="meta">
-      <span class="count mono">9 Projects</span>
+      <span class="count mono">10 Projects</span>
     </div>
   </header>
   <div class="work-grid">
+
+    <!-- 0. BART Live Map — 1:1 -->
+    <div class="work-item" onclick="showPage('bart')">
+      <div class="work-thumb">
+        <img src="images/bart/thumb.png" alt="BART Live Map" onerror="this.style.display='none'">
+        <span class="work-thumb-placeholder">bart/thumb.png · 1:1</span>
+      </div>
+      <div class="work-info">
+        <div class="work-title">BART Live Map</div>
+        <div class="work-meta">Web app · AI pair-build</div>
+      </div>
+    </div>
 
     <!-- 1. bondu — 4:5 -->
     <div class="work-item" onclick="showPage('bondu')">
@@ -874,7 +907,7 @@
   </div>
 
   <div class="quote-block">
-    <blockquote>"I just need to show this venue I'm covered in a few hours."</blockquote>
+    <blockquote>&#8220;I just need to show this venue I'm covered in a few hours.&#8221;</blockquote>
     <cite>— Small business owner, user interview · 2018</cite>
   </div>
 
@@ -1043,7 +1076,7 @@
     </div>
   </div>
   <div class="quote-block">
-    <blockquote>"Brokers don't want to be charmed.<br>They want to be fast."</blockquote>
+    <blockquote>&#8220;Brokers don't want to be charmed.<br>They want to be fast.&#8221;</blockquote>
     <cite>— Insight from broker discovery interviews</cite>
   </div>
   <div class="detail-section dark" style="padding-bottom: 0;">
@@ -1167,7 +1200,7 @@
     </div>
   </div>
   <div class="quote-block">
-    <blockquote>"Let's just make the thing<br>we'd actually use ourselves."</blockquote>
+    <blockquote>&#8220;Let's just make the thing<br>we'd actually use ourselves.&#8221;</blockquote>
     <cite>— Where the whole project started</cite>
   </div>
   <div class="detail-section dark" style="padding-bottom: 0;">
@@ -1184,7 +1217,7 @@
     <div class="section-text">
       <div class="section-tag">03 — The Tension</div>
       <h2 class="section-heading">Where design meets <em>engineering,</em><br>something has to give.</h2>
-      <p class="section-body">A year of working with one engineer taught me lessons no team could have. We disagreed often — sometimes for weeks — about whether a feature was worth building. The fix wasn't picking a winner. It was sitting down, talking through trade-offs, and finding a third option together. The harder lesson was time. Without a client or deadline, the project stretched longer than it should have. Even a passion project needs milestones. "We'll get to it" is the most expensive sentence two collaborators can say.</p>
+      <p class="section-body">A year of working with one engineer taught me lessons no team could have. We disagreed often — sometimes for weeks — about whether a feature was worth building. The fix wasn't picking a winner. It was sitting down, talking through trade-offs, and finding a third option together. The harder lesson was time. Without a client or deadline, the project stretched longer than it should have. Even a passion project needs milestones. &#8220;We'll get to it&#8221; is the most expensive sentence two collaborators can say.</p>
     </div>
     <div class="img-block full" style="aspect-ratio: 21/9; margin-top: 60px;">
       <img src="images/lookscope/04.png" alt="Lookscope icon system printed on paper — weather, garments, expressions" onerror="this.style.display='none'"><span class="img-fallback">lookscope/04.png · 21:9</span>
@@ -1327,7 +1360,7 @@
       <div class="meta-row"><div class="meta-label">Studio</div><div class="meta-value">Everything Studio · Lower East Side, NYC</div></div>
       <div class="meta-row"><div class="meta-label">Client</div><div class="meta-value">AIGA NY × Museum of Arts and Design</div></div>
       <div class="meta-row"><div class="meta-label">Role</div><div class="meta-value">Invitation Design</div></div>
-      <div class="meta-row"><div class="meta-label">Event</div><div class="meta-value">"Owner at Self: Adaptive and Innovative Design Practices"</div></div>
+      <div class="meta-row"><div class="meta-label">Event</div><div class="meta-value">&#8220;Owner at Self: Adaptive and Innovative Design Practices&#8221;</div></div>
       <p style="margin-top: 16px;">Everything Studio was invited as the guest speaker for an AIGA NY event hosted at the Museum of Arts and Design — a lecture about adaptive, multidisciplinary design practice. Joining the studio early in my career, working alongside its founder, I was asked to design the event's digital invitation. The brief was small. The audience was anyone who pays attention to graphic design in New York.</p>
     </div>
   </div>
@@ -1715,7 +1748,7 @@
       <div class="section-tag">— Phase 2: Sustain</div>
       <h2 class="section-heading">A business that can<br><em>carry</em> the cost of AI.</h2>
       <p class="section-body">AI doesn't run for free. LLM costs are real, and runway is tight. Just weeks after launch, we shipped a subscription model: Free vs Plus, at $19.99 a month. Plus opened up more talk time, in 27 languages, and the full library of play features — Personas, Bedtime Mode, Immersive Stories, Motion-responsive play, and more.</p>
-      <p class="section-body" style="margin-top: 24px;">"Scale" would imply natural growth. This was a deliberate bet to turn a one-time toy purchase into a recurring product, while keeping the toy itself accessible.</p>
+      <p class="section-body" style="margin-top: 24px;">&#8220;Scale&#8221; would imply natural growth. This was a deliberate bet to turn a one-time toy purchase into a recurring product, while keeping the toy itself accessible.</p>
     </div>
     <div class="section-images-grid" style="margin-top: 60px;">
       <div class="img-block" style="aspect-ratio: 1/1;">
@@ -1735,21 +1768,21 @@
     </div>
     <div class="section-images-grid-3" style="margin-top: 60px; margin-bottom: 0;">
       <div class="card-r" style="background: #2a2a2a; padding: 32px; border-radius: 24px; display: flex; flex-direction: column;">
-        <div class="mono" style="color: var(--link); font-size: 11px;">— Personalization</div>
+        <div style="font-size: 24px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; color: var(--link);">Personalization</div>
         <div style="font-family: 'Space Grotesk', Georgia, serif; font-size: 64px; font-weight: 300; line-height: 1; color: var(--bg); font-style: normal; letter-spacing: -0.03em; margin-top: 24px;">266</div>
         <div class="mono" style="color: #8a8884; margin-top: 10px; font-size: 11px;">emotional moments shared</div>
-        <p style="color: #a0a0a0; font-size: 14px; line-height: 1.55; margin-top: 20px; flex-grow: 1;">One power user shared 266 emotional moments across 463 sessions — feelings, family stories, what happened that day. Parents asked for the same on their end: <em style="color: var(--bg); font-style: normal;">a place to feed bondu their kid's news</em>, like "she was sick today" or "he scored his first goal", so bondu carried that context into every chat.</p>
+        <p style="color: #a0a0a0; font-size: 14px; line-height: 1.55; margin-top: 20px; flex-grow: 1;">One power user shared 266 emotional moments across 463 sessions — feelings, family stories, what happened that day. Parents asked for the same on their end: <em style="color: var(--bg); font-style: normal;">a place to feed bondu their kid's news</em>, like &#8220;she was sick today&#8221; or &#8220;he scored his first goal&#8221;, so bondu carried that context into every chat.</p>
         <div class="mono" style="color: var(--bg); font-size: 11px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1);">→ Talk to bondu</div>
       </div>
       <div class="card-r" style="background: #2a2a2a; padding: 32px; border-radius: 24px; display: flex; flex-direction: column;">
-        <div class="mono" style="color: var(--link); font-size: 11px;">— Routine</div>
+        <div style="font-size: 24px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; color: var(--link);">Routine</div>
         <div style="font-family: 'Space Grotesk', Georgia, serif; font-size: 64px; font-weight: 300; line-height: 1; color: var(--bg); font-style: normal; letter-spacing: -0.03em; margin-top: 24px;">69 <span style="font-size: 0.6em;">days</span></div>
         <div class="mono" style="color: #8a8884; margin-top: 10px; font-size: 11px;">of consistent return</div>
         <p style="color: #a0a0a0; font-size: 14px; line-height: 1.55; margin-top: 20px; flex-grow: 1;">Kids who stayed didn't binge — they showed up. One power user came back across 69 active days. Another held a steady rhythm for 37. Parents kept asking for the same thing: <em style="color: var(--bg); font-style: normal;">a healthy daily rhythm where bondu plays alongside</em>.</p>
         <div class="mono" style="color: var(--bg); font-size: 11px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1);">→ Bedtime Mode</div>
       </div>
       <div class="card-r" style="background: #2a2a2a; padding: 32px; border-radius: 24px; display: flex; flex-direction: column;">
-        <div class="mono" style="color: var(--link); font-size: 11px;">— Pretend play</div>
+        <div style="font-size: 24px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; color: var(--link);">Pretend play</div>
         <div style="font-family: 'Space Grotesk', Georgia, serif; font-size: 64px; font-weight: 300; line-height: 1; color: var(--bg); font-style: normal; letter-spacing: -0.03em; margin-top: 24px;">129</div>
         <div class="mono" style="color: #8a8884; margin-top: 10px; font-size: 11px;">pretend play sessions</div>
         <p style="color: #a0a0a0; font-size: 14px; line-height: 1.55; margin-top: 20px; flex-grow: 1;"><em style="color: var(--bg); font-style: normal;">Pretend play was the most common pattern across the power users.</em> 129 sessions for one kid alone. Kids treated bondu as a roleplay partner with a backstory: a pirate, a chef, a friend. Not a question-answering machine.</p>
@@ -1808,19 +1841,19 @@
     </div>
     <div class="section-images-grid" style="margin-top: 60px;">
       <div class="card-r" style="background: #2a2a2a; padding: 32px; border-radius: 24px; display: flex; flex-direction: column;">
-        <p style="font-size: 18px; line-height: 1.55; font-weight: 300; font-style: italic; color: #a0a0a0; flex-grow: 1; margin: 0;">"Cannot express enough how much I love this toy! From encouraging her to get ready for bed, telling stories, coming up with games, learning fun facts...this thing is amazing."</p>
+        <p style="font-size: 18px; line-height: 1.55; font-weight: 300; font-style: italic; color: #a0a0a0; flex-grow: 1; margin: 0;">&#8220;Cannot express enough how much I love this toy! From encouraging her to get ready for bed, telling stories, coming up with games, learning fun facts...this thing is amazing.&#8221;</p>
         <div class="mono" style="color: var(--bg); font-size: 11px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.04em;">William &middot; father of 4 &amp; 8 year olds</div>
       </div>
       <div class="card-r" style="background: #2a2a2a; padding: 32px; border-radius: 24px; display: flex; flex-direction: column;">
-        <p style="font-size: 18px; line-height: 1.55; font-weight: 300; font-style: italic; color: #a0a0a0; flex-grow: 1; margin: 0;">"bondu picks up on my son's speech, interests, and mood, and adjusts how it interacts. Sometimes it's silly and playful, other times it's gentle and comforting and always age-appropriate."</p>
+        <p style="font-size: 18px; line-height: 1.55; font-weight: 300; font-style: italic; color: #a0a0a0; flex-grow: 1; margin: 0;">&#8220;bondu picks up on my son's speech, interests, and mood, and adjusts how it interacts. Sometimes it's silly and playful, other times it's gentle and comforting and always age-appropriate.&#8221;</p>
         <div class="mono" style="color: var(--bg); font-size: 11px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.04em;">Fatima &middot; mother of 4 year old boy</div>
       </div>
       <div class="card-r" style="background: #2a2a2a; padding: 32px; border-radius: 24px; display: flex; flex-direction: column;">
-        <p style="font-size: 18px; line-height: 1.55; font-weight: 300; font-style: italic; color: #a0a0a0; flex-grow: 1; margin: 0;">"It makes space for her imagination. With bondu, she's not just being entertained, she's leading the fun. And in a house full of big kids, that matters."</p>
+        <p style="font-size: 18px; line-height: 1.55; font-weight: 300; font-style: italic; color: #a0a0a0; flex-grow: 1; margin: 0;">&#8220;It makes space for her imagination. With bondu, she's not just being entertained, she's leading the fun. And in a house full of big kids, that matters.&#8221;</p>
         <div class="mono" style="color: var(--bg); font-size: 11px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.04em;">Majaliwa &middot; mother of 8 year old girl</div>
       </div>
       <div class="card-r" style="background: #2a2a2a; padding: 32px; border-radius: 24px; display: flex; flex-direction: column;">
-        <p style="font-size: 18px; line-height: 1.55; font-weight: 300; font-style: italic; color: #a0a0a0; flex-grow: 1; margin: 0;">"My son has auditory processing disorder, bondu provides calm, one-on-one interaction without the overstimulation of a screen."</p>
+        <p style="font-size: 18px; line-height: 1.55; font-weight: 300; font-style: italic; color: #a0a0a0; flex-grow: 1; margin: 0;">&#8220;My son has auditory processing disorder, bondu provides calm, one-on-one interaction without the overstimulation of a screen.&#8221;</p>
         <div class="mono" style="color: var(--bg); font-size: 11px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); letter-spacing: 0.04em;">Meryl &middot; mother of 5 year old boy</div>
       </div>
     </div>
@@ -1868,10 +1901,179 @@
   </div>
 
   <div class="project-nav">
-    <div></div>
+    <div class="project-nav-item prev" onclick="showPage('bart')">
+      <div class="project-nav-label">← Prev</div>
+      <div class="project-nav-title">BART Live Map</div>
+    </div>
     <div class="project-nav-item next" onclick="showPage('thimble-app')">
       <div class="project-nav-label">Next →</div>
       <div class="project-nav-title">Building Thimble 0→1</div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     BART LIVE MAP · Image folder: /images/bart/
+     ========================================================= -->
+<section class="page" id="page-bart">
+<button class="detail-back" onclick="showPage('work')">← Back to Work</button>
+
+<div class="detail-banner">
+  <img src="images/bart/01.png" alt="BART Live Map — full network zoomed out, trains in transit" onerror="this.style.display='none'"><span class="img-fallback">bart/01.png · 21:9</span>
+</div>
+
+<div class="detail-intro">
+  <div>
+    <h1 class="detail-title">&#128647; A real-time BART map, vibe-coded with Claude.</h1>
+  </div>
+  <div class="detail-intro-meta">
+    <div class="meta-row"><div class="meta-label">Year</div><div class="meta-value">2026</div></div>
+    <div class="meta-row"><div class="meta-label">Type</div><div class="meta-value">Self-initiated · AI pair-build</div></div>
+    <div class="meta-row"><div class="meta-label">Scope</div><div class="meta-value">HTML-based · Real-time transit API · Mobile-first</div></div>
+    <div class="meta-row"><div class="meta-label">Live</div><div class="meta-value"><a href="https://bartlivemap.vercel.app" target="_blank" rel="noopener" style="color: var(--link); text-decoration: none; border-bottom: 1px solid var(--link);">bartlivemap.vercel.app</a> &#8599;</div></div>
+    <p style="margin-top: 16px;">A fully interactive, real-time map of BART, the San Francisco Bay Area's rapid transit system, built entirely through conversation with Claude. What started as a way to understand what vibe-coding actually looks like in practice became a bite-size case study in AI-assisted product building. Now live, running on BART's real-time data.</p>
+  </div>
+</div>
+
+<div class="detail-section">
+  <div class="section-text">
+    <div class="section-tag">01</div>
+    <h2 class="section-heading">The Idea.</h2>
+    <p class="section-body">The starting point was simple: try vibe-coding on a real wayfinding system, BART's live transit map and its real-time train data. I chose HTML as the format for three reasons: it's easy to build incrementally, easy to open and test without any setup, and easy to distribute once it's done.</p>
+  </div>
+</div>
+
+<div class="detail-section">
+  <div class="section-text">
+    <div class="section-tag">02</div>
+    <h2 class="section-heading">Hooked.</h2>
+    <p class="section-body">The first sessions moved fast: describe a feature, get a working version, test it, iterate. Low setup, instant feedback, and almost no gap between an idea and a working interface. A map appeared, then live trains, within the first few exchanges.</p>
+    <p class="section-body" style="margin-top: 20px;">The result wasn't great, but it was good enough to hook me.</p>
+  </div>
+  <div class="section-images-grid" style="margin-top: 60px;">
+    <div class="img-block" style="aspect-ratio: 4/3;"><img src="images/bart/02.png" alt="Early working version — first live map render" onerror="this.style.display='none'"><span class="img-fallback">bart/02.png · 4:3</span></div>
+    <div class="img-block" style="aspect-ratio: 4/3;"><img src="images/bart/03.png" alt="Early working version — live train positions appear" onerror="this.style.display='none'"><span class="img-fallback">bart/03.png · 4:3</span></div>
+  </div>
+</div>
+
+<div class="detail-section dark" style="padding-bottom: 0;">
+  <div class="section-text">
+    <div class="section-tag">03</div>
+    <h2 class="section-heading">Frustrated.</h2>
+    <p class="section-body">The map was built on Leaflet, using real latitude and longitude. Even after moving from Leaflet to SVG, the coordinates were still geographic: accurate to the real world, but wrong for a legible transit diagram. Stations sat at real-world distances; curves followed whatever angle the geography produced.</p>
+  </div>
+</div>
+
+<div class="quote-block" style="background: var(--ink); padding: 56px var(--gutter);">
+  <blockquote style="color: var(--bg); font-size: clamp(22px, 3vw, 34px); margin-bottom: 0;">&#8220;It slowly became an endless revision loop.&#8221;</blockquote>
+</div>
+
+<div class="detail-section dark" style="padding-top: 0;">
+  <div class="section-text">
+    <p class="section-body">The deeper it went, the harder it got to move forward. The AI was leading and I was auditing, catching the same class of problem over and over: wrong path direction, misplaced stations, inconsistent spacing, off angles. These weren't just aesthetic details, but foundational ones. The coordinate grid itself was never stable, so nothing built on top of it could hold, and nothing stopped the same errors from recurring. That wasn't sustainable against a real token budget. I wanted to take the lead, keep the scope simple, and get an MVP built without letting it drag on.</p>
+  </div>
+  <div class="section-images-grid" style="margin-top: 60px;">
+    <div class="img-block" style="aspect-ratio: 4/3;"><img src="images/bart/04.png" alt="Leaflet-based map — real-world geography distorts station spacing" onerror="this.style.display='none'"><span class="img-fallback">bart/04.png · 4:3</span></div>
+    <div class="img-block" style="aspect-ratio: 4/3;"><img src="images/bart/05.png" alt="Leaflet-based map — curve artifacts from real coordinate data" onerror="this.style.display='none'"><span class="img-fallback">bart/05.png · 4:3</span></div>
+  </div>
+</div>
+
+<div class="detail-section">
+  <div class="section-text">
+    <div class="section-tag">04</div>
+    <h2 class="section-heading">Clarified.</h2>
+    <p class="section-body">At this point, I stopped and looked at what wasn't working. Instead of continuing an open-ended conversation, I set up a proper product-development framework: a north star with clear design and build guidelines, synced between Notion and Claude's memory, so every session started from the same shared context instead of rediscovering it.</p>
+    <p class="section-body" style="margin-top: 20px; color: var(--accent);">The pivotal decision: replace geographic coordinates with a fixed geometric grid, and define how lines share the core routes, with their path direction, lane order, and bend points, along with every station's exact position.</p>
+    <p class="section-body" style="margin-top: 20px;">Iteration became far more predictable. Before, getting the direction, angle, and position right took a lot of trial and error, and every fix felt improvised. Afterward, there was a specific coordinate to point to and correct.</p>
+  </div>
+  <div class="section-images-grid" style="margin-top: 60px;">
+    <div class="img-block" style="aspect-ratio: 4/3;"><img src="images/bart/06.png" alt="Fixed coordinate grid — stations and lanes assigned explicit positions" onerror="this.style.display='none'"><span class="img-fallback">bart/06.png · 4:3</span></div>
+    <div class="img-block" style="aspect-ratio: 4/3;"><img src="images/bart/07.png" alt="Shared reference system — Notion and Claude memory synced" onerror="this.style.display='none'"><span class="img-fallback">bart/07.png · 4:3</span></div>
+  </div>
+</div>
+
+<div class="detail-section blue">
+  <div class="section-text">
+    <div class="section-tag">05</div>
+    <h2 class="section-heading">Restarted.<br>One Problem at a Time.</h2>
+    <p class="section-body">With the base framework in place, I restarted in a fresh Claude session and worked one problem domain per version, keeping the guidelines and build history in sync as the map developed.</p>
+  </div>
+  <div class="bart-domain-grid" style="margin-top: 60px;">
+      <div>
+        <div class="img-block" style="aspect-ratio: 3/4;"><img src="images/bart/08.gif" alt="Lines — geometry rebuilt against the fixed grid" onerror="this.style.display='none'"><span class="img-fallback">bart/08.gif · 3:4</span></div>
+        <div class="grid-item-title">Lines</div>
+        <div class="grid-item-desc">Geometry rebuilt against the fixed grid. Every angle constrained to 45°/90°, and colors re-tuned from BART's actual palette for on-screen visibility.</div>
+      </div>
+      <div>
+        <div class="img-block" style="aspect-ratio: 3/4;"><img src="images/bart/09.gif" alt="Stations & Labels — markers and labels aligned by line and path angle" onerror="this.style.display='none'"><span class="img-fallback">bart/09.gif · 3:4</span></div>
+        <div class="grid-item-title">Stations &amp; Labels</div>
+        <div class="grid-item-desc">Each station marker lines up by the number of lines serving it and the angle of their path. Labels are placed segment by segment for consistent alignment and legibility, so text never overlaps a line.</div>
+      </div>
+      <div>
+        <div class="img-block" style="aspect-ratio: 3/4;"><img src="images/bart/10.gif" alt="Trains — tracked across live API updates and animated along the path" onerror="this.style.display='none'"><span class="img-fallback">bart/10.gif · 3:4</span></div>
+        <div class="grid-item-title">Trains</div>
+        <div class="grid-item-desc">Each train is tracked across BART's live API updates, refreshed every 15 seconds, and animated along the rendered path. The API gives arrival times, not GPS, so each position is estimated from a train's minutes away. Head and tail opacity differ to read direction of travel.</div>
+      </div>
+      <div>
+        <div class="img-block" style="aspect-ratio: 3/4;"><img src="images/bart/11.gif" alt="Information & Alerts — live arrivals by direction, service alerts from live data" onerror="this.style.display='none'"><span class="img-fallback">bart/11.gif · 3:4</span></div>
+        <div class="grid-item-title">Information &amp; Alerts</div>
+        <div class="grid-item-desc">Each station splits into its two directions of travel, with live arrivals sorted by time. Alerts follow service hours and live data: last trains, no trains, or possible delays.</div>
+      </div>
+      <div>
+        <div class="img-block" style="aspect-ratio: 3/4;"><img src="images/bart/12.gif" alt="Interaction — line isolation, search, pinch-to-zoom, drag-to-pan" onerror="this.style.display='none'"><span class="img-fallback">bart/12.gif · 3:4</span></div>
+        <div class="grid-item-title">Interaction</div>
+        <div class="grid-item-desc">Line isolation, station search and highlighting, pinch-to-zoom, and drag-to-pan, built to respond across mobile and desktop.</div>
+      </div>
+      <div>
+        <div class="img-block" style="aspect-ratio: 3/4;"><img src="images/bart/13.png" alt="Design System — packaged into a standalone bart-design Claude Skill" onerror="this.style.display='none'"><span class="img-fallback">bart/13.png · 3:4</span></div>
+        <div class="grid-item-title">Design System</div>
+        <div class="grid-item-desc">The visual direction and rules that emerged through the build were packaged into a standalone bart-design Claude Skill, so Claude can load them back in on future sessions.</div>
+      </div>
+  </div>
+</div>
+
+<div class="detail-section">
+  <div class="section-text">
+    <div class="section-tag">06</div>
+    <h2 class="section-heading">Outcome.</h2>
+  </div>
+  <div class="impact-stats">
+    <div class="stat-cell"><div class="stat-number">8 days</div><div class="stat-label">Initiation to shipped MVP</div></div>
+    <div class="stat-cell"><div class="stat-number">38</div><div class="stat-label">Versions — one problem domain each from v29 onward</div></div>
+    <div class="stat-cell"><div class="stat-number">50</div><div class="stat-label">Real BART stations on a fixed grid</div></div>
+    <div class="stat-cell"><div class="stat-number">Sonnet 5</div><div class="stat-label">Primary build model, with some Opus sessions</div></div>
+    <div class="stat-cell"><div class="stat-number">Live</div><div class="stat-label">Hosted on Vercel, running on BART's real-time data</div></div>
+    <div class="stat-cell"><div class="stat-number">Coming Soon</div><div class="stat-label">Visitor count</div></div>
+  </div>
+</div>
+
+<div class="detail-section" style="padding-bottom: 100px;">
+  <div class="section-text">
+    <div class="section-tag">07</div>
+    <h2 class="section-heading">Reflection.</h2>
+  </div>
+  <div class="section-images-grid-3" style="margin-top: 60px;">
+    <div class="card-r" style="background: var(--bg-alt); padding: 32px; border-radius: 24px; display: flex; flex-direction: column;">
+      <div style="font-size: 24px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; color: var(--accent); margin-bottom: 16px;">A framework changes what AI can do.</div>
+      <p style="font-size: 15px; line-height: 1.6; font-weight: 300; color: var(--ink-soft); margin: 0;">The biggest shift wasn't a better prompt. It was a human-led system set up before continuing: a north star, clear guidelines, and shared references. Sessions stopped rebuilding context and re-litigating settled decisions, and an endless revision loop became something I could build on.</p>
+    </div>
+    <div class="card-r" style="background: var(--bg-alt); padding: 32px; border-radius: 24px; display: flex; flex-direction: column;">
+      <div style="font-size: 24px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; color: var(--accent); margin-bottom: 16px;">Token use is a design constraint.</div>
+      <p style="font-size: 15px; line-height: 1.6; font-weight: 300; color: var(--ink-soft); margin: 0;">The most effective sessions were narrowly scoped: one version, one file, one named problem. Broad requests invited the model to rescan everything and reconsider settled decisions, which produced drift, not thoroughness. I also weighed which model each request deserved, using a higher-capability model for open-ended or structural problems and a lighter one for small, well-defined fixes.</p>
+    </div>
+    <div class="card-r" style="background: var(--bg-alt); padding: 32px; border-radius: 24px; display: flex; flex-direction: column;">
+      <div style="font-size: 24px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; color: var(--accent); margin-bottom: 16px;">Real data is a different problem.</div>
+      <p style="font-size: 15px; line-height: 1.6; font-weight: 300; color: var(--ink-soft); margin: 0;">A demo draws trains from clean numbers. The real API only says &#8220;x minutes away,&#8221; with no GPS and no train IDs, and those rounded, noisy numbers made the same train show up twice, or jump between updates. The fix was a rule I defined: give each train its own ID the moment it leaves the terminus, then follow it across every update. Claude built it, I tested it against simulated data, and then confirmed it on live data.</p>
+    </div>
+  </div>
+</div>
+
+
+  <div class="project-nav">
+    <div></div>
+    <div class="project-nav-item next" onclick="showPage('bondu')">
+      <div class="project-nav-label">Next →</div>
+      <div class="project-nav-title">bondu</div>
     </div>
   </div>
 </section>
@@ -1925,7 +2127,7 @@
     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
     const navLink = document.querySelector(`.nav-link[data-page="${name}"]`);
     if (navLink) navLink.classList.add('active');
-    if (name === 'thimble-app' || name === 'thimble-broker' || name === 'lookscope' || name === 'hudson-market' || name === 'everything-aiga' || name === 'transfoner' || name === 'drunken-rice' || name === 'miscellaneous' || name === 'bondu') {
+    if (name === 'thimble-app' || name === 'thimble-broker' || name === 'lookscope' || name === 'hudson-market' || name === 'everything-aiga' || name === 'transfoner' || name === 'drunken-rice' || name === 'miscellaneous' || name === 'bondu' || name === 'bart') {
       document.querySelector('.nav-link[data-page="work"]').classList.add('active');
     }
     const nav = document.getElementById('nav');
